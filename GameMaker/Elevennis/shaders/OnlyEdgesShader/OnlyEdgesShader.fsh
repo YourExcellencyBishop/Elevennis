@@ -9,6 +9,7 @@ uniform sampler2D uSampler;
 void main()
 {
     gl_FragColor = v_vColour * texture2D(uSampler, v_vTexcoord );
+	
 	int diag = 0;
 	int perp = 0;
 	
@@ -61,5 +62,5 @@ void main()
 	int count = perp + diag;
 	
 	// gl_FragColor = vec4(red / 255., green / 255., blue / 255., alpha / 255.);
-	if (count >= 7 || (perp > 2 && diag < 2) || (perp == 4) || (diag == 4)) gl_FragColor.a = 0.;
+	if (count > 7 || (perp > 2 && diag < 2) || (perp == 4) || (diag == 4)) gl_FragColor.a = 0.;
 }
