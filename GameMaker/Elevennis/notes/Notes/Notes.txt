@@ -1,0 +1,2 @@
+Ignore "don't care" value
+Use shader to remove surrounded sections

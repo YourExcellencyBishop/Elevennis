@@ -1,3 +1,5 @@
+show_debug_overlay(1);
+
 surf = surface_create(sprite_width, sprite_height)
 
 surface_set_target(surf)
@@ -66,7 +68,24 @@ while findNext
 	count++;
 }
 
-surface_free(surf)
+
+var _sampler = shader_get_sampler_index(OnlyEdgesShader, "uSampler");
+var _texture = surface_get_texture(surf);
+
+edited_surf = surface_create(surface_get_width(surf), surface_get_height(surf));
+surface_set_target(edited_surf);
+shader_set(OnlyEdgesShader);
+texture_set_stage(_sampler, _texture);
+
+draw_surface(surf, 0, 0);
+
+shader_reset();
+surface_reset_target();
+
+custom_spr = sprite_create_from_surface(edited_surf, 0, 0, surface_get_width(edited_surf), surface_get_height(edited_surf), false, false, 0, 0);
+
+surface_free(surf);
+surface_free(edited_surf);
 
 if (array_length(points) == 0)
 {
