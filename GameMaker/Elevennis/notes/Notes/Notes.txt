@@ -1,4 +1,5 @@
 Ignore "don't care" value - DONE
 Use shader to remove surrounded sections - DONE
 full square edge removal (check if sampling outside) - DONE
-Handle disconnected shapes
+Handle disconnected shapes - WORKING ON IT
+Fill shader
