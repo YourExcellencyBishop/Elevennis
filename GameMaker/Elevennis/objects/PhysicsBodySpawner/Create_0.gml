@@ -1,17 +1,19 @@
+var start_time = current_time;
+
 #region Setting Up Surface
 
-var surf_width = sprite_width;
-var surf_height = sprite_height;
-var surf = surface_create(surf_width, surf_height)
+var width = sprite_width + 2;
+var height = sprite_height + 2;
+var surf = surface_create(width, height)
 
 surface_set_target(surf)
 
 draw_clear_alpha(c_black, 0);
-draw_sprite(sprite_index, 0, 0, 0);
+draw_sprite(sprite_index, 0, 1, 1);
 
 surface_reset_target()
 
-var _edited_surf = surface_create(surf_width, surf_height);
+var _edited_surf = surface_create(width - 2, height - 2);
 var _sampler = shader_get_sampler_index(OnlyEdgesShader, "u_Sampler");
 var _texture = surface_get_texture(surf);
 var _resolution = shader_get_uniform(OnlyEdgesShader, "u_Resolution");
@@ -20,84 +22,91 @@ surface_set_target(_edited_surf);
 shader_set(OnlyEdgesShader);
 
 texture_set_stage(_sampler, _texture);
-shader_set_uniform_f(_resolution, surf_width, surf_height);
+shader_set_uniform_f(_resolution, 1/width, 1/height);
 
-draw_surface(surf, 0, 0);
+draw_surface(surf, -1, -1);
 
 shader_reset();
 surface_reset_target()
 
 surface_free(surf);
-surf = _edited_surf;
+
+var buf = buffer_create(width * height * 4, buffer_fast, 1);
+buffer_get_surface(buf, _edited_surf, 0);
+
+width -= 2;
+height -= 2;
+sprite_index = sprite_create_from_surface(_edited_surf, 0, 0, width, height, false, false, 0, 0);
+
+surface_free(_edited_surf);
 #endregion
 
-all_pixels = [];
-visited = array_create(surf_width);
+var visited = array_create(width * height, false);
 
-for (var i = 0; i < surf_width; i++)
-{
-    visited[i] = array_create(surf_height, false);
-	for (var j = 0; j < surf_height; j++) all_pixels[i * surf_height + j] = [i , j];
-}
-
-var pixel_count = surf_width * surf_height;
-
-while (pixel_count > 0)
+while (true)
 {
 	point_count = 0;
-	points = []
+	points_x = []
+	points_y = []
 	
-	var found_start_pixel = false;
-	for (var p = 0; p < pixel_count;)
+	var found = false;
+	var start_x, start_y;
+	
+	for (var _x = 0; _x < width; _x++)
+	for (var _y = 0; _y < height; _y++)
 	{
-		var pixel = all_pixels[p];
-		var _x = pixel[0], _y = pixel[1];
-	
-		found_start_pixel = surface_getpixel(surf, _x, _y) > 0;
-	
-		if (found_start_pixel)
+		
+		if (!visited[_x + _y * width] && buffer_peek(buf, ((_y * width) + _x) * 4 + 3, buffer_u8) > 0)
 		{
-			points[point_count++] = [_x, _y];
-			array_delete(all_pixels, 0, 1);
-			pixel_count--;
+			points_x[point_count] = _x;
+			points_y[point_count++] = _y;
+			start_x = _x; 
+			start_y = _y;
+			found = true;
 			break;
 		}
-		
-		array_delete(all_pixels, 0, 1);
-		pixel_count--;
 	}
 
-	var nextPos = undefined;
-	var cycle = false;
-
-	while (found_start_pixel)
-	{
-		var pos = points[point_count - 1];
-		var pos_x = pos[0], pos_y = pos[1];
-		var pixelValue = SurroundingValue(pos_x, pos_y, surf);
+	if (!found) break;
 	
-		if (pixelValue >= 0b10000000 && !visited[pos_x + 1][pos_y + 0]) nextPos = [pos_x + 1, pos_y + 0]; // Right
-		else if (pixelValue >= 0b01000000 && !visited[pos_x + 1][pos_y + 1]) nextPos = [pos_x + 1, pos_y + 1]; // Right Down
-		else if (pixelValue >= 0b00100000 && !visited[pos_x + 0][pos_y + 1]) nextPos = [pos_x + 0, pos_y + 1]; // Down
-		else if (pixelValue >= 0b00010000 && !visited[pos_x - 1][pos_y + 1]) nextPos = [pos_x - 1, pos_y + 1]; // Left Down
-		else if (pixelValue >= 0b00001000 && !visited[pos_x - 1][pos_y + 0]) nextPos = [pos_x - 1, pos_y + 0]; // Left
-		else if (pixelValue >= 0b00000100 && !visited[pos_x - 1][pos_y - 1]) nextPos = [pos_x - 1, pos_y - 1]; // Left Up
-		else if (pixelValue >= 0b00000010 && !visited[pos_x + 0][pos_y - 1]) nextPos = [pos_x + 0, pos_y - 1]; // Up
-		else if (pixelValue >= 0b00000001 && !visited[pos_x + 1][pos_y - 1]) nextPos = [pos_x + 1, pos_y - 1]; // Right Up
+	var cycle = false;
+	
+	while (found)
+	{
+		var next_x = -1, next_y = -1;
+		var pos_x = points_x[point_count - 1], pos_y = points_y[point_count - 1];
+
+		var base = (pos_y * width + pos_x) * 4 + 3;
+		
+		var can_l = pos_x > 0;
+	    var can_r = pos_x < width - 1;
+	    var can_u = pos_y > 0;
+	    var can_d = pos_y < height - 1;
+	
+		if (can_r && !visited[(pos_x + 1) + pos_y * width] && buffer_peek(buf, base + 4, buffer_u8) > 0) 
+			{ next_x = pos_x + 1; next_y = pos_y + 0; }
+		else if (can_r && can_d && !visited[(pos_x + 1) + (pos_y + 1) * width] && buffer_peek(buf, base + 4 + 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x + 1; next_y = pos_y + 1; }
+		else if (can_d && !visited[(pos_x + 0) + (pos_y + 1) * width] && buffer_peek(buf, base + 0 + 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x + 0; next_y = pos_y + 1; }
+		else if (can_l && can_d && !visited[(pos_x - 1) + (pos_y + 1) * width] && buffer_peek(buf, base - 4 + 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x - 1; next_y = pos_y + 1; }
+		else if (can_l && !visited[(pos_x - 1) + (pos_y + 0) * width] && buffer_peek(buf, base - 4, buffer_u8) > 0) 
+			{ next_x = pos_x - 1; next_y = pos_y + 0; }
+		else if (can_l && can_u && !visited[(pos_x - 1) + (pos_y - 1) * width] && buffer_peek(buf, base - 4 - 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x - 1; next_y = pos_y - 1; }
+		else if (can_u && !visited[(pos_x + 0) + (pos_y - 1) * width] && buffer_peek(buf, base + 0 - 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x + 0; next_y = pos_y - 1; }
+		else if (can_r && can_u && !visited[(pos_x + 1) + (pos_y - 1) * width] && buffer_peek(buf, base + 4 - 4 * width, buffer_u8) > 0) 
+			{ next_x = pos_x + 1; next_y = pos_y - 1; }
 		else break;
 
-		visited[nextPos[0]][nextPos[1]] = true;
+		visited[next_x + next_y * width] = true;
 
-		if (!(array_equals(points[0], nextPos)))
+		if (!(next_x == start_x && next_y == start_y))
 		{
-			points[point_count++] = nextPos;
-			
-			var index;
-			for (index = 0; index < pixel_count; index++)
-				if (array_equals(all_pixels[index], nextPos)) break;	
-			
-			array_delete(all_pixels, index, 1);
-			pixel_count--;
+			points_x[point_count] = next_x;
+			points_y[point_count++] = next_y;
 		}
 		else 
 		{
@@ -107,26 +116,12 @@ while (pixel_count > 0)
 	}
 	
 	for (var i = 0; i < point_count; i++)
-		points[i] = [points[i][0] + 0.5, points[i][1] + 0.5];
+	{
+		points_x[i] += 0.5;
+		points_y[i] += 0.5;
+	}
 		
-	instance_create_depth(0, 0, depth - 1, PhysicsBody, {points: points, point_count: point_count, cyclic: cycle});
+	instance_create_depth(0, 0, depth - 1, PhysicsBody, {points_x: points_x, points_y: points_y, point_count: point_count, cyclic: cycle});
 }
 
-sprite_index = sprite_create_from_surface(surf, 0, 0, surf_width, surf_height, false, false, 0, 0);
-surface_free(surf);
-
-function SurroundingValue(pos_x, pos_y, _surf)
-{
-	var value = 0b00000000;
-	
-	if (surface_getpixel(_surf, pos_x + 1, pos_y - 1) > 0 && !visited[pos_x + 1][pos_y - 1])	value |= 0b00000001; // Right Up
-	if (surface_getpixel(_surf, pos_x + 0, pos_y - 1) > 0 && !visited[pos_x + 0][pos_y - 1])	value |= 0b00000010; // Up
-	if (surface_getpixel(_surf, pos_x - 1, pos_y - 1) > 0 && !visited[pos_x - 1][pos_y - 1])	value |= 0b00000100; // Left Up
-	if (surface_getpixel(_surf, pos_x - 1, pos_y + 0) > 0 && !visited[pos_x - 1][pos_y + 0])	value |= 0b00001000; // Left
-	if (surface_getpixel(_surf, pos_x - 1, pos_y + 1) > 0 && !visited[pos_x - 1][pos_y + 1])	value |= 0b00010000; // Left Down
-	if (surface_getpixel(_surf, pos_x + 0, pos_y + 1) > 0 && !visited[pos_x + 0][pos_y + 1])	value |= 0b00100000; // Down
-	if (surface_getpixel(_surf, pos_x + 1, pos_y + 1) > 0 && !visited[pos_x + 1][pos_y + 1])	value |= 0b01000000; // Right Down
-	if (surface_getpixel(_surf, pos_x + 1, pos_y + 0) > 0 && !visited[pos_x + 1][pos_y + 0])	value |= 0b10000000; // Right
-	
-	return value;
-}
+show_message(current_time - start_time);

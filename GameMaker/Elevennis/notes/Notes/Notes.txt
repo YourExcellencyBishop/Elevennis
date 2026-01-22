@@ -1,5 +1,10 @@
 Ignore "don't care" value - DONE
 Use shader to remove surrounded sections - DONE
 full square edge removal (check if sampling outside) - DONE
-Handle disconnected shapes - WORKING ON IT
+Handle disconnected shapes - DONE
+
+Optimisation!!!
+Before optimisation benchmarks:
+128x128: 5526, 4969, 5019, 4768, 5103 => avg = 5077
+
 Fill shader

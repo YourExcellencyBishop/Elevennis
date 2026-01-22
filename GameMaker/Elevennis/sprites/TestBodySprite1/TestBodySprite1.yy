@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"TestBodySprite1",
   "bboxMode":0,
-  "bbox_bottom":159,
+  "bbox_bottom":15,
   "bbox_left":0,
-  "bbox_right":159,
+  "bbox_right":15,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":160,
+  "height":16,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"7bb4306b-03e3-4d16-a009-21b17e62cf26","blendMode":0,"displayName":"default","isLocked":false,"name":"7bb4306b-03e3-4d16-a009-21b17e62cf26","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":160,
+  "width":16,
 }
