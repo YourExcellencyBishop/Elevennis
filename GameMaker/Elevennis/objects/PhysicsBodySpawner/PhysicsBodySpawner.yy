@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"PhysicsBody",
+  "%Name":"PhysicsBodySpawner",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"PhysicsBody",
+  "name":"PhysicsBodySpawner",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,15 +26,14 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"points","filters":[],"listItems":[],"multiselect":false,"name":"points","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":6,},
-    {"$GMObjectProperty":"v2","%Name":"point_count","filters":[],"listItems":[],"multiselect":false,"name":"point_count","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v2","%Name":"cyclic","filters":[],"listItems":[],"multiselect":false,"name":"cyclic","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"True","varType":3,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"TestBodySprite2",
+    "path":"sprites/TestBodySprite2/TestBodySprite2.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

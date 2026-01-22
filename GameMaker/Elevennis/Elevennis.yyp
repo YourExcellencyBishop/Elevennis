@@ -25,9 +25,11 @@
   "resources":[
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},},
     {"id":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},},
+    {"id":{"name":"PhysicsBodySpawner","path":"objects/PhysicsBodySpawner/PhysicsBodySpawner.yy",},},
     {"id":{"name":"PhyicsBodyCreationRoom","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
     {"id":{"name":"TestBodySprite1","path":"sprites/TestBodySprite1/TestBodySprite1.yy",},},
+    {"id":{"name":"TestBodySprite2","path":"sprites/TestBodySprite2/TestBodySprite2.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
