@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CreatePhysicsBodies",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"CreatePhysicsBodies",
+  "parent":{
+    "name":"Elevennis",
+    "path":"Elevennis.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
