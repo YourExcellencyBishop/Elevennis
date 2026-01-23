@@ -1,6 +1,8 @@
 #macro x_offset 0.5
 #macro y_offset 0.5
 
+var shader = SupportR8Unorm ? OnlyEdgesShaderWin : OnlyEdgesShaderWeb;
+
 #region Setting Up Surface
 
 var width = sprite_width;
@@ -10,7 +12,7 @@ var height = sprite_height;
 var shader_width = width + 2;
 var shader_height = height + 2;
 
-var surf = surface_create(shader_width, shader_height, surface_rgba4unorm)
+var surf = surface_create(shader_width, shader_height, SupportR8Unorm ? surface_rgba4unorm : surface_rgba8unorm)
 
 surface_set_target(surf)
 
@@ -20,13 +22,13 @@ draw_sprite(sprite_index, 0, 1, 1);
 surface_reset_target()
 
 // red channel contains whether pixel is filled
-var fill_surf = surface_create(width, height, surface_r8unorm);
-var _sampler = shader_get_sampler_index(OnlyEdgesShader, "u_Sampler");
+var fill_surf = surface_create(width, height, SupportR8Unorm ? surface_r8unorm : surface_rgba8unorm);
+var _sampler = shader_get_sampler_index(shader, "u_Sampler");
 var _texture = surface_get_texture(surf);
-var _resolution = shader_get_uniform(OnlyEdgesShader, "u_Resolution");
+var _resolution = shader_get_uniform(shader, "u_Resolution");
 
 surface_set_target(fill_surf);
-shader_set(OnlyEdgesShader);
+shader_set(shader);
 
 texture_set_stage(_sampler, _texture);
 shader_set_uniform_f(_resolution, 1.0/shader_width, 1.0/shader_height);
@@ -40,10 +42,11 @@ surface_reset_target()
 surface_free(surf);
 
 var image_size = width * height;
-var buf = buffer_create(image_size, buffer_fast, 1);
+var buffer_size = SupportR8Unorm ? image_size : image_size * 4;
+var buf = buffer_create(buffer_size, buffer_fast, 1);
 buffer_get_surface(buf, fill_surf, 0);
 
-//sprite_index = sprite_create_from_surface(_edited_surf, 0, 0, width, height, false, false, 0, 0);
+//sprite_index = sprite_create_from_surface(fill_surf, 0, 0, width, height, false, false, 0, 0);
 
 surface_free(fill_surf);
 #endregion
@@ -60,6 +63,12 @@ buffer_seek(buf, buffer_seek_start, 0);
 var i = 0
 repeat(image_size)
 {
+	if (!SupportR8Unorm)
+	{
+		buffer_read(buf, buffer_u8);
+		buffer_read(buf, buffer_u8);
+		buffer_read(buf, buffer_u8);
+	}
     if (buffer_read(buf, buffer_u8) != 0)
 	{
 		state[i] = 0b01;

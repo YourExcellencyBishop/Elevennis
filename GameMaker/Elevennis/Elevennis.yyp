@@ -5,7 +5,9 @@
     {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
-    "children":[],
+    "children":[
+      {"children":[],"name":"HTML5",},
+    ],
     "name":"Default",
   },
   "defaultScriptType":1,
@@ -28,7 +30,9 @@
     {"id":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},},
     {"id":{"name":"PhysicsBodySpawner","path":"objects/PhysicsBodySpawner/PhysicsBodySpawner.yy",},},
     {"id":{"name":"PhyicsBodyCreationRoom","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},},
-    {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
+    {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
+    {"id":{"name":"OnlyEdgesShaderWeb","path":"shaders/OnlyEdgesShaderWeb/OnlyEdgesShaderWeb.yy",},},
+    {"id":{"name":"OnlyEdgesShaderWin","path":"shaders/OnlyEdgesShaderWin/OnlyEdgesShaderWin.yy",},},
     {"id":{"name":"TestBodySprite1","path":"sprites/TestBodySprite1/TestBodySprite1.yy",},},
     {"id":{"name":"TestBodySprite2","path":"sprites/TestBodySprite2/TestBodySprite2.yy",},},
   ],

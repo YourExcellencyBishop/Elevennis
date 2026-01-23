@@ -14,4 +14,4 @@ Fill shader
 Drawing 
 collinear points
 closing shapes
-fix on html
+fix on html - DONE

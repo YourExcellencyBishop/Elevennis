@@ -1,6 +1,11 @@
 {
   "$GMRedditOptions":"v2",
   "%Name":"Reddit",
+  "ConfigValues":{
+    "HTML5":{
+      "option_reddit_game_name":"elevennis",
+    },
+  },
   "name":"Reddit",
   "option_reddit_devvit_project_id":"elevennis",
   "option_reddit_devvit_project_path":"C:\\Users\\bisho\\Documents\\Projects\\elevennis",
