@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"TestBodySprite2",
-    "path":"sprites/TestBodySprite2/TestBodySprite2.yy",
+    "name":"TestBodySprite1",
+    "path":"sprites/TestBodySprite1/TestBodySprite1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

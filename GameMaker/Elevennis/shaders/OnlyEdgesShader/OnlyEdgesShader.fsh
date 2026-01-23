@@ -11,7 +11,7 @@ void main()
 {
     vec4 col = v_vColour * texture2D(u_Sampler, v_vTexcoord);
 
-    if (col.a == 0.0) 
+    if (col.r == 0.0) 
 	{
         gl_FragColor = col;
         return;
@@ -25,7 +25,7 @@ void main()
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(0.0, px.y)).a);
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(-px.x, 0.0)).a);
 	
-	col.a *= step(perp, 3.5);
+	col.r *= step(perp, 3.5);
 
 	gl_FragColor = col;
 }

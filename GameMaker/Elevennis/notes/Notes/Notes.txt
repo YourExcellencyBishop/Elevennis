@@ -3,8 +3,11 @@ Use shader to remove surrounded sections - DONE
 full square edge removal (check if sampling outside) - DONE
 Handle disconnected shapes - DONE
 
-Optimisation!!!
+Optimisation!!! - DONE
 Before optimisation benchmarks:
 128x128: 5526, 4969, 5019, 4768, 5103 => avg = 5077
+
+After optimisation:
+128x128: 10, 8, 10, 5, 8 => avg 8.2
 
 Fill shader

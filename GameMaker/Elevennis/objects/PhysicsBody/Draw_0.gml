@@ -1,4 +1,4 @@
-var s = 20;
+var s = 1;
 
 draw_set_colour(c_red)
 if(cyclic)
