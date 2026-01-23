@@ -1,6 +1,6 @@
 /// @function                CreatePhysicsBodies(sprite, x_offset, y_offset)
 /// @description             Create physics bodies from a surface by extracting their edges.
-/// @param {Id.Surfac}		 surface		The surface.
+/// @param {Id.Surface}		 surface		The surface.
 /// @param {Real}			 x_offset  The x offset that points are placed in relation to their pixels.
 /// @param {Real}			 y_offset  The y offset that points are placed in relation to their pixels.
 /// @return {Array<Id.Instance<PhysicsBody>>} The instances.
@@ -114,13 +114,15 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	
 		var cycle = 0
 		var last_dir = 0;
+		var added_last = false;
 	
 		while (found)
 		{		
 			var next_x = -1, next_y;
 			state[pos_x + pos_y * width] = 0b11;
-
-			for (var d = 0; d < 8; d++) 
+			
+			var d = 0;
+			for (; d < 8; d++) 
 			{
 				var dir = (last_dir + d) mod 8; // searches in last direction first
 			    var nx = pos_x + dir_x[dir];
@@ -134,15 +136,28 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 			        next_y = ny;
 					pos_x = nx;
 					pos_y = ny;
-					last_dir = d;
+					last_dir = dir;
 			        break;
 			    }
 			}
 		
-			if (next_x == -1) break;
+			if (next_x == -1)
+			{ 
+				if (!added_last)
+				{
+					points_x[point_count] = pos_x + x_offset + surface_pos_x;
+					points_y[point_count++] = pos_y + y_offset + surface_pos_y;
+				}
+				break;
+			}
 		
-			points_x[point_count] = next_x + x_offset + surface_pos_x;
-			points_y[point_count++] = next_y + y_offset + surface_pos_y;
+			if (d != 0)
+			{
+				points_x[point_count] = next_x + x_offset + surface_pos_x;
+				points_y[point_count++] = next_y + y_offset + surface_pos_y;
+				added_last = true;
+			}
+			else added_last = false;
 		}
 	
 		#endregion

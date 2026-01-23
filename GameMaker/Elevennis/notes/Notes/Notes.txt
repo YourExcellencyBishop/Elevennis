@@ -13,7 +13,7 @@ After optimisation:
 Drawing - DONE
 fix on html - DONE
 
-collinear points
+remove collinear points - DONE
 Fill shader
 different resolutions
 

@@ -16,7 +16,7 @@ if (draw_position_x - (brush_size + 1) < surface_x || draw_position_x + (brush_s
 	}
 	else
 	{
-		surface = surface_create(surface_size, surface_size, SupportR8Unorm ? surface_rgba4unorm : surface_rgba8unorm);
+		surface = surface_create(surface_size, surface_size, surface_rgba8unorm);
 		draw_surfaces[surface_index] = surface;
 	}
 	
