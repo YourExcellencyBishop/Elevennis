@@ -1,0 +1,52 @@
+plans:
+free on mobile => other sports are paid
+no ads
+
+£1-2
+
+paid on steam for full game
+
+free on reddit (and any other web version) but not full => CTA => download on steam / mobile
+
+ambitious = paid on Nintendo (+ any other touch screen consoles)
+
+time and space abilities => slow down or speed up time, decrease enemy space or increase player space
+
+ripple color effect on hit
+
+control dimensions of draw area, but maintain constant area
+
+color change like jojo
+
+11 opponents in main story
+
+Knott and Maruf (+ anyone else, default to baby names)
+
+screen shakes and slow down zooms like rocket league
+
+pixel character that are customizable
+
+11 game story mode
+
+skill levels:
+11 is perfect, 1 is terrible
+proc gen for calculating move from skill equation ( every move has a level of skill attached to it, ai will make moves based on skill equation by randomising values to make move match skill cap)
+
+online 2 player
+online 4 player => 2 v 2 
+cross platform online
+leaderboards
+
+
+football mode (paid, except in main story)
+basketball mode (paid, except in main story)
+doodle jump mode (paid, except in main story [maybe])
+
+customisable players and rackets
+
+falling buffs and debuffs
+player logos / signatures
+
+"Elevennis, because Goodminton was taken" - tagline
+
+matas music
