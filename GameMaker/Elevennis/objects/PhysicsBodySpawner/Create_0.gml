@@ -1,9 +1,12 @@
-var t = current_time;
+#macro x_offset 0.5
+#macro y_offset 0.5
 
 #region Setting Up Surface
 
 var width = sprite_width;
 var height = sprite_height;
+
+// Puts a transparent pixel around the original image because GM edge clamps by defaul
 var shader_width = width + 2;
 var shader_height = height + 2;
 
@@ -16,17 +19,19 @@ draw_sprite(sprite_index, 0, 1, 1);
 
 surface_reset_target()
 
-var _edited_surf = surface_create(width, height, surface_r8unorm);
+// red channel contains whether pixel is filled
+var fill_surf = surface_create(width, height, surface_r8unorm);
 var _sampler = shader_get_sampler_index(OnlyEdgesShader, "u_Sampler");
 var _texture = surface_get_texture(surf);
 var _resolution = shader_get_uniform(OnlyEdgesShader, "u_Resolution");
 
-surface_set_target(_edited_surf);
+surface_set_target(fill_surf);
 shader_set(OnlyEdgesShader);
 
 texture_set_stage(_sampler, _texture);
 shader_set_uniform_f(_resolution, 1.0/shader_width, 1.0/shader_height);
 
+// drawn without transparent edge
 draw_surface(surf, -1, -1);
 
 shader_reset();
@@ -36,14 +41,18 @@ surface_free(surf);
 
 var image_size = width * height;
 var buf = buffer_create(image_size, buffer_fast, 1);
-buffer_get_surface(buf, _edited_surf, 0);
+buffer_get_surface(buf, fill_surf, 0);
 
 //sprite_index = sprite_create_from_surface(_edited_surf, 0, 0, width, height, false, false, 0, 0);
 
-surface_free(_edited_surf);
+surface_free(fill_surf);
 #endregion
 
-var state = array_create(image_size, 0);
+#region Algorthim Setup
+
+// bit 0 is alpha [1 = filled, 0 = empty]
+// bit 1 is visited [1 = visited, 0 = alpha] 
+var state = array_create(image_size, 0); 
 var edge_count = 0;
 
 buffer_seek(buf, buffer_seek_start, 0);
@@ -64,6 +73,7 @@ var dir_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 var dir_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
 var scan_index = 0;
+#endregion
 
 while (1)
 {
@@ -71,8 +81,11 @@ while (1)
 	var points_x = array_create(edge_count);
 	var points_y = array_create(edge_count);
 	
-	var found = 0;
 	var start_x, start_y, pos_x, pos_y;
+	
+	#region Scan
+	
+	var found = 0;
 	
 	for (; scan_index < image_size; scan_index++)
 	{
@@ -80,8 +93,8 @@ while (1)
 		{
 			start_x = scan_index mod width; 
 			start_y = scan_index div width;
-			points_x[point_count] = start_x + 0.5;
-			points_y[point_count++] = start_y + 0.5;
+			points_x[point_count] = start_x + x_offset;
+			points_y[point_count++] = start_y + y_offset;
 			pos_x = start_x;
 			pos_y = start_y;
 			found = 1;
@@ -90,6 +103,10 @@ while (1)
 	}
 
 	if (!found) break;
+	
+	#endregion
+	
+	#region Trace
 	
 	var cycle = 0
 	var last_dir = 0;
@@ -101,7 +118,7 @@ while (1)
 
 		for (var d = 0; d < 8; d++) 
 		{
-			var dir = (last_dir + d) mod 8;
+			var dir = (last_dir + d) mod 8; // searches in last direction first
 		    var nx = pos_x + dir_x[dir];
 		    var ny = pos_y + dir_y[dir];
 
@@ -120,13 +137,13 @@ while (1)
 		
 		if (next_x == -1) break;
 		
-		points_x[point_count] = next_x + 0.5;
-		points_y[point_count++] = next_y + 0.5;
+		points_x[point_count] = next_x + x_offset;
+		points_y[point_count++] = next_y + y_offset;
 	}
+	
+	#endregion
 		
 	array_resize(points_x, point_count);
 	array_resize(points_y, point_count);
 	instance_create_depth(0, 0, depth - 1, PhysicsBody, {points_x: points_x, points_y: points_y, point_count: point_count});
 }
-
-show_message(current_time - t);
