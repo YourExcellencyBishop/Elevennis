@@ -1,4 +1,4 @@
-var s = 20;
+var s = 1;
 
 draw_set_colour(c_red)
 if(cyclic)
@@ -19,3 +19,5 @@ else
 	draw_circle(s*points_x[point_count - 1], s*points_y[point_count - 1], 5, false);
 }
 draw_set_colour(c_white)
+
+draw_sprite(sprite_index, 0, x, y);

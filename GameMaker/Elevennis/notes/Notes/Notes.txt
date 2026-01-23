@@ -10,8 +10,11 @@ Before optimisation benchmarks:
 After optimisation:
 128x128: 10, 8, 10, 5, 8 => avg 8.2
 
-Fill shader
-Drawing 
-collinear points
-closing shapes
+Drawing - DONE
 fix on html - DONE
+
+collinear points
+Fill shader
+different resolutions
+
+closing shapes --- maybe
