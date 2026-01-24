@@ -1,4 +1,6 @@
 plans:
+DEV CONFIG
+
 free on mobile => other sports are paid
 no ads
 
@@ -50,3 +52,5 @@ player logos / signatures
 "Elevennis, because Goodminton was taken" - tagline
 
 matas music
+
+cellular automatas for destroying rackets

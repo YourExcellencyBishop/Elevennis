@@ -6,8 +6,8 @@
 /// @return {Array<Id.Instance<PhysicsBody>>} The instances.
 function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0.5, y_offset = 0.5)
 {
-	var shader = SupportR8Unorm ? OnlyEdgesShaderWin : OnlyEdgesShaderWeb;
-
+	var shader = global.SupportR8Unorm ? OnlyEdgesShaderWin : OnlyEdgesShaderWeb;
+	
 	var bodies = array_create(0);
 	var body_count = 0;
 
@@ -21,7 +21,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	var height = shader_height - 2;
 
 	// red channel contains whether pixel is filled
-	var fill_surf = surface_create(width, height, SupportR8Unorm ? surface_r8unorm : surface_rgba8unorm);
+	var fill_surf = surface_create(width, height, global.SupportR8Unorm ? surface_r8unorm : surface_rgba8unorm);
 	var _sampler = shader_get_sampler_index(shader, "u_Sampler");
 	var _texture = surface_get_texture(surface);
 	var _resolution = shader_get_uniform(shader, "u_Resolution");
@@ -39,8 +39,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	surface_reset_target()
 
 	var image_size = width * height;
-	var buffer_size = SupportR8Unorm ? image_size : image_size * 4;
-	var buf = buffer_create(buffer_size, buffer_fast, 1);
+	var buf = buffer_create(image_size * (global.SupportR8Unorm ? 1 : 4), buffer_fast, 1);
 	buffer_get_surface(buf, fill_surf, 0);
 	surface_free(fill_surf);
 
@@ -52,40 +51,51 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	// bit 1 is visited [1 = visited, 0 = alpha] 
 	var state = array_create(image_size, 0); 
 	var edge_count = 0;
-
-	buffer_seek(buf, buffer_seek_start, 0);
-
-	var i = 0
-	repeat(image_size)
+	var i = 0;
+	
+	if (!global.SupportR8Unorm)
 	{
-		if (!SupportR8Unorm)
+		var pos = 3;
+		repeat(image_size)
 		{
-			buffer_read(buf, buffer_u8);
-			buffer_read(buf, buffer_u8);
-			buffer_read(buf, buffer_u8);
+		    if (buffer_peek(buf, pos, buffer_u8) != 0)
+			{
+				state[i] = 0b01;
+				edge_count++;
+			}
+			i++;
+			pos += 4;
 		}
-	    if (buffer_read(buf, buffer_u8) != 0)
-		{
-			state[i] = 0b01;
-			edge_count++;
-		}
-		i++;
 	}
+	else
+	{
+		buffer_seek(buf, buffer_seek_start, 0);
+		repeat(image_size)
+		{
+			if (buffer_read(buf, buffer_u8) != 0)
+			{
+				state[i] = 0b01;
+				edge_count++;
+			}
+			i++;
+		}
+	}
+	
 	buffer_delete(buf);
 
-	var dir_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
-	var dir_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
+	var dir_x = global.trace_dirs_x;
+	var dir_y = global.trace_dirs_y;
 
 	var scan_index = 0;
 	#endregion
+
+	var start_x, start_y, pos_x, pos_y;
 
 	while (1)
 	{
 		var point_count = 0;
 		var points_x = array_create(edge_count);
 		var points_y = array_create(edge_count);
-	
-		var start_x, start_y, pos_x, pos_y;
 	
 		#region Scan
 	
@@ -112,7 +122,6 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	
 		#region Trace
 	
-		var cycle = 0
 		var last_dir = 0;
 		var added_last = false;
 	
@@ -164,6 +173,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 		
 		array_resize(points_x, point_count);
 		array_resize(points_y, point_count);
+		
 		bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
 			{points_x: points_x, points_y: points_y, point_count: point_count,
 				sprite_index: sprite_create_from_surface(surface, 0, 0, shader_width, shader_height, false, false, 0, 0),

@@ -27,6 +27,7 @@
   "resources":[
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},},
     {"id":{"name":"Plans","path":"notes/Plans/Plans.yy",},},
+    {"id":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},},
     {"id":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},},
     {"id":{"name":"PhysicsBodySpawner","path":"objects/PhysicsBodySpawner/PhysicsBodySpawner.yy",},},
     {"id":{"name":"PhyicsBodyCreationRoom","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},},

@@ -1,10 +1,6 @@
 //var s = 20;
 //draw_sprite_ext(sprite_index, 0, x, y, s, s, 0, c_white, 1);
 
-var shader_width = surface_get_width(surface);
-	var shader_height = surface_get_height(surface);
-
-
 var precision = 100;
 if (draw_centre_x != -1)
 {
