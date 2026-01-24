@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"OnlyEdgesShaderWin",
-  "name":"OnlyEdgesShaderWin",
+  "%Name":"OnlyEdgesShader",
+  "name":"OnlyEdgesShader",
   "parent":{
     "name":"Creating Physics Bodies",
     "path":"folders/Creating Physics Bodies.yy",

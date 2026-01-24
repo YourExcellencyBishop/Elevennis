@@ -11,7 +11,7 @@ void main()
 {
     vec4 col = v_vColour * texture2D(u_Sampler, v_vTexcoord);
 
-    if (col.r == 0.0) 
+    if (col.a == 0.0) 
 	{
         gl_FragColor = col;
         return;
@@ -20,12 +20,15 @@ void main()
 	vec2 px = u_Resolution;
 
 	float perp = 0.0;
+	
+	// Checks if alpha is greater than 0.5 for each perpendicular direction
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(0.0, -px.y)).a);
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(px.x, 0.0)).a);
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(0.0, px.y)).a);
     perp += step(0.5, texture2D(u_Sampler, v_vTexcoord + vec2(-px.x, 0.0)).a);
 	
-	col.r *= step(perp, 3.5);
+	// if all 4 surrounding perpendicular pixels are filled, then this pixel is blank
+	col.a *= step(perp, 3.5);
 
 	gl_FragColor = col;
 }

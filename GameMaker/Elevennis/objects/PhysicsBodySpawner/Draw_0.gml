@@ -25,10 +25,7 @@ if (draw_centre_x != -1)
 			draw_part_y += part_y_incr;
 		}
 	}
-	else
-	{
-		draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
-	}
+	else draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
 	
 	surface_reset_target();
 	
