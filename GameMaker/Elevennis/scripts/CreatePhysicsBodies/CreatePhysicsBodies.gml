@@ -6,10 +6,9 @@
 /// @param {Real}			 x_offset  The x offset that points are placed in relation to their pixels.
 /// @param {Real}			 y_offset  The y offset that points are placed in relation to their pixels.
 /// @return {Array<Id.Instance<PhysicsBody>>} The instances.
-function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0.5, y_offset = 0.5)
+function CreateEdgeSurface(surface, support_surface_r8unorm)
 {
 	var shader, fill_surf_format, bytes_per_pixel;
-	var support_surface_r8unorm = global.SupportR8UnormSurface;
 	
 	if (support_surface_r8unorm)
 	{
@@ -23,9 +22,6 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 		fill_surf_format = surface_rgba8unorm;
 		bytes_per_pixel = byteCountRGBA;
 	}
-	
-	var bodies = array_create(0);
-	var body_count = 0;
 
 	#region Setting Up Surface
 
@@ -64,7 +60,15 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 	
 	surface_free(fill_surf);
 
+	return {surface: surface, buffer: buf, width: width, height: height, image_size: image_size};
+
 	#endregion
+}
+
+function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
+{
+	var bodies = array_create(0);
+	var body_count = 0;
 
 	#region Algorthim Setup
 
@@ -201,7 +205,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, x_offset = 0
 		
 		bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
 			{points_x: points_x, points_y: points_y, point_count: point_count,
-				sprite_index: sprite_create_from_surface(surface, 0, 0, shader_width, shader_height, false, false, 0, 0),
+				sprite_index: sprite_create_from_surface(surface, 0, 0, width + 2, height + 2, false, false, 0, 0),
 				x: surface_pos_x, y: surface_pos_y});
 	}
 	

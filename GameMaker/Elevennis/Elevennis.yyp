@@ -35,6 +35,7 @@
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
     {"id":{"name":"OnlyEdgesShaderR8","path":"shaders/OnlyEdgesShaderR8/OnlyEdgesShaderR8.yy",},},
+    {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},},
     {"id":{"name":"TestBodySprite1","path":"sprites/TestBodySprite1/TestBodySprite1.yy",},},
     {"id":{"name":"TestBodySprite2","path":"sprites/TestBodySprite2/TestBodySprite2.yy",},},
   ],

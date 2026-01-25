@@ -2,12 +2,8 @@
 //draw_sprite_ext(sprite_index, 0, x, y, s, s, 0, c_white, 1);
 
 var precision = 100;
-if (draw_centre_x != -1)
-{
-	var surface_centre = surface_size/2;
-	var surface_x = draw_centre_x - surface_centre;
-	var surface_y = draw_centre_y - surface_centre;
-	
+if (draw_centre_x != -1 && surface_exists(surface))
+{	
 	surface_set_target(surface);
 	
 	var draw_part_x = draw_last_position_x;
@@ -31,3 +27,5 @@ if (draw_centre_x != -1)
 	
 	draw_surface(surface, surface_x, surface_y);
 }
+
+if (creation_data != -1) draw_surface(creation_data.surface, surface_x, surface_y);
