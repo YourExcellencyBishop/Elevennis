@@ -14,9 +14,9 @@ Drawing - DONE
 fix on html - DONE
 fix on reddit - DONE
 
+different resolutions - DONE
 remove collinear points - DONE
 Fill shader
-different resolutions
 continuous draw lines
 clipping surfaces of empty pixels
 try disabling webgl to check

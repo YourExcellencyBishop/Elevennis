@@ -9,7 +9,7 @@ draw_position_y = -1;
 draw_last_position_x = -1;
 draw_last_position_y = -1;
 
-brush_size = 8;
+brush_size = 2;
 
 surface_size = initialDrawSurfaceSize;
 draw_surfaces = array_create(5, -1);

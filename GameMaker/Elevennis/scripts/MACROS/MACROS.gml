@@ -1,3 +1,9 @@
+#macro edgeSafety 2
+
+#macro useDebug false
+#macro Debug:useDebug true
+
+// PhysicsBodySpawner
 #macro initialDrawSurfaceSize 128
 
 // CreatePhysicsBodies Script

@@ -2,8 +2,8 @@ if (mouse_check_button(mb_left))
 {
 	draw_last_position_x = draw_position_x;
 	draw_last_position_y = draw_position_y;
-	draw_position_x = mouse_x;
-	draw_position_y = mouse_y;
+	draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
+	draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
 	
 	if (mouse_check_button_pressed(mb_left))
 	{
@@ -16,15 +16,15 @@ if (mouse_check_button(mb_left))
 		
 		draw_last_position_x = draw_position_x;
 		draw_last_position_y = draw_position_y;
-		draw_centre_x = mouse_x;
-		draw_centre_y = mouse_y;
+		draw_centre_x = floor(mouse_x * GameManager.scale_surf_width);
+		draw_centre_y = floor(mouse_y * GameManager.scale_surf_height);
 		surface_x = draw_centre_x - surface_centre;
 		surface_y = draw_centre_y - surface_centre;
 		
 		new_start_surface = true;
 	}
 	
-	var total_draw_bound = brush_size + 1;
+	var total_draw_bound = brush_size + edgeSafety;
 	
 	out_of_bounds_draw = 
 		draw_position_x - total_draw_bound < surface_x || draw_position_x + total_draw_bound >= surface_x + surface_size ||

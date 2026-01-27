@@ -2,7 +2,7 @@
   "$GMOperaGXOptions":"v1",
   "%Name":"Opera GX",
   "ConfigValues":{
-    "HTML5":{
+    "Debug":{
       "option_operagx_game_name":"Elevennis",
       "option_operagx_mod_game_name":"Elevennis",
     },

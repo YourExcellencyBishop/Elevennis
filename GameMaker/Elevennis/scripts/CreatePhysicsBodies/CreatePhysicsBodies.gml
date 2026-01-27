@@ -30,8 +30,8 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	var shader_height = surface_get_height(surface);
 	
 	// the lengths without the extra transparency edge 
-	var width = shader_width - 2;
-	var height = shader_height - 2;
+	var width = shader_width - 2 * edgeSafety;
+	var height = shader_height - 2 * edgeSafety;
 
 	// red channel contains whether pixel is filled on R8 format
 	var fill_surf = surface_create(width, height, fill_surf_format);
@@ -47,7 +47,7 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	shader_set_uniform_f(_resolution, 1.0/shader_width, 1.0/shader_height);
 
 	// drawn without transparent edge
-	draw_surface(surface, -1, -1);
+	draw_surface(surface, -1 * edgeSafety, -1 * edgeSafety);
 
 	shader_reset();
 	surface_reset_target()
@@ -205,7 +205,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		
 		bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
 			{points_x: points_x, points_y: points_y, point_count: point_count,
-				sprite_index: sprite_create_from_surface(surface, 0, 0, width + 2, height + 2, false, false, 0, 0),
+				sprite_index: sprite_create_from_surface(surface, edgeSafety, edgeSafety, width, height, false, false, -edgeSafety, -edgeSafety),
 				x: surface_pos_x, y: surface_pos_y});
 	}
 	

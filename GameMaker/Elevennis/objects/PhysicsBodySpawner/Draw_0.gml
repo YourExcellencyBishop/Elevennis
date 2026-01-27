@@ -4,6 +4,7 @@
 var precision = 100;
 if (draw_centre_x != -1 && surface_exists(surface))
 {	
+
 	surface_set_target(surface);
 	
 	var draw_part_x = draw_last_position_x;
@@ -24,6 +25,9 @@ if (draw_centre_x != -1 && surface_exists(surface))
 	else draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
 	
 	surface_reset_target();
+
+	if (useDebug)
+		draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, c_red, c_red, c_red, c_red, false)
 	
 	draw_surface(surface, surface_x, surface_y);
 }
