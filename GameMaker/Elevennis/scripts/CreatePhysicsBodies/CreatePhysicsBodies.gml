@@ -29,10 +29,37 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	var shader_width = surface_get_width(surface);
 	var shader_height = surface_get_height(surface);
 	
-	// the lengths without the extra transparency edge 
-	var width = shader_width - 2 * edgeSafety;
-	var height = shader_height - 2 * edgeSafety;
+	var clip_buf = buffer_create(shader_width * shader_height * byteCountRGBA, buffer_fast, 1);
+	buffer_get_surface(clip_buf, surface, 0);
+	
+	var _left = shader_width;
+    var _right = 0;
+    var _top = shader_height;
+    var _bottom = 0;
 
+    // Scan for opaque pixels
+    for (var yy = 0; yy < shader_height; yy++) {
+        for (var xx = 0; xx < shader_width; xx++) {
+            var index = (yy * shader_width + xx) * 4 + 3; // Alpha byte
+            var alpha = buffer_peek(clip_buf, index, buffer_u8);
+            if (alpha > 0) { // any visible pixel
+                if (xx < _left) _left = xx;
+                if (xx > _right) _right = xx;
+                if (yy < _top) _top = yy;
+                if (yy > _bottom) _bottom = yy;
+            }
+        }
+    }
+	
+	_right++;
+	_bottom++;
+	
+	buffer_delete(clip_buf)
+	
+	// filled area of the image
+	var width = _right - _left;
+	var height = _bottom - _top;
+	
 	// red channel contains whether pixel is filled on R8 format
 	var fill_surf = surface_create(width, height, fill_surf_format);
 	
@@ -47,7 +74,7 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	shader_set_uniform_f(_resolution, 1.0/shader_width, 1.0/shader_height);
 
 	// drawn without transparent edge
-	draw_surface(surface, -1 * edgeSafety, -1 * edgeSafety);
+	draw_surface(surface, -_left, -_top);
 
 	shader_reset();
 	surface_reset_target()
@@ -59,13 +86,15 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	buffer_get_surface(buf, fill_surf, 0);
 	
 	surface_free(fill_surf);
+	
+	show_debug_message($"{surface_get_width(surface)}x{surface_get_height(surface)} => {width}x{height}")
 
-	return {surface: surface, buffer: buf, width: width, height: height, image_size: image_size};
+	return {surface: surface, buffer: buf, width: width, height: height, image_size: image_size, bounds: [_left, _top]};
 
 	#endregion
 }
 
-function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
+function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, bounds, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
 {
 	var bodies = array_create(0);
 	var body_count = 0;
@@ -115,6 +144,9 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 	#endregion
 
 	var start_x, start_y, pos_x, pos_y;
+	
+	var total_offset_x = x_offset + surface_pos_x + bounds[0];
+	var total_offset_y = y_offset + surface_pos_y + bounds[1];
 
 	while (1)
 	{
@@ -132,8 +164,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 			{
 				start_x = scan_index mod width; 
 				start_y = scan_index div width;
-				points_x[point_count] = start_x + x_offset + surface_pos_x;
-				points_y[point_count++] = start_y + y_offset + surface_pos_y;
+				points_x[point_count] = start_x + total_offset_x;
+				points_y[point_count++] = start_y + total_offset_y;
 				pos_x = start_x;
 				pos_y = start_y;
 				found = 1;
@@ -149,9 +181,6 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 	
 		var last_dir = 0;
 		var added_last = false;
-		
-		var total_offset_x = x_offset + surface_pos_x;
-		var total_offset_y = y_offset + surface_pos_y;
 	
 		while (found)
 		{		
@@ -205,8 +234,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		
 		bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
 			{points_x: points_x, points_y: points_y, point_count: point_count,
-				sprite_index: sprite_create_from_surface(surface, edgeSafety, edgeSafety, width, height, false, false, -edgeSafety, -edgeSafety),
-				x: surface_pos_x, y: surface_pos_y});
+				sprite_index: sprite_create_from_surface(surface, bounds[0], bounds[1], width, height, false, false, 0, 0),
+				x: surface_pos_x + bounds[0], y: surface_pos_y + bounds[1]});
 	}
 	
 	return bodies;
