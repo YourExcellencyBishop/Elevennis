@@ -86,8 +86,6 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	buffer_get_surface(buf, fill_surf, 0);
 	
 	surface_free(fill_surf);
-	
-	show_debug_message($"{surface_get_width(surface)}x{surface_get_height(surface)} => {width}x{height}")
 
 	return {surface: surface, buffer: buf, width: width, height: height, image_size: image_size, bounds: [_left, _top]};
 

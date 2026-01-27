@@ -3,26 +3,29 @@
 
 var precision = 100;
 if (draw_centre_x != -1 && surface_exists(surface))
-{	
-
+{
 	surface_set_target(surface);
 	
-	var draw_part_x = draw_last_position_x;
-	var draw_part_y = draw_last_position_y;
-	
-	var part_x_incr = (draw_position_x - draw_last_position_x) / precision;
-	var part_y_incr = (draw_position_y - draw_last_position_y) / precision;
-	
-	if (part_x_incr > 0 || part_y_incr > 0)
-	{
-		repeat(precision)
+	var dx = draw_position_x - draw_last_position_x;
+	var dy = draw_position_y - draw_last_position_y;
+	var dist = point_distance(draw_last_position_x, draw_last_position_y,
+	                          draw_position_x, draw_position_y);
+							  
+	var spacing = max(1, brush_size * 0.5);
+
+	var steps = ceil(dist / spacing);
+
+	if (steps == 0)
+		draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
+	else
+		for (var i = 0; i <= steps; i++)
 		{
-			draw_circle(draw_part_x - surface_x, draw_part_y - surface_y, brush_size, false);
-			draw_part_x += part_x_incr;
-			draw_part_y += part_y_incr;
+		    var t = i / steps;
+		    var _x = lerp(draw_last_position_x, draw_position_x, t);
+		    var _y = lerp(draw_last_position_y, draw_position_y, t);
+
+		    draw_circle(_x - surface_x, _y - surface_y, brush_size, false);
 		}
-	}
-	else draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
 	
 	surface_reset_target();
 

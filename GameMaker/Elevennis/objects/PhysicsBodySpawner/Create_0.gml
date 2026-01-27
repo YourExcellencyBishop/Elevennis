@@ -1,5 +1,3 @@
-//CreatePhysicsBodies(sprite_index, 0.5, 0.5);
-
 draw_centre_x = -1;
 draw_centre_y = -1;
 

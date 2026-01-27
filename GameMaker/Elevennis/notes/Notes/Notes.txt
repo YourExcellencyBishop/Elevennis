@@ -18,7 +18,7 @@ different resolutions - DONE
 remove collinear points - DONE
 clipping surfaces of empty pixels - DONE
 try disabling webgl to check - DONE
+continuous draw lines - DONE
 Fill shader
-continuous draw lines
 
 closing shapes --- maybe
