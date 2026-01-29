@@ -146,95 +146,92 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 	var total_offset_x = x_offset + surface_pos_x + bounds[0];
 	var total_offset_y = y_offset + surface_pos_y + bounds[1];
 
-	while (1)
+	var point_count = 0;
+	var points_x = array_create(edge_count);
+	var points_y = array_create(edge_count);
+	
+	#region Scan
+	
+	var found = 0;
+	
+	for (; scan_index < image_size; scan_index++)
 	{
-		var point_count = 0;
-		var points_x = array_create(edge_count);
-		var points_y = array_create(edge_count);
-	
-		#region Scan
-	
-		var found = 0;
-	
-		for (; scan_index < image_size; scan_index++)
+		if (state[scan_index] == EDGE.FILLED)
 		{
-			if (state[scan_index] == EDGE.FILLED)
-			{
-				start_x = scan_index mod width; 
-				start_y = scan_index div width;
-				points_x[point_count] = start_x + total_offset_x;
-				points_y[point_count++] = start_y + total_offset_y;
-				pos_x = start_x;
-				pos_y = start_y;
-				found = 1;
-				break;
-			}
+			start_x = scan_index mod width; 
+			start_y = scan_index div width;
+			points_x[point_count] = start_x + total_offset_x;
+			points_y[point_count++] = start_y + total_offset_y;
+			pos_x = start_x;
+			pos_y = start_y;
+			found = 1;
+			break;
 		}
+	}
 
-		if (!found) break;
+	if (!found) return bodies;
 	
-		#endregion
+	#endregion
 	
-		#region Trace
+	#region Trace
 	
-		var last_dir = 0;
-		var added_last = false;
+	var last_dir = 0;
+	var added_last = false;
 	
-		while (found)
-		{		
-			var next_x = -1, next_y;
-			state[pos_x + pos_y * width] = EDGE.PROCESSED;
+	while (found)
+	{		
+		var next_x = -1, next_y;
+		state[pos_x + pos_y * width] = EDGE.PROCESSED;
 			
-			var d = 0;
-			for (; d < 8; d++) 
-			{
-				var dir = (last_dir + d) mod 8; // searches in last direction first
-			    var nx = pos_x + dir_x[dir];
-			    var ny = pos_y + dir_y[dir];
+		var d = 0;
+		for (; d < 8; d++) 
+		{
+			var dir = (last_dir + d) mod 8; // searches in last direction first
+			var nx = pos_x + dir_x[dir];
+			var ny = pos_y + dir_y[dir];
 
-			    if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
+			if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
 
-			    var idx = nx + ny * width;
-			    if (state[idx] == EDGE.FILLED) 
-				{
-			        next_x = nx;
-			        next_y = ny;
-					pos_x = nx;
-					pos_y = ny;
-					last_dir = dir;
-			        break;
-			    }
-			}
-		
-			if (next_x == -1)
-			{ 
-				if (!added_last)
-				{
-					points_x[point_count] = pos_x + total_offset_x;
-					points_y[point_count++] = pos_y + total_offset_y;
-				}
-				break;
-			}
-		
-			if (d != 0)
+			var idx = nx + ny * width;
+			if (state[idx] == EDGE.FILLED) 
 			{
-				points_x[point_count] = next_x + total_offset_x;
-				points_y[point_count++] = next_y + total_offset_y;
-				added_last = true;
+			    next_x = nx;
+			    next_y = ny;
+				pos_x = nx;
+				pos_y = ny;
+				last_dir = dir;
+			    break;
 			}
-			else added_last = false;
 		}
-	
-		#endregion
 		
-		array_resize(points_x, point_count);
-		array_resize(points_y, point_count);
+		if (next_x == -1)
+		{ 
+			if (!added_last)
+			{
+				points_x[point_count] = pos_x + total_offset_x;
+				points_y[point_count++] = pos_y + total_offset_y;
+			}
+			break;
+		}
 		
-		bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
-			{points_x: points_x, points_y: points_y, point_count: point_count,
-				sprite_index: sprite_create_from_surface(surface, bounds[0], bounds[1], width, height, false, false, 0, 0),
-				x: surface_pos_x + bounds[0], y: surface_pos_y + bounds[1]});
+		if (d != 0)
+		{
+			points_x[point_count] = next_x + total_offset_x;
+			points_y[point_count++] = next_y + total_offset_y;
+			added_last = true;
+		}
+		else added_last = false;
 	}
 	
+	#endregion
+		
+	array_resize(points_x, point_count);
+	array_resize(points_y, point_count);
+		
+	bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
+		{points_x: points_x, points_y: points_y, point_count: point_count,
+			sprite_index: sprite_create_from_surface(surface, bounds[0], bounds[1], width, height, false, false, 0, 0),
+			x: surface_pos_x + bounds[0], y: surface_pos_y + bounds[1]});
+
 	return bodies;
 }

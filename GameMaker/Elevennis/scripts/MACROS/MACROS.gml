@@ -4,7 +4,7 @@
 #macro Debug:useDebug true
 
 // PhysicsBodySpawner
-#macro initialDrawSurfaceSize 128
+#macro initialDrawSurfaceSize 64
 
 // CreatePhysicsBodies Script
 #macro alphaChannelIndex 3
