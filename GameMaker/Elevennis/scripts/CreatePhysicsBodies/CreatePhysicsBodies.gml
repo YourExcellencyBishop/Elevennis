@@ -228,7 +228,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 	array_resize(points_x, point_count);
 	array_resize(points_y, point_count);
 		
-	bodies[body_count++] = instance_create_depth(0, 0, depth - 1, PhysicsBody, 
+	bodies[body_count++] = instance_create_depth(0, 0, depth - 1, DrawnPlatforms, 
 		{points_x: points_x, points_y: points_y, point_count: point_count,
 			sprite_index: sprite_create_from_surface(surface, bounds[0], bounds[1], width, height, false, false, 0, 0),
 			x: surface_pos_x + bounds[0], y: surface_pos_y + bounds[1]});

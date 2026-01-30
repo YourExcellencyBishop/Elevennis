@@ -16,8 +16,8 @@
   ],
   "name":"PhyicsBodyCreationRoom",
   "parent":{
-    "name":"Elevennis",
-    "path":"Elevennis.yyp",
+    "name":"Rooms",
+    "path":"folders/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

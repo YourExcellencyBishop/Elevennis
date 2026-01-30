@@ -1,0 +1,7 @@
+Draw Platforms
+Implement Physics
+Win/Lose Conditions
+Game AI
+Game Juice
+Daily Mechanic
+Menus

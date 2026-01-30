@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"MACROS",
   "parent":{
-    "name":"Elevennis",
-    "path":"Elevennis.yyp",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

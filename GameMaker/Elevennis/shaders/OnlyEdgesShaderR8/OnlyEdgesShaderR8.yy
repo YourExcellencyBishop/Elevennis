@@ -3,8 +3,8 @@
   "%Name":"OnlyEdgesShaderR8",
   "name":"OnlyEdgesShaderR8",
   "parent":{
-    "name":"Creating Physics Bodies",
-    "path":"folders/Creating Physics Bodies.yy",
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

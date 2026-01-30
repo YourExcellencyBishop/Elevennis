@@ -1,7 +1,7 @@
 {
   "$GMNotes":"v1",
-  "%Name":"Plans",
-  "name":"Plans",
+  "%Name":"MVP",
+  "name":"MVP",
   "parent":{
     "name":"Notes",
     "path":"folders/Notes.yy",

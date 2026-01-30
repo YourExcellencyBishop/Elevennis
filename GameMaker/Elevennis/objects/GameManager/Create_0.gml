@@ -20,4 +20,4 @@ surf_height = 180;
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
-instance_create_depth(0, 0, depth - 1, PhysicsBodySpawner);
+instance_create_depth(0, 0, depth - 1, DrawnPlatformsSpawner);

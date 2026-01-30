@@ -3,8 +3,8 @@
   "%Name":"Notes",
   "name":"Notes",
   "parent":{
-    "name":"Creating Physics Bodies",
-    "path":"folders/Creating Physics Bodies.yy",
+    "name":"Implementing Physics",
+    "path":"folders/Implementing Physics.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
