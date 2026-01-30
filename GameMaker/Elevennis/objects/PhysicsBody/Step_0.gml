@@ -1,1 +1,1 @@
-rotation++;
+image_angle++;

@@ -14,8 +14,8 @@ application_surface_enable(0)
 application_surface_draw_enable(0);
 
 surf = -1;
-surf_width = 320;
-surf_height = 180;
+surf_width = 640;
+surf_height = 360;
 
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);

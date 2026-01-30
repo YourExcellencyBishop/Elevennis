@@ -11,16 +11,26 @@ if (point_count == -1)
 	point_count = point_count_x;
 }
 
+if (array_length(point_mass) == 0)
+{
+	point_mass = array_create(point_count, 1);
+} 
+
 var top = infinity, left = infinity;
+centre_of_mass_x = 0;
+centre_of_mass_y = 0;
+total_mass = 0;
+inertia = 0;
 
 for (var i = 0; i < point_count; i++)
 {
-	centre_of_mass_x += points_x[i];
-	centre_of_mass_y += points_y[i];
+	centre_of_mass_x += points_x[i] * point_mass[i];
+	centre_of_mass_y += points_y[i] * point_mass[i];
+	total_mass += point_mass[i];
 }
 
-centre_of_mass_x /= point_count;
-centre_of_mass_y /= point_count;
+centre_of_mass_x /= total_mass;
+centre_of_mass_y /= total_mass;
 
 for (var i = 0; i < point_count; i++)
 {
@@ -29,13 +39,15 @@ for (var i = 0; i < point_count; i++)
 	
 	left = min(floor(points_x[i]), left);
 	top = min(floor(points_y[i]), top);
+	
+	inertia += (points_x[i] * points_x[i] + points_y[i] * points_y[i]) * point_mass[i];
 }
 
-sprite_set_offset(sprite_index, -left, -top);
-
-x += -left;
-y += -top;
 centre_of_mass_x = 0;
 centre_of_mass_y = 0;
 
-rotation = 0;
+sprite_set_offset(sprite_index, -left, -top);
+x += -left;
+y += -top;
+
+show_debug_message($"{point_count} points")
