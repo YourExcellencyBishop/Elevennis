@@ -28,6 +28,7 @@ scale_surf_height = surf_height / view_get_hport(view_current);
 
 var fix = physics_fixture_create();
 physics_fixture_set_collision_group(fix, 1)
+physics_fixture_set_restitution(fix, 1);
 physics_fixture_set_edge_shape(fix, 0, 0, room_width, 0); // top
 physics_fixture_bind(fix, id);
 
@@ -43,3 +44,14 @@ physics_fixture_bind(fix, id);
 physics_fixture_delete(fix);
 
 instance_create_depth(0, 0, depth - 1, DrawnPlatformsSpawner);
+
+var net_thickness = 2;
+var net_height = surf_height / 3;
+
+instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, Net, 
+{
+	points_x: [-net_thickness, net_thickness, net_thickness, -net_thickness], 
+	points_y: [-net_height / 2, -net_height / 2, net_height / 2, net_height / 2],
+	point_count: 4,
+	body_static: true
+});

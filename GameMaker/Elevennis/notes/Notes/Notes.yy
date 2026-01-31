@@ -3,8 +3,8 @@
   "%Name":"Notes",
   "name":"Notes",
   "parent":{
-    "name":"Implementing Physics",
-    "path":"folders/Implementing Physics.yy",
+    "name":"Game",
+    "path":"folders/Game.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",

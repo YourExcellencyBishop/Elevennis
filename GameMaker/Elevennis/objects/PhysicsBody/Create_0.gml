@@ -62,7 +62,8 @@ for (var i = 0; i < array_length(polygons.x); i++)
 {
 	fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
 	physics_fixture_set_collision_group(fix, 1);
-	physics_fixture_set_density(fix, 1);
+	physics_fixture_set_restitution(fix, e);
+	physics_fixture_set_density(fix, body_static ? 0 : 1);
 	
 	for (var j = 0; j < array_length(polygons.x[i]); j++)
 	{
@@ -72,3 +73,5 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	physics_fixture_bind(fix, id);
 	physics_fixture_delete(fix);
 }
+
+physics_apply_impulse(-10, -10, -30, -30);

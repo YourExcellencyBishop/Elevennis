@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BayazitConvexDecomposition",
   "parent":{
-    "name":"Implementing Physics",
-    "path":"folders/Implementing Physics.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
