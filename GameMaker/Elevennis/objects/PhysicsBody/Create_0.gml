@@ -18,7 +18,7 @@ if (array_length(point_mass) == 0)
 	point_mass = array_create(point_count, 1);
 } 
 
-var top = infinity, left = infinity;
+var _top = infinity, _left = infinity;
 centre_of_mass_x = 0;
 centre_of_mass_y = 0;
 total_mass = 0;
@@ -39,8 +39,8 @@ for (var i = 0; i < point_count; i++)
 	points_x[i] -= centre_of_mass_x;
 	points_y[i] -= centre_of_mass_y;
 	
-	left = min(floor(points_x[i]), left);
-	top = min(floor(points_y[i]), top);
+	_left = min(floor(points_x[i]), _left);
+	_top = min(floor(points_y[i]), _top);
 	
 	inertia += (points_x[i] * points_x[i] + points_y[i] * points_y[i]) * point_mass[i];
 }
@@ -50,13 +50,12 @@ centre_of_mass_y = 0;
 
 if (sprite_index != -1)
 {
-	sprite_set_offset(sprite_index, -left, -top);
-	x += -left;
-	y += -top;
+	sprite_set_offset(sprite_index, -_left, -_top);
+	x += -_left;
+	y += -_top;
 }
 
 var fix;
-
 var polygons = bayazit_decompose(points_x, points_y);
 
 for (var i = 0; i < array_length(polygons.x); i++)
@@ -69,6 +68,7 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	{
 		physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
 	}
+	
 	physics_fixture_bind(fix, id);
 	physics_fixture_delete(fix);
 }
