@@ -20,7 +20,26 @@ surf = -1;
 surf_width = 320;
 surf_height = 180;
 
+room_width = surf_width;
+room_height = surf_height;
+
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
-//instance_create_depth(0, 0, depth - 1, DrawnPlatformsSpawner);
+var fix = physics_fixture_create();
+physics_fixture_set_collision_group(fix, 1)
+physics_fixture_set_edge_shape(fix, 0, 0, room_width, 0); // top
+physics_fixture_bind(fix, id);
+
+physics_fixture_set_edge_shape(fix, room_width, 0, room_width, room_height); // right
+physics_fixture_bind(fix, id);
+
+physics_fixture_set_edge_shape(fix, room_width, room_height, 0, room_height); // bottom
+physics_fixture_bind(fix, id);
+
+physics_fixture_set_edge_shape(fix, 0, room_height, 0, 0); // left
+physics_fixture_bind(fix, id);
+
+physics_fixture_delete(fix);
+
+instance_create_depth(0, 0, depth - 1, DrawnPlatformsSpawner);

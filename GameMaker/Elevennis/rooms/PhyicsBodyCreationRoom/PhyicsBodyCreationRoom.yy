@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"PhyicsBodyCreationRoom",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/PhyicsBodyCreationRoom/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,
@@ -29,7 +29,7 @@
   "parentRoom":null,
   "physicsSettings":{
     "inheritPhysicsSettings":false,
-    "PhysicsWorld":false,
+    "PhysicsWorld":true,
     "PhysicsWorldGravityX":0.0,
     "PhysicsWorldGravityY":10.0,
     "PhysicsWorldPixToMetres":0.1,

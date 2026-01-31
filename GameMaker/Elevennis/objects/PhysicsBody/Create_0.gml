@@ -54,3 +54,25 @@ if (sprite_index != -1)
 	x += -left;
 	y += -top;
 }
+
+var fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
+physics_fixture_set_collision_group(fix, 1);
+physics_fixture_set_density(fix, 1);
+
+physics_fixture_add_point(fix, points_x[0], points_y[0]);
+physics_fixture_add_point(fix, points_x[1], points_y[1]);
+physics_fixture_add_point(fix, points_x[2], points_y[2]);
+
+physics_fixture_bind(fix, id);
+
+physics_fixture_add_point(fix, points_x[2], points_y[2]);
+physics_fixture_add_point(fix, points_x[3], points_y[3]);
+physics_fixture_add_point(fix, points_x[0], points_y[0]);
+
+//for (var i = 0; i < point_count; i++)
+//{
+//	physics_fixture_add_point(fix, points_x[i], points_y[i]);
+//}
+
+physics_fixture_bind(fix, id);
+physics_fixture_delete(fix);

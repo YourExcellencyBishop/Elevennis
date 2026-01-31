@@ -3,7 +3,7 @@ if (mouse_check_button(mb_left))
 	draw_last_position_x = draw_position_x;
 	draw_last_position_y = draw_position_y;
 	draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
-	draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
+	draw_position_y = 90//floor(mouse_y * GameManager.scale_surf_height);
 	
 	if (mouse_check_button_pressed(mb_left))
 	{
@@ -17,7 +17,7 @@ if (mouse_check_button(mb_left))
 		draw_last_position_x = draw_position_x;
 		draw_last_position_y = draw_position_y;
 		draw_centre_x = floor(mouse_x * GameManager.scale_surf_width);
-		draw_centre_y = floor(mouse_y * GameManager.scale_surf_height);
+		draw_centre_y = 90//floor(mouse_y * GameManager.scale_surf_height);
 		surface_x = draw_centre_x - surface_centre;
 		surface_y = draw_centre_y - surface_centre;
 		
