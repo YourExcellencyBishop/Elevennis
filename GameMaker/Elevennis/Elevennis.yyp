@@ -38,6 +38,7 @@
     {"id":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},},
     {"id":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},},
     {"id":{"name":"PhyicsBodyCreationRoom","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},},
+    {"id":{"name":"BayazitConvexDecomposition","path":"scripts/BayazitConvexDecomposition/BayazitConvexDecomposition.yy",},},
     {"id":{"name":"CreatePhysicsBodies","path":"scripts/CreatePhysicsBodies/CreatePhysicsBodies.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},

@@ -55,24 +55,20 @@ if (sprite_index != -1)
 	y += -top;
 }
 
-var fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
-physics_fixture_set_collision_group(fix, 1);
-physics_fixture_set_density(fix, 1);
+var fix;
 
-physics_fixture_add_point(fix, points_x[0], points_y[0]);
-physics_fixture_add_point(fix, points_x[1], points_y[1]);
-physics_fixture_add_point(fix, points_x[2], points_y[2]);
+var polygons = bayazit_decompose(points_x, points_y);
 
-physics_fixture_bind(fix, id);
-
-physics_fixture_add_point(fix, points_x[2], points_y[2]);
-physics_fixture_add_point(fix, points_x[3], points_y[3]);
-physics_fixture_add_point(fix, points_x[0], points_y[0]);
-
-//for (var i = 0; i < point_count; i++)
-//{
-//	physics_fixture_add_point(fix, points_x[i], points_y[i]);
-//}
-
-physics_fixture_bind(fix, id);
-physics_fixture_delete(fix);
+for (var i = 0; i < array_length(polygons.x); i++)
+{
+	fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
+	physics_fixture_set_collision_group(fix, 1);
+	physics_fixture_set_density(fix, 1);
+	
+	for (var j = 0; j < array_length(polygons.x[i]); j++)
+	{
+		physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
+	}
+	physics_fixture_bind(fix, id);
+	physics_fixture_delete(fix);
+}
