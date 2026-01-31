@@ -46,9 +46,12 @@ for (var i = 0; i < point_count; i++)
 centre_of_mass_x = 0;
 centre_of_mass_y = 0;
 
-sprite_set_offset(sprite_index, -left, -top);
-x += -left;
-y += -top;
+if (sprite_index != -1)
+{
+	sprite_set_offset(sprite_index, -left, -top);
+	x += -left;
+	y += -top;
+}
 
 image_angle = 0;
 vx = 0;
@@ -59,6 +62,6 @@ fx = 0;
 fy = 0;
 torque = 0;
 
-restitution = 1;
+restitution = 0.;
 
 show_debug_message($"{point_count} points")

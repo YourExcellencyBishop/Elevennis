@@ -7,11 +7,18 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_52A9B57A","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
+    {"name":"inst_3498C0C7","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
   ],
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_52A9B57A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_52A9B57A","objectId":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
+        {"$GMRInstance":"v4","%Name":"inst_3498C0C7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3498C0C7","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"properties":[
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"points_x","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"[-20, 20, 20, -20]",},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"points_y","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"[-20, -20, 20, 20]",},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"point_count","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"4",},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"point_mass","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"[1, 1, 1, 1]",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":90.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
   ],
   "name":"PhyicsBodyCreationRoom",
