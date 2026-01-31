@@ -59,4 +59,6 @@ fx = 0;
 fy = 0;
 torque = 0;
 
+restitution = 1;
+
 show_debug_message($"{point_count} points")
