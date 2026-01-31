@@ -50,4 +50,13 @@ sprite_set_offset(sprite_index, -left, -top);
 x += -left;
 y += -top;
 
+image_angle = 0;
+vx = 0;
+vy = 0;
+omega = 0;
+
+fx = 0;
+fy = 0;
+torque = 0;
+
 show_debug_message($"{point_count} points")
