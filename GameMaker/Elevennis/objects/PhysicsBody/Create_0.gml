@@ -11,6 +11,8 @@ if (point_count == -1)
 	point_count = point_count_x;
 }
 
+show_debug_message($"{point_count} points")
+
 if (array_length(point_mass) == 0)
 {
 	point_mass = array_create(point_count, 1);
@@ -52,16 +54,3 @@ if (sprite_index != -1)
 	x += -left;
 	y += -top;
 }
-
-image_angle = 0;
-vx = 0;
-vy = 0;
-omega = 0;
-
-fx = 0;
-fy = 0;
-torque = 0;
-
-restitution = 0.;
-
-show_debug_message($"{point_count} points")
