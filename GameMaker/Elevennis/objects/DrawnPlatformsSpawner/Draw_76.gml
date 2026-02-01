@@ -79,3 +79,12 @@ if (draw_area_clear)
 		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
 	}
 }
+else if (resize_draw_area)
+{
+	if (surface_exists(draw_area))
+		surface_resize(draw_area, draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
+	else
+		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
+	
+	resize_draw_area = false;
+}

@@ -34,5 +34,9 @@ draw_area_x2 = 100;
 draw_area_y1 = 80;
 draw_area_y2 = 160;
 
+draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
+
+resize_draw_area = false;
+
 draw_area_clear = false;
 start_drawing = false;

@@ -51,3 +51,34 @@ else
 		draw_centre_y = -1;
 	}
 }
+
+//draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
+
+if (keyboard_check_pressed(vk_right))
+{
+	draw_area_x2 += 10;
+	draw_area_y1 = -(draw_area_size / (draw_area_x2 - draw_area_x1) - draw_area_y2);
+	
+	resize_draw_area = true;
+}
+else if (keyboard_check_pressed(vk_up))
+{
+	draw_area_y1 -= 10;
+	draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1) + draw_area_x1);
+	
+	resize_draw_area = true;
+}
+else if (keyboard_check_pressed(vk_left))
+{
+	draw_area_x1 += 10;
+	draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1) + draw_area_y1);
+	
+	resize_draw_area = true;
+}
+//else if (keyboard_check_pressed(vk_up))
+//{
+//	draw_area_y1 -= 10;
+//	draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1) + draw_area_x1);
+	
+//	resize_draw_area = true;
+//}
