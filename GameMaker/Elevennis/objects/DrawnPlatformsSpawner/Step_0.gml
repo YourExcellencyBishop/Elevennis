@@ -5,7 +5,8 @@ if (mouse_check_button(mb_left))
 	draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
 	draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
 	
-	if (mouse_check_button_pressed(mb_left))
+	if (mouse_check_button_pressed(mb_left) && 
+		point_in_rectangle(draw_position_x, draw_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2))
 	{
 		surface_index = 0;
 		surface_size = initialDrawSurfaceSize;
@@ -22,17 +23,19 @@ if (mouse_check_button(mb_left))
 		surface_y = draw_centre_y - surface_centre;
 		
 		new_start_surface = true;
+		drawing = true;
 	}
 	
 	var total_draw_bound = brush_size + edgeSafety;
 	
-	out_of_bounds_draw = 
-		draw_position_x - total_draw_bound < surface_x || draw_position_x + total_draw_bound >= surface_x + surface_size ||
-		draw_position_y - total_draw_bound < surface_y || draw_position_y + total_draw_bound >= surface_y + surface_size;
+	out_of_bounds_draw = drawing &&
+		(draw_position_x - total_draw_bound < surface_x || draw_position_x + total_draw_bound >= surface_x + surface_size ||
+		draw_position_y - total_draw_bound < surface_y || draw_position_y + total_draw_bound >= surface_y + surface_size);
 }
 else 
 {
 	out_of_bounds_draw = false;
+	drawing = false;
 	
 	if (draw_centre_x != -1)
 	{

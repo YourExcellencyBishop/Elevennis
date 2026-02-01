@@ -32,7 +32,18 @@ if (draw_centre_x != -1 && surface_exists(surface))
 	if (useDebug)
 		draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, c_red, c_red, c_red, c_red, false)
 	
-	draw_surface(surface, surface_x, surface_y);
+	if (!surface_exists(draw_area))
+	{
+		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
+	}
+	
+	surface_set_target(draw_area);
+	draw_surface(surface, surface_x - draw_area_x1, surface_y - draw_area_y1);
+	surface_reset_target();
+	
+	draw_surface(draw_area, draw_area_x1, draw_area_y1);
 }
 
 if (creation_data != -1) draw_surface(creation_data.surface, surface_x, surface_y);
+
+draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
