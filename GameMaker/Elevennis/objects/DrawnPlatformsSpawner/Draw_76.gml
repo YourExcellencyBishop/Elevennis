@@ -65,3 +65,17 @@ if (out_of_bounds_draw)
 	draw_surface(surface_temp, prev_surface_size / 2 , prev_surface_size / 2);
 	surface_reset_target();
 }
+
+if (draw_area_clear)
+{
+	if (surface_exists(draw_area))
+	{
+		surface_set_target(draw_area);
+		draw_clear_alpha(c_black, 0);
+		surface_reset_target();
+	}
+	else
+	{
+		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
+	}
+}

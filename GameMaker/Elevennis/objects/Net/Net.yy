@@ -4,7 +4,9 @@
   "eventList":[],
   "managed":true,
   "name":"Net",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"e","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0.5",},
+  ],
   "parent":{
     "name":"Objects",
     "path":"folders/Game/Objects.yy",

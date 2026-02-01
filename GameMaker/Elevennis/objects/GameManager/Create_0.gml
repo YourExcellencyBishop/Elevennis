@@ -15,6 +15,7 @@ if (useDebug)
 
 application_surface_enable(0)
 application_surface_draw_enable(0);
+surface_depth_disable(true);
 
 surf = -1;
 surf_width = 320;
