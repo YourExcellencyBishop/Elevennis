@@ -5,7 +5,17 @@ if (mouse_check_button(mb_left))
 	draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
 	draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
 	
-	if (mouse_check_button_pressed(mb_left)) start_drawing = true;
+	if (mouse_check_button_pressed(mb_left)) 
+	{
+		if (point_in_circle(mouse_x * GameManager.scale_surf_width, mouse_y * GameManager.scale_surf_height, draw_area_x2, draw_area_y2, 4))
+		{
+			changing_draw_area_size = true;
+		}
+		else
+		{
+			start_drawing = true;
+		}
+	}
 	
 	var in_draw_area = point_in_rectangle(draw_position_x, draw_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);
 	
@@ -41,6 +51,22 @@ else
 	out_of_bounds_draw = false;
 	drawing = false;
 	
+	if (changing_draw_area_size)
+	{
+		changing_draw_area_size = false;
+		
+		if (abs(floor(mouse_x * GameManager.scale_surf_width) - draw_area_x2) > abs(floor(mouse_y * GameManager.scale_surf_height) - draw_area_y2))
+		{
+			draw_area_x2 = floor(mouse_x * GameManager.scale_surf_width);
+			draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
+		}
+		else
+		{
+			draw_area_y2 = floor(mouse_y * GameManager.scale_surf_height);
+			draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
+		}
+	}
+	
 	if (draw_centre_x != -1)
 	{
 		create_physics_body = true;
@@ -53,32 +79,3 @@ else
 }
 
 //draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
-
-if (keyboard_check_pressed(vk_right))
-{
-	draw_area_x2 += 10;
-	draw_area_y1 = -(draw_area_size / (draw_area_x2 - draw_area_x1) - draw_area_y2);
-	
-	resize_draw_area = true;
-}
-else if (keyboard_check_pressed(vk_up))
-{
-	draw_area_y1 -= 10;
-	draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1) + draw_area_x1);
-	
-	resize_draw_area = true;
-}
-else if (keyboard_check_pressed(vk_left))
-{
-	draw_area_x1 += 10;
-	draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1) + draw_area_y1);
-	
-	resize_draw_area = true;
-}
-//else if (keyboard_check_pressed(vk_up))
-//{
-//	draw_area_y1 -= 10;
-//	draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1) + draw_area_x1);
-	
-//	resize_draw_area = true;
-//}

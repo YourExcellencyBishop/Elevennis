@@ -54,3 +54,4 @@ if (creation_data != -1)
 }
 
 draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
+draw_sprite(SizeButton, 0, draw_area_x2, draw_area_y2);
