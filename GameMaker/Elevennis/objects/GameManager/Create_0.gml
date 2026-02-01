@@ -29,7 +29,7 @@ scale_surf_height = surf_height / view_get_hport(view_current);
 
 var fix = physics_fixture_create();
 physics_fixture_set_collision_group(fix, 1)
-physics_fixture_set_restitution(fix, 1.2);
+physics_fixture_set_restitution(fix, 0.75);
 physics_fixture_set_edge_shape(fix, 0, 0, room_width, 0); // top
 physics_fixture_bind(fix, id);
 
@@ -61,4 +61,16 @@ instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1,
 {
 	half_width: net_thickness, 
 	half_height: (room_height - net_height) / 2
+});
+
+instance_create_depth((room_width / 2) / 2, room_height - 1, depth - 1, OutZone, 
+{
+	half_width: room_width / 4, 
+	half_height: 1
+});
+
+instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
+{
+	half_width: net_thickness, 
+	half_height: room_height / 2
 });
