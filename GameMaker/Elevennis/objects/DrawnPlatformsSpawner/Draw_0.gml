@@ -53,17 +53,46 @@ if (creation_data != -1)
 	surface_reset_target();
 }
 
-//draw_sprite(SizeButton, 0, draw_area_x2, draw_area_y2);
 
 if (changing_draw_area_size)
 {
-	var new_y1 = draw_area_y2 - (draw_area_size / (draw_position_x - draw_area_x1));
+	// Right
+	//var new_y1 = draw_area_y2 - (draw_area_size / (draw_position_x - draw_area_x1));
+	//draw_rectangle(draw_area_x1, new_y1, draw_position_x, draw_area_y2, true);
+	//draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, new_y1 + 7, draw_area_y2 - 7), 
+	//	1, 1, size_arrow_rot, c_white, 1);
 	
-	draw_rectangle(draw_area_x1, new_y1, draw_position_x, draw_area_y2, true);
-	draw_sprite_ext(SizeArrow, 0, draw_position_x + (2 * sin(current_time / 70)), clamp(draw_position_y, new_y1 + 7, draw_area_y2 - 7), draw_position_x > draw_area_x2 ? 1.2 : -1.2, 1.2, 0, c_white, 1);
+	// Left
+	//var new_y2 = (draw_area_size / (draw_area_x2 - draw_position_x)) + draw_area_y1;
+	//draw_rectangle(draw_position_x, draw_area_y1, draw_area_x2, new_y2, true);
+	//draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, draw_area_y1 + 7, new_y2 - 7), 
+	//	1, 1, size_arrow_rot, c_white, 1);
+	
+	// Up
+	//var new_x2 = (draw_area_size / (draw_area_y2 - draw_position_y)) + draw_area_x1;
+	//draw_rectangle(draw_area_x1, draw_position_y, new_x2, draw_area_y2, true);
+	//draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, draw_area_x1 + 7, new_x2 - 7), draw_position_y + size_arrow_sin, 
+	//	1, 1, size_arrow_rot, c_white, 1);
+	
+	// Down
+	var new_x1 = draw_area_x2 - (draw_area_size / (draw_position_y - draw_area_y1));
+	draw_rectangle(new_x1, draw_area_y1, draw_area_x2, draw_position_y, true);
+	draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, new_x1 + 7, draw_area_x2 - 7), draw_position_y + size_arrow_sin, 
+		1, 1, size_arrow_rot, c_white, 1);
 }
 else
 {
 	draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
-	draw_sprite(SizeArrow, 0, draw_area_x2 + (2 * sin(current_time / 70)), draw_area_y1 + (draw_area_y2 -  draw_area_y1) / 2);
+	
+	// Right 
+	draw_sprite_ext(SizeArrow, 0, size_arrow_x, size_arrow_y, 1, 1, size_arrow_rot, c_white, 1);
+	
+	// Left
+	// draw_sprite_ext(SizeArrow, 0, , 2, 1, 1, 180, c_white, 1);
+	
+	// Up
+	// draw_sprite_ext(SizeArrow, 0, , , 1, 1, 90, c_white, 1);
+	
+	// Down
+	// draw_sprite_ext(SizeArrow, 0, , , 1, 1, 270, c_white, 1);
 }

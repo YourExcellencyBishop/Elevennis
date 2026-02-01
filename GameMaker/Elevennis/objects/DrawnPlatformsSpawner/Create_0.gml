@@ -39,5 +39,16 @@ changing_draw_area_size = false;
 
 resize_draw_area = false;
 
+size_arrow_x = -1;
+size_arrow_y = -1;
+size_arrow_rot = 0;
+
 draw_area_clear = false;
 start_drawing = false;
+
+enum SizeArrowDir
+{
+	Up, Down, Left, Right
+}
+
+size_arrow_dir = SizeArrowDir.Down;
