@@ -53,5 +53,17 @@ if (creation_data != -1)
 	surface_reset_target();
 }
 
-draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
-draw_sprite(SizeButton, 0, draw_area_x2, draw_area_y2);
+//draw_sprite(SizeButton, 0, draw_area_x2, draw_area_y2);
+
+if (changing_draw_area_size)
+{
+	var new_y1 = draw_area_y2 - (draw_area_size / (draw_position_x - draw_area_x1));
+	
+	draw_rectangle(draw_area_x1, new_y1, draw_position_x, draw_area_y2, true);
+	draw_sprite_ext(SizeArrow, 0, draw_position_x + (2 * sin(current_time / 70)), clamp(draw_position_y, new_y1 + 7, draw_area_y2 - 7), draw_position_x > draw_area_x2 ? 1.2 : -1.2, 1.2, 0, c_white, 1);
+}
+else
+{
+	draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
+	draw_sprite(SizeArrow, 0, draw_area_x2 + (2 * sin(current_time / 70)), draw_area_y1 + (draw_area_y2 -  draw_area_y1) / 2);
+}

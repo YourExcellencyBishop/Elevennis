@@ -49,6 +49,7 @@
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
     {"id":{"name":"OnlyEdgesShaderR8","path":"shaders/OnlyEdgesShaderR8/OnlyEdgesShaderR8.yy",},},
+    {"id":{"name":"SizeArrow","path":"sprites/SizeArrow/SizeArrow.yy",},},
     {"id":{"name":"SizeButton","path":"sprites/SizeButton/SizeButton.yy",},},
   ],
   "resourceType":"GMProject",

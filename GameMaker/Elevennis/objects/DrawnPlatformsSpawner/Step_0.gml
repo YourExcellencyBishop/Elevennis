@@ -7,7 +7,7 @@ if (mouse_check_button(mb_left))
 	
 	if (mouse_check_button_pressed(mb_left)) 
 	{
-		if (point_in_circle(mouse_x * GameManager.scale_surf_width, mouse_y * GameManager.scale_surf_height, draw_area_x2, draw_area_y2, 4))
+		if (point_in_circle(draw_position_x, draw_position_y, draw_area_x2 + 2  * sin(current_time / 70), draw_area_y1 + (draw_area_y2 -  draw_area_y1) / 2, 5))
 		{
 			changing_draw_area_size = true;
 		}
@@ -55,16 +55,9 @@ else
 	{
 		changing_draw_area_size = false;
 		
-		if (abs(floor(mouse_x * GameManager.scale_surf_width) - draw_area_x2) > abs(floor(mouse_y * GameManager.scale_surf_height) - draw_area_y2))
-		{
-			draw_area_x2 = floor(mouse_x * GameManager.scale_surf_width);
-			draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
-		}
-		else
-		{
-			draw_area_y2 = floor(mouse_y * GameManager.scale_surf_height);
-			draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
-		}
+		draw_area_x2 = floor(mouse_x * GameManager.scale_surf_width);
+		draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
+		resize_draw_area = true;
 	}
 	
 	if (draw_centre_x != -1)
