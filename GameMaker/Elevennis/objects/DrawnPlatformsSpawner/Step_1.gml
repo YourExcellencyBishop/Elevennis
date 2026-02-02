@@ -7,6 +7,36 @@ if (create_physics_body)
 	create_physics_body = false;
 }
 
+draw_last_position_x = draw_position_x;
+draw_last_position_y = draw_position_y;
+draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
+draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
+
+var mouse_dist = infinity;
+
+if (!changing_draw_area_size)
+{
+	if (abs(draw_position_x - draw_area_x1) < mouse_dist)
+	{
+		mouse_dist = abs(draw_position_x - draw_area_x1);
+		size_arrow_dir = SizeArrowDir.Left;
+	}
+	if (abs(draw_position_x - draw_area_x2) < mouse_dist)
+	{
+		mouse_dist = abs(draw_position_x - draw_area_x2);
+		size_arrow_dir = SizeArrowDir.Right;
+	}
+	if (abs(draw_position_y - draw_area_y1) < mouse_dist)
+	{
+		mouse_dist = abs(draw_position_y - draw_area_y1);
+		size_arrow_dir = SizeArrowDir.Up;
+	}
+	if (abs(draw_position_y - draw_area_y2) < mouse_dist)
+	{
+		mouse_dist = abs(draw_position_y - draw_area_y2);
+		size_arrow_dir = SizeArrowDir.Down;
+	}
+}
 
 size_arrow_sin = (2 * sin(current_time / 70));
 

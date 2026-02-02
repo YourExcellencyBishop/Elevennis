@@ -1,8 +1,3 @@
-draw_last_position_x = draw_position_x;
-draw_last_position_y = draw_position_y;
-draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
-draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
-
 if (mouse_check_button(mb_left))
 {	
 	if (mouse_check_button_pressed(mb_left)) 
@@ -51,21 +46,32 @@ else
 	{
 		changing_draw_area_size = false;
 		
+		switch (size_arrow_dir)
+		{
 		// Right
-		//draw_area_x2 = draw_position_x;
-		//draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
+			case SizeArrowDir.Right:
+				draw_area_x2 = draw_position_x;
+				draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
+				break;
 		
 		// Left
-		//draw_area_x1 = draw_position_x;
-		//draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1)) + draw_area_y1;
+			case SizeArrowDir.Left:
+				draw_area_x1 = draw_position_x;
+				draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1)) + draw_area_y1;
+				break;
 		
 		// Up
-		//draw_area_y1 = draw_position_y;
-		//draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1)) + draw_area_x1;
+			case SizeArrowDir.Up:
+				draw_area_y1 = draw_position_y;
+				draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1)) + draw_area_x1;
+				break;
 		
 		// Down
-		draw_area_y2 = draw_position_y;
-		draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
+			case SizeArrowDir.Down:
+				draw_area_y2 = draw_position_y;
+				draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
+			break;
+		}
 		
 		resize_draw_area = true;
 	}

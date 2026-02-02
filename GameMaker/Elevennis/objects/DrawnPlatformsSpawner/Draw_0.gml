@@ -56,29 +56,40 @@ if (creation_data != -1)
 
 if (changing_draw_area_size)
 {
-	// Right
-	//var new_y1 = draw_area_y2 - (draw_area_size / (draw_position_x - draw_area_x1));
-	//draw_rectangle(draw_area_x1, new_y1, draw_position_x, draw_area_y2, true);
-	//draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, new_y1 + 7, draw_area_y2 - 7), 
-	//	1, 1, size_arrow_rot, c_white, 1);
+	switch (size_arrow_dir)
+	{
+		// Right
+		case SizeArrowDir.Right:
+			var new_y1 = draw_area_y2 - (draw_area_size / (draw_position_x - draw_area_x1));
+			draw_rectangle(draw_area_x1, new_y1, draw_position_x, draw_area_y2, true);
+			draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, new_y1 + 7, draw_area_y2 - 7), 
+				1, 1, size_arrow_rot, c_white, 1);
+			break;
 	
-	// Left
-	//var new_y2 = (draw_area_size / (draw_area_x2 - draw_position_x)) + draw_area_y1;
-	//draw_rectangle(draw_position_x, draw_area_y1, draw_area_x2, new_y2, true);
-	//draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, draw_area_y1 + 7, new_y2 - 7), 
-	//	1, 1, size_arrow_rot, c_white, 1);
+		// Left
+		case SizeArrowDir.Left:
+			var new_y2 = (draw_area_size / (draw_area_x2 - draw_position_x)) + draw_area_y1;
+			draw_rectangle(draw_position_x, draw_area_y1, draw_area_x2, new_y2, true);
+			draw_sprite_ext(SizeArrow, 0, draw_position_x + size_arrow_sin, clamp(draw_position_y, draw_area_y1 + 7, new_y2 - 7), 
+				1, 1, size_arrow_rot, c_white, 1);
+			break;
 	
-	// Up
-	//var new_x2 = (draw_area_size / (draw_area_y2 - draw_position_y)) + draw_area_x1;
-	//draw_rectangle(draw_area_x1, draw_position_y, new_x2, draw_area_y2, true);
-	//draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, draw_area_x1 + 7, new_x2 - 7), draw_position_y + size_arrow_sin, 
-	//	1, 1, size_arrow_rot, c_white, 1);
+		// Up
+		case SizeArrowDir.Up:
+			var new_x2 = (draw_area_size / (draw_area_y2 - draw_position_y)) + draw_area_x1;
+			draw_rectangle(draw_area_x1, draw_position_y, new_x2, draw_area_y2, true);
+			draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, draw_area_x1 + 7, new_x2 - 7), draw_position_y + size_arrow_sin, 
+				1, 1, size_arrow_rot, c_white, 1);
+			break;
 	
-	// Down
-	var new_x1 = draw_area_x2 - (draw_area_size / (draw_position_y - draw_area_y1));
-	draw_rectangle(new_x1, draw_area_y1, draw_area_x2, draw_position_y, true);
-	draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, new_x1 + 7, draw_area_x2 - 7), draw_position_y + size_arrow_sin, 
-		1, 1, size_arrow_rot, c_white, 1);
+		// Down
+		case SizeArrowDir.Down:
+			var new_x1 = draw_area_x2 - (draw_area_size / (draw_position_y - draw_area_y1));
+			draw_rectangle(new_x1, draw_area_y1, draw_area_x2, draw_position_y, true);
+			draw_sprite_ext(SizeArrow, 0, clamp(draw_position_x, new_x1 + 7, draw_area_x2 - 7), draw_position_y + size_arrow_sin, 
+				1, 1, size_arrow_rot, c_white, 1);
+			break;
+	}
 }
 else
 {
