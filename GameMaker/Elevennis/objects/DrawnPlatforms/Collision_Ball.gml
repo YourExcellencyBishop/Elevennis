@@ -1,0 +1,1 @@
+DrawnPlatformsSpawner.spawner_mode = SpawnerMode.ChangeSize;

@@ -73,5 +73,3 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	physics_fixture_bind(fix, id);
 	physics_fixture_delete(fix);
 }
-
-physics_apply_impulse(-10, -10, -30, -30);

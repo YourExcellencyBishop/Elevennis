@@ -2,9 +2,9 @@ if (mouse_check_button(mb_left))
 {	
 	if (mouse_check_button_pressed(mb_left)) 
 	{
-		if (point_in_circle(draw_position_x, draw_position_y, size_arrow_x, size_arrow_y, 5))
+		if (spawner_mode == SpawnerMode.ChangeSize && point_in_circle(draw_position_x, draw_position_y, size_arrow_x, size_arrow_y, 5))
 			changing_draw_area_size = true;
-		else
+		else if (spawner_mode == SpawnerMode.Draw)
 			start_drawing = true;
 	}
 	

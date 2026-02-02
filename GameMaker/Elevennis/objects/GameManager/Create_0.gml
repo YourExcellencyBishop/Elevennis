@@ -13,6 +13,8 @@ if (useDebug)
 	if (!shader_is_compiled(OnlyEdgesShaderR8)) show_message($"The shader {shader_get_name(OnlyEdgesShaderR8)} did not compile");
 }
 
+//show_message(game_get_speed(gamespeed_fps))
+
 application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);
@@ -63,11 +65,11 @@ instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1,
 	half_height: (room_height - net_height) / 2
 });
 
-instance_create_depth((room_width / 2) / 2, room_height - 1, depth - 1, OutZone, 
-{
-	half_width: room_width / 4, 
-	half_height: 1
-});
+//instance_create_depth((room_width / 2) / 2, room_height - 1, depth - 1, OutZone, 
+//{
+//	half_width: room_width / 4, 
+//	half_height: 1
+//});
 
 instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
 {

@@ -1,7 +1,3 @@
-//draw_set_colour(c_blue);
-//draw_rectangle(x, y, x + sprite_width, y + sprite_height, false);
-//draw_set_colour(c_white);
-
 if (mode == 0)
 {
 	draw_set_colour(c_red)
