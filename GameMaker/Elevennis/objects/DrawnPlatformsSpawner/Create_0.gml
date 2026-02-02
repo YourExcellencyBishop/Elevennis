@@ -52,3 +52,11 @@ enum SizeArrowDir
 }
 
 size_arrow_dir = SizeArrowDir.Down;
+
+bounds_x1 = 20;
+bounds_y1 = 20;
+bounds_x2 = 140;
+bounds_y2 = 160;
+
+min_draw_area_width = draw_area_size / (bounds_y2 - bounds_y1);
+min_draw_area_height = draw_area_size / (bounds_x2 - bounds_x1);

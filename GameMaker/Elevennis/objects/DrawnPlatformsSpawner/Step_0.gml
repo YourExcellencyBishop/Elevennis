@@ -50,25 +50,25 @@ else
 		{
 		// Right
 			case SizeArrowDir.Right:
-				draw_area_x2 = draw_position_x;
+				draw_area_x2 = clamp(draw_position_x, draw_area_x1 + min_draw_area_width, bounds_x2);
 				draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
 				break;
 		
 		// Left
 			case SizeArrowDir.Left:
-				draw_area_x1 = draw_position_x;
+				draw_area_x1 = clamp(draw_position_x, bounds_x1, draw_area_x2 - min_draw_area_width);
 				draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1)) + draw_area_y1;
 				break;
 		
 		// Up
 			case SizeArrowDir.Up:
-				draw_area_y1 = draw_position_y;
+				draw_area_y1 = clamp(draw_position_y, bounds_y1, draw_area_y2 - min_draw_area_height);
 				draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1)) + draw_area_x1;
 				break;
 		
 		// Down
 			case SizeArrowDir.Down:
-				draw_area_y2 = draw_position_y;
+				draw_area_y2 = clamp(draw_position_y, draw_area_y1 + min_draw_area_height, bounds_x2);
 				draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
 			break;
 		}
