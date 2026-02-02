@@ -1,1 +1,1 @@
-surface_set_target(GameManager.surf);
+surface_set_target(surf);
