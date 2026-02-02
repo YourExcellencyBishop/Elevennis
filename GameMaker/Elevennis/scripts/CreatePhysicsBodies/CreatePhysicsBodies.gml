@@ -145,6 +145,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 
 	while (true)
 	{
+		var surface_area = 0;
 		var _left = infinity, _top = infinity, _right = -infinity, _bottom = -infinity;
 		
 		var point_count = 0;
@@ -220,6 +221,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 					_right = max(_right, pos_x);
 					_bottom = max(_bottom, pos_y);
 				}
+				surface_area++;
 				break;
 			}
 		
@@ -237,6 +239,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 				added_last = true;
 			}
 			else added_last = false;
+			
+			surface_area++;
 		}
 	
 		#endregion
@@ -251,7 +255,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		
 		bodies[body_count++] = instance_create_depth(surface_pos_x + bounds[0] + _left, surface_pos_y + bounds[1] + _top, depth - 1, DrawnPlatforms, 
 			{points_x: points_x, points_y: points_y, point_count: point_count,
-				sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0)});
+				sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0),
+				surface_area: surface_area});
 	}
 	
 	surface_free(surface);	
