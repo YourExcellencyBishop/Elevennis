@@ -23,6 +23,7 @@ application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);
 
+
 surf = -1;
 surf_width = 320;
 surf_height = 180;
@@ -75,8 +76,8 @@ instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1,
 //	half_height: 1
 //});
 
-instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
-{
-	half_width: net_thickness, 
-	half_height: room_height / 2
-});
+//instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
+//{
+//	half_width: net_thickness, 
+//	half_height: room_height / 2
+//});

@@ -63,6 +63,7 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
 	physics_fixture_set_collision_group(fix, 1);
 	physics_fixture_set_restitution(fix, e);
+	//physics_fixture_set_friction(fix, 0);
 	physics_fixture_set_density(fix, body_static ? 0 : 1);
 	
 	try

@@ -33,6 +33,7 @@
     {"id":{"name":"MVP","path":"notes/MVP/MVP.yy",},},
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},},
     {"id":{"name":"Plans","path":"notes/Plans/Plans.yy",},},
+    {"id":{"name":"AI","path":"objects/AI/AI.yy",},},
     {"id":{"name":"Ball","path":"objects/Ball/Ball.yy",},},
     {"id":{"name":"BoxSensor","path":"objects/BoxSensor/BoxSensor.yy",},},
     {"id":{"name":"DrawnPlatforms","path":"objects/DrawnPlatforms/DrawnPlatforms.yy",},},
