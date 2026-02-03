@@ -18,3 +18,7 @@ for (i = 1; i < 60*5; i += 5)
 
 draw_set_alpha(1);
 //show_message(1)
+
+draw_set_colour(c_blue);
+draw_rectangle(bounds_x1, bounds_y1, bounds_x2, bounds_y2, true);
+draw_set_colour(c_white);
