@@ -22,3 +22,7 @@ draw_set_alpha(1);
 draw_set_colour(c_blue);
 draw_rectangle(bounds_x1, bounds_y1, bounds_x2, bounds_y2, true);
 draw_set_colour(c_white);
+
+draw_rectangle(platform.phy_position_x, platform.phy_position_y, platform.phy_position_x + 1, platform.phy_position_y + 1, false);
+
+draw_circle(Ball.phy_position_x, Ball.phy_position_y, 3, false);

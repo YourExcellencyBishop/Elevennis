@@ -10,6 +10,9 @@ with (other)
 	show_debug_message(phy_speed);
 }
 
+//phy_position_x = -100;
+//phy_position_y = -100;
+
 with (DrawnPlatforms)
 {
 	instance_destroy();
