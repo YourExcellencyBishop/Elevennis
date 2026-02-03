@@ -1,9 +1,9 @@
-#macro max_e 2
-#macro min_e 0.25
+#macro max_e 5
+#macro min_e 0.5
 
-e = lerp(min_e, max_e, 1 - min(1, surface_area / 150));
+swing = lerp(min_e, max_e, 1 - min(1, surface_area / 100));
 
-color = make_colour_rgb(255 * e / max_e, 255 * (1 - e / max_e), 1);
+color = make_colour_rgb(255 * swing / max_e, 255 * (1 - swing / max_e), 1);
 
 event_inherited();
 
@@ -15,4 +15,5 @@ cyclic = abs(points_x[0] - points_x[last_index]) == 1 || abs(points_y[0] - point
 
 mode = 1;
 
-show_debug_message($"Platform Power {e * 100}");
+//show_debug_message($"Platform Power {e * 100}");
+show_debug_message($"Surface {surface_area}");

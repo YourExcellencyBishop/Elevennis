@@ -65,9 +65,18 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	physics_fixture_set_restitution(fix, e);
 	physics_fixture_set_density(fix, body_static ? 0 : 1);
 	
-	for (var j = 0; j < array_length(polygons.x[i]); j++)
+	try
 	{
-		physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
+		for (var j = 0; j < array_length(polygons.x[i]); j++)
+		{
+			physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
+		}
+	}
+	catch (excep)
+	{
+		show_debug_message($"points x: {points_x}");
+		show_debug_message($"points y: {points_y}");
+		throw ($"\npoints x: {points_x}\n\npoints y: {points_y}");
 	}
 	
 	physics_fixture_bind(fix, id);

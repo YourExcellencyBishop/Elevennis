@@ -15,6 +15,10 @@ if (useDebug)
 
 //show_message(game_get_speed(gamespeed_fps))
 
+//window_set_fullscreen(true)
+
+physics_world_update_iterations(30);
+
 application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);

@@ -54,7 +54,7 @@ if (creation_data != -1)
 }
 
 draw_set_colour(c_red);
-draw_rectangle(bounds_x1, bounds_y1, bounds_x2, bounds_y2, true);
+draw_rectangle(bounds_x1-1, bounds_y1-1, bounds_x2+1, bounds_y2+1, true);
 draw_set_colour(c_white);
 
 draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
