@@ -1,3 +1,5 @@
+#macro INVALID -1
+
 #macro edgeSafety 2
 
 #macro useDebug false

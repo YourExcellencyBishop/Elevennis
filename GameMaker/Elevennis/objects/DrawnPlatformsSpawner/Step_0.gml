@@ -96,8 +96,7 @@ else
 	if (draw_centre_x != -1)
 	{
 		create_physics_body = drew;
-		show_debug_message("Bishop")
-	
+
 		draw_position_x = -1;
 		draw_position_y = -1;
 		draw_centre_x = -1;
