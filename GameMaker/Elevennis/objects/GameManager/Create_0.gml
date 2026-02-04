@@ -52,7 +52,7 @@ physics_fixture_bind(fix, id);
 
 physics_fixture_delete(fix);
 
-instance_create_depth(0, 0, depth - 1, DrawnPlatformsSpawner);
+instance_create_depth(0, 0, depth - 1, DrawnPlatformSpawner);
 
 var net_thickness = 2;
 var net_height = surf_height / 3;

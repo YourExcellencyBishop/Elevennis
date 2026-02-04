@@ -1,4 +1,4 @@
-DrawnPlatformsSpawner.spawner_mode = SpawnerMode.Draw;
+DrawnPlatformSpawner.spawner_mode = SpawnerMode.Draw;
 
 with (other)
 {
@@ -13,7 +13,7 @@ with (other)
 //phy_position_x = -100;
 //phy_position_y = -100;
 
-with (DrawnPlatforms)
+with (DrawnPlatform)
 {
 	instance_destroy();
 }

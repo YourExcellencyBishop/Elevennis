@@ -1,4 +1,4 @@
-DrawnPlatformsSpawner.spawner_mode = SpawnerMode.ChangeSize;
+DrawnPlatformSpawner.spawner_mode = SpawnerMode.ChangeSize;
 
 with (other)
 {
@@ -10,7 +10,7 @@ with (other)
 	show_debug_message(phy_speed);
 }
 
-with (DrawnPlatforms)
+with (DrawnPlatform)
 {
 	instance_destroy();
 }

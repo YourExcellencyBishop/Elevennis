@@ -11,4 +11,4 @@ with (Ball)
 	physics_apply_angular_impulse(-30)
 }
 
-DrawnPlatformsSpawner.spawner_mode = SpawnerMode.Draw
+DrawnPlatformSpawner.spawner_mode = SpawnerMode.Draw

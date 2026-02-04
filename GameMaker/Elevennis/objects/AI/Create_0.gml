@@ -10,9 +10,9 @@ platform = instance_create_depth(-50, -50, depth, AiPlatform,
 
 platform.phy_fixed_rotation = true;
 
-bounds_x1 = room_width - DrawnPlatformsSpawner.bounds_x2;
-bounds_x2 = room_width - DrawnPlatformsSpawner.bounds_x1;
-bounds_y1 = DrawnPlatformsSpawner.bounds_y1;
-bounds_y2 = DrawnPlatformsSpawner.bounds_y2;
+bounds_x1 = room_width - DrawnPlatformSpawner.bounds_x2;
+bounds_x2 = room_width - DrawnPlatformSpawner.bounds_x1;
+bounds_y1 = DrawnPlatformSpawner.bounds_y1;
+bounds_y2 = DrawnPlatformSpawner.bounds_y2;
 
 found_place = false;

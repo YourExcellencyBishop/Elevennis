@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"DrawnPlatforms",
+  "%Name":"DrawnPlatform",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -9,7 +9,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"Ball","path":"objects/Ball/Ball.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"DrawnPlatforms",
+  "name":"DrawnPlatform",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"body_static","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"e","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1.5",},

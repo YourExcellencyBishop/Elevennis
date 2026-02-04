@@ -1,6 +1,6 @@
 collision_ball = other;
 
-with (DrawnPlatforms)
+with (DrawnPlatform)
 {
 	if (other.collision_ball.phy_linear_velocity_x > 0)
 	{
