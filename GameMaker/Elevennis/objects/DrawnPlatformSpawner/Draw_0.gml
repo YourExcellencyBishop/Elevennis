@@ -1,14 +1,14 @@
-if (draw_centre_x != INVALID && surface_exists(surface))
+if (drawing || create_physics_body)
 {
 	surface_set_target(surface);
 	
-	var dx = draw_position_x - draw_last_position_x;
-	var dy = draw_position_y - draw_last_position_y;
-	var dist = point_distance(draw_last_position_x, draw_last_position_y, draw_position_x, draw_position_y);
+	var dx = brush_position_x - prev_brush_position_x;
+	var dy = brush_position_y - prev_brush_position_y;
+	var dist = point_distance(prev_brush_position_x, prev_brush_position_y, brush_position_x, brush_position_y);
 							  
 	var spacing = max(1, brush_size * 0.5);
 
-	if (dist == 0) draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
+	if (dist == 0) draw_circle(brush_position_x - surface_x, brush_position_y - surface_y, brush_size, false);
 	else
 	{
 		var steps = ceil(dist / spacing);
@@ -16,35 +16,20 @@ if (draw_centre_x != INVALID && surface_exists(surface))
 		for (var i = 0; i <= steps; i++)
 		{
 		    var t = i / steps;
-		    var _x = draw_last_position_x + dx * t;
-			var _y = draw_last_position_y + dy * t;
+		    var _x = prev_brush_position_x + dx * t;
+			var _y = prev_brush_position_y + dy * t;
 
 		    draw_circle(_x - surface_x, _y - surface_y, brush_size, false);
 		}
 	}
 	
 	surface_reset_target();
-
-	//if (useDebug)
-	//{
-	//	draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, 
-	//		c_red, c_red, c_red, c_red, false)
-	//}
-	
-	if (!surface_exists(draw_area))
-	{
-		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
-	}
 	
 	surface_set_target(draw_area);
 	draw_surface(surface, surface_x - draw_area_x1, surface_y - draw_area_y1);
 	surface_reset_target();
 	
 	draw_surface(draw_area, draw_area_x1, draw_area_y1);
-}
-else if (creation_data != INVALID)
-{ 
-	draw_surface(creation_data.surface, surface_x, surface_y);
 }
 
 draw_set_colour(c_red);
@@ -63,11 +48,11 @@ if (spawner_mode == SpawnerMode.ChangeSize)
 		{
 			case SizeArrowDir.Right:
 			case SizeArrowDir.Left:
-				size_arrow_yy = clamp(draw_position_y, draw_area_y1 + 7, draw_area_y2 - 7);
+				size_arrow_yy = clamp(brush_position_y, draw_area_y1 + 7, draw_area_y2 - 7);
 				break;
 			case SizeArrowDir.Up:
 			case SizeArrowDir.Down:
-				size_arrow_xx = clamp(draw_position_x, draw_area_x1 + 7, draw_area_x2 - 7); 
+				size_arrow_xx = clamp(brush_position_x, draw_area_x1 + 7, draw_area_x2 - 7); 
 				break;
 		}
 	}

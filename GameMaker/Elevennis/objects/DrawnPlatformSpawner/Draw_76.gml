@@ -1,51 +1,17 @@
-if (!surface_exists(draw_surfaces[0])) draw_surfaces[0] = surface_create(surface_size, surface_size, surface_rgba8unorm);
-if (!surface_exists(draw_surfaces[1])) draw_surfaces[1] = surface_create(surface_size * 2, surface_size * 2, surface_rgba8unorm);
-if (!surface_exists(draw_surfaces[2])) draw_surfaces[2] = surface_create(surface_size * 4, surface_size * 4, surface_rgba8unorm);
-if (!surface_exists(draw_surfaces[3])) draw_surfaces[3] = surface_create(surface_size * 8, surface_size * 8, surface_rgba8unorm);
-if (!surface_exists(draw_surfaces[4])) draw_surfaces[4] = surface_create(surface_size * 16, surface_size * 16, surface_rgba8unorm);
-
-
-if (new_start_surface)
-{
-	if (make_new_start_surface)
-	{
-		draw_surfaces[0] = surface_create(surface_size, surface_size, surface_rgba8unorm);
-		surface = draw_surfaces[0];
-	
-		make_new_start_surface = false;
-	}
-	
-	surface_set_target(surface);
+if (!surface_exists(surface)) 
+{ 
+	surface = surface_create(surface_width, surface_height, surface_rgba8unorm); 
+	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0);
 	surface_reset_target();
-	
-	new_start_surface = false;
+	show_debug_message("Recreated Surface");
 }
 
-if (out_of_bounds_draw)
+if (!surface_exists(draw_area)) 
 {
-	var prev_surface_size = surface_size;
-	var surface_temp = surface;
-	
-	surface_index++;
-	surface_size *= 2;
-	surface_centre = surface_size / 2;
-	
-	surface_x = draw_centre_x - surface_centre;
-	surface_y = draw_centre_y - surface_centre;
-	
-	if (surface_index < array_length(draw_surfaces) && surface_exists(draw_surfaces[surface_index]))
-	{
-		surface = draw_surfaces[surface_index];
-	}
-	else
-	{
-		draw_surfaces[surface_index] = surface_create(surface_size, surface_size, surface_rgba8unorm);
-		surface = draw_surfaces[surface_index];
-	}
-	
-	surface_set_target(surface);
-	draw_clear_alpha(c_black, 0);
-	draw_surface(surface_temp, prev_surface_size / 2 , prev_surface_size / 2);
+	draw_area = surface_create(draw_area_width - 1, draw_area_height - 1); 
+	surface_set_target(draw_area);
+    draw_clear_alpha(c_black, 0);
 	surface_reset_target();
+	show_debug_message("Recreated Draw Area");
 }

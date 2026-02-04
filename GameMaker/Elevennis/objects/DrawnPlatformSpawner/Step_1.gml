@@ -1,41 +1,33 @@
 if (create_physics_body)
 {
-	CreatePhysicsBodies(creation_data.surface, surface_x, surface_y, creation_data.width, creation_data.height, creation_data.buffer,
+	CreatePhysicsBodies(creation_data.surface, draw_area_x1 - 1, draw_area_y1 - 1, creation_data.width, creation_data.height, creation_data.buffer,
 		creation_data.image_size, creation_data.bounds, global.SupportR8UnormSurface);
 		
 	creation_data = INVALID;
 	create_physics_body = false;
-	
-	if (premature_draw)
-	{
-		draw_surfaces[surface_index] = surface_create(surface_size, surface_size, surface_rgba8unorm);
-		surface = draw_surfaces[surface_index];
-		premature_draw = false;
-		drew = false;
-	}
 }
 
-draw_last_position_x = draw_position_x;
-draw_last_position_y = draw_position_y;
-draw_position_x = floor(mouse_x * GameManager.scale_surf_width);
-draw_position_y = floor(mouse_y * GameManager.scale_surf_height);
+prev_brush_position_x = brush_position_x;
+prev_brush_position_y = brush_position_y;
+brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
+brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
 
-in_draw_area = point_in_rectangle(draw_position_x, draw_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);
+in_draw_area = point_in_rectangle(brush_position_x, brush_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);
 
 var mouse_dist = infinity;
 
 if (!changing_draw_area_size)
 {
-    mouse_dist = abs(draw_position_x - draw_area_x1);
+    mouse_dist = abs(brush_position_x - draw_area_x1);
     size_arrow_dir = SizeArrowDir.Left;
 
-    var d = abs(draw_position_x - draw_area_x2);
+    var d = abs(brush_position_x - draw_area_x2);
     if (d < mouse_dist) { mouse_dist = d; size_arrow_dir = SizeArrowDir.Right; }
 
-    d = abs(draw_position_y - draw_area_y1);
+    d = abs(brush_position_y - draw_area_y1);
     if (d < mouse_dist) { mouse_dist = d; size_arrow_dir = SizeArrowDir.Up; }
 
-    d = abs(draw_position_y - draw_area_y2);
+    d = abs(brush_position_y - draw_area_y2);
     if (d < mouse_dist) { mouse_dist = d; size_arrow_dir = SizeArrowDir.Down; }
 }
 
