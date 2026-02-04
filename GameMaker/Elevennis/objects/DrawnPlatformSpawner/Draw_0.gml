@@ -1,36 +1,35 @@
-//var s = 20;
-//draw_sprite_ext(sprite_index, 0, x, y, s, s, 0, c_white, 1);
-
-var precision = 100;
-if (draw_centre_x != -1 && surface_exists(surface))
+if (draw_centre_x != INVALID && surface_exists(surface))
 {
 	surface_set_target(surface);
 	
 	var dx = draw_position_x - draw_last_position_x;
 	var dy = draw_position_y - draw_last_position_y;
-	var dist = point_distance(draw_last_position_x, draw_last_position_y,
-	                          draw_position_x, draw_position_y);
+	var dist = point_distance(draw_last_position_x, draw_last_position_y, draw_position_x, draw_position_y);
 							  
 	var spacing = max(1, brush_size * 0.5);
 
-	var steps = ceil(dist / spacing);
-
-	if (steps == 0)
-		draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
+	if (dist == 0) draw_circle(draw_position_x - surface_x, draw_position_y - surface_y, brush_size, false);
 	else
+	{
+		var steps = ceil(dist / spacing);
+		
 		for (var i = 0; i <= steps; i++)
 		{
 		    var t = i / steps;
-		    var _x = lerp(draw_last_position_x, draw_position_x, t);
-		    var _y = lerp(draw_last_position_y, draw_position_y, t);
+		    var _x = draw_last_position_x + dx * t;
+			var _y = draw_last_position_y + dy * t;
 
 		    draw_circle(_x - surface_x, _y - surface_y, brush_size, false);
 		}
+	}
 	
 	surface_reset_target();
 
 	if (useDebug)
-		draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, c_red, c_red, c_red, c_red, false)
+	{
+		draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, 
+			c_red, c_red, c_red, c_red, false)
+	}
 	
 	if (!surface_exists(draw_area))
 	{
@@ -43,8 +42,7 @@ if (draw_centre_x != -1 && surface_exists(surface))
 	
 	draw_surface(draw_area, draw_area_x1, draw_area_y1);
 }
-
-if (creation_data != -1)
+else if (creation_data != INVALID)
 { 
 	draw_surface(creation_data.surface, surface_x, surface_y);
 	
@@ -54,11 +52,10 @@ if (creation_data != -1)
 }
 
 draw_set_colour(c_red);
-draw_rectangle(bounds_x1-1, bounds_y1-1, bounds_x2+1, bounds_y2+1, true);
+draw_rectangle(bounds_x1 - 1, bounds_y1 - 1, bounds_x2 + 1, bounds_y2 + 1, true);
 draw_set_colour(c_white);
 
 draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
-
 
 if (spawner_mode == SpawnerMode.ChangeSize)
 {
