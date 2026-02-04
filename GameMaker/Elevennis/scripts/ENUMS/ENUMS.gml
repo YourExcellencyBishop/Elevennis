@@ -7,3 +7,8 @@ enum SizeArrowDir
 {
 	Up, Down, Left, Right
 }
+
+enum PhysicsBodyType
+{
+	Edge, Polygon	
+}

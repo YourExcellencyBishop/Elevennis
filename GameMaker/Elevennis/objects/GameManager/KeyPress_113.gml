@@ -1,4 +1,1 @@
-with (DrawnPlatform)
-{
-	instance_destroy();
-}
+with (DrawnPlatform) { instance_destroy(); }

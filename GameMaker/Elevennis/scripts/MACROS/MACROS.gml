@@ -1,12 +1,7 @@
 #macro INVALID -1
 
-#macro edgeSafety 2
-
 #macro useDebug false
 #macro Debug:useDebug true
-
-// PhysicsBodySpawner
-#macro initialDrawSurfaceSize 64
 
 // CreatePhysicsBodies Script
 #macro alphaChannelIndex 3

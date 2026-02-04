@@ -1,0 +1,1 @@
+//physics_world_draw_debug(true)

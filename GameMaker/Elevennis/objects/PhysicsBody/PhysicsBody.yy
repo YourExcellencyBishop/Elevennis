@@ -37,6 +37,7 @@
     {"$GMObjectProperty":"v2","%Name":"body_static","filters":[],"listItems":[],"multiselect":false,"name":"body_static","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"e","filters":[],"listItems":[],"multiselect":false,"name":"e","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
     {"$GMObjectProperty":"v2","%Name":"collision_group","filters":[],"listItems":[],"multiselect":false,"name":"collision_group","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"body_type","filters":[],"listItems":[],"multiselect":false,"name":"body_type","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"PhysicsBodyType.Polygon","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

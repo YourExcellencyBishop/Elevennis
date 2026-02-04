@@ -60,4 +60,15 @@ size_arrow_rot = 0;
 size_arrow_dir = SizeArrowDir.Right;
 
 // Mode
-spawner_mode = SpawnerMode.ChangeSize;
+spawner_mode = SpawnerMode.Draw;
+
+// Test Fixture
+
+//var fix = physics_fixture_create(); 
+//physics_fixture_set_collision_group(fix, 1);
+//physics_fixture_set_restitution(fix, 1);
+//physics_fixture_set_density(fix, 0);
+//physics_fixture_set_edge_shape(fix, bounds_x1, bounds_y1, bounds_x2, bounds_y2);
+//physics_fixture_bind(fix, id);
+//physics_fixture_delete(fix);
+

@@ -252,7 +252,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 	var body = instance_create_depth(surface_pos_x + bounds[0] + _left, surface_pos_y + bounds[1] + _top, depth - 1, DrawnPlatform, 
 		{points_x: points_x, points_y: points_y, point_count: point_count,
 			sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0),
-			surface_area: surface_area});
+			surface_area: surface_area,
+			body_type: PhysicsBodyType.Edge});
 	
 	surface_free(surface);	
 	return body;

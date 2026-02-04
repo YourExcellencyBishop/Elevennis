@@ -14,18 +14,11 @@ if (useDebug)
 	if (!shader_is_compiled(OnlyEdgesShaderR8)) show_message($"The shader {shader_get_name(OnlyEdgesShaderR8)} did not compile");
 }
 
-//show_message(game_get_speed(gamespeed_fps))
-
-//window_set_fullscreen(true)
-
-physics_world_update_iterations(30);
-
 application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);
 
-
-surf = -1;
+surf = INVALID;
 surf_width = 320;
 surf_height = 180;
 
