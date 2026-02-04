@@ -73,8 +73,7 @@ var area_h = draw_area_y2 - draw_area_y1;
 
 if (draw_area_clear)
 {
-    if (!surface_exists(draw_area))
-        draw_area = surface_create(area_w, area_h);
+    if (!surface_exists(draw_area)) draw_area = surface_create(area_w, area_h);
 
     surface_set_target(draw_area);
     draw_clear_alpha(c_black, 0);
@@ -82,10 +81,8 @@ if (draw_area_clear)
 }
 else if (resize_draw_area)
 {
-    if (surface_exists(draw_area))
-        surface_resize(draw_area, area_w, area_h);
-    else
-        draw_area = surface_create(area_w, area_h);
+    if (surface_exists(draw_area)) surface_resize(draw_area, area_w, area_h);
+    else draw_area = surface_create(area_w, area_h);
 
     resize_draw_area = false;
 }
