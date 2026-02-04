@@ -53,7 +53,9 @@ if (out_of_bounds_draw)
 	surface_y = draw_centre_y - surface_centre;
 	
 	if (surface_index < array_length(draw_surfaces) && surface_exists(draw_surfaces[surface_index]))
+	{
 		surface = draw_surfaces[surface_index];
+	}
 	else
 	{
 		draw_surfaces[surface_index] = surface_create(surface_size, surface_size, surface_rgba8unorm);
@@ -66,25 +68,24 @@ if (out_of_bounds_draw)
 	surface_reset_target();
 }
 
+var area_w = draw_area_x2 - draw_area_x1;
+var area_h = draw_area_y2 - draw_area_y1;
+
 if (draw_area_clear)
 {
-	if (surface_exists(draw_area))
-	{
-		surface_set_target(draw_area);
-		draw_clear_alpha(c_black, 0);
-		surface_reset_target();
-	}
-	else
-	{
-		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
-	}
+    if (!surface_exists(draw_area))
+        draw_area = surface_create(area_w, area_h);
+
+    surface_set_target(draw_area);
+    draw_clear_alpha(c_black, 0);
+    surface_reset_target();
 }
 else if (resize_draw_area)
 {
-	if (surface_exists(draw_area))
-		surface_resize(draw_area, draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
-	else
-		draw_area = surface_create(draw_area_x2 - draw_area_x1, draw_area_y2 - draw_area_y1);
-	
-	resize_draw_area = false;
+    if (surface_exists(draw_area))
+        surface_resize(draw_area, area_w, area_h);
+    else
+        draw_area = surface_create(area_w, area_h);
+
+    resize_draw_area = false;
 }
