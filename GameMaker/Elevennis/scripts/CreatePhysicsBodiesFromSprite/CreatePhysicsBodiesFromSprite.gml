@@ -6,8 +6,17 @@
 /// @param {Real}			 x_offset  The x offset that points are placed in relation to their pixels.
 /// @param {Real}			 y_offset  The y offset that points are placed in relation to their pixels.
 /// @return {Array<Id.Instance<PhysicsBody>>} The instances.
-function CreateEdgeSurface(surface, support_surface_r8unorm)
+function CreateEdgeSurfaceFromSprite(sprite, support_surface_r8unorm)
 {
+	var surface = surface_create(sprite_get_width(sprite) + 2, sprite_get_height(sprite) + 2);
+	
+	surface_set_target(surface);
+	
+	draw_sprite(sprite, 0, 1, 1);
+	
+	surface_reset_target();
+	
+	
 	var shader, fill_surf_format, bytes_per_pixel;
 	
 	if (support_surface_r8unorm)
@@ -92,8 +101,10 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	#endregion
 }
 
-function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, bounds, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
+function CreatePhysicsBodiesFromSprite(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, bounds, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
 {
+	var bodies = array_create(0);
+	var body_count = 0;
 
 	#region Algorthim Setup
 
@@ -141,119 +152,123 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 
 	var start_x, start_y, pos_x, pos_y;
 
-	var surface_area = 0;
-	var _left = infinity, _top = infinity, _right = -infinity, _bottom = -infinity;
-		
-	var point_count = 0;
-	var points_x = array_create(edge_count);
-	var points_y = array_create(edge_count);
-	
-	#region Scan
-	
-	var found = 0;
-	
-	for (; scan_index < image_size; scan_index++)
+	while (true)
 	{
-		if (state[scan_index] == EDGE.FILLED)
+		var surface_area = 0;
+		var _left = infinity, _top = infinity, _right = -infinity, _bottom = -infinity;
+		
+		var point_count = 0;
+		var points_x = array_create(edge_count);
+		var points_y = array_create(edge_count);
+	
+		#region Scan
+	
+		var found = 0;
+	
+		for (; scan_index < image_size; scan_index++)
 		{
-			start_x = scan_index mod width; 
-			start_y = scan_index div width;
-			points_x[point_count] = start_x;
-			points_y[point_count++] = start_y;
-			pos_x = start_x; pos_y = start_y;
-			_left = pos_x; _right = pos_x;
-			_top = pos_y; _bottom = pos_y;
-				
-			found = 1;
-			break;
-		}
-	}
-
-	if (!found) return;
-	
-	#endregion
-	
-	#region Trace
-	
-	var last_dir = 0;
-	var added_last = false;
-	
-	while (found)
-	{		
-		var next_x = -1, next_y;
-		state[pos_x + pos_y * width] = EDGE.PROCESSED;
-			
-		var d = 0;
-		for (; d < 8; d++) 
-		{
-			var dir = (last_dir + d) mod 8; // searches in last direction first
-			var nx = pos_x + dir_x[dir];
-			var ny = pos_y + dir_y[dir];
-
-			if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
-
-			var idx = nx + ny * width;
-			if (state[idx] == EDGE.FILLED) 
+			if (state[scan_index] == EDGE.FILLED)
 			{
-				next_x = nx;
-				next_y = ny;
-				pos_x = nx;
-				pos_y = ny;
-				last_dir = dir;
+				start_x = scan_index mod width; 
+				start_y = scan_index div width;
+				points_x[point_count] = start_x;
+				points_y[point_count++] = start_y;
+				pos_x = start_x; pos_y = start_y;
+				_left = pos_x; _right = pos_x;
+				_top = pos_y; _bottom = pos_y;
+				
+				found = 1;
 				break;
 			}
 		}
-		
-		if (next_x == -1)
-		{ 
-			if (!added_last)
-			{
-				points_x[point_count] = pos_x;
-				points_y[point_count++] = pos_y;
-					
-				_left = min(_left, pos_x);
-				_top = min(_top, pos_y);
-					
-				_right = max(_right, pos_x);
-				_bottom = max(_bottom, pos_y);
-			}
-			surface_area++;
-			break;
-		}
-		
-		if (d != 0)
-		{
-			points_x[point_count] = next_x;
-			points_y[point_count++] = next_y;
-				
-			_left = min(_left, next_x);
-			_top = min(_top, next_y);
-				
-			_right = max(_right, next_x);
-			_bottom = max(_bottom, next_y);
-				
-			added_last = true;
-		}
-		else added_last = false;
-			
-		surface_area++;
-	}
+
+		if (!found) break;
 	
-	#endregion
+		#endregion
+	
+		#region Trace
+	
+		var last_dir = 0;
+		var added_last = false;
+	
+		while (found)
+		{		
+			var next_x = -1, next_y;
+			state[pos_x + pos_y * width] = EDGE.PROCESSED;
+			
+			var d = 0;
+			for (; d < 8; d++) 
+			{
+				var dir = (last_dir + d) mod 8; // searches in last direction first
+				var nx = pos_x + dir_x[dir];
+				var ny = pos_y + dir_y[dir];
+
+				if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
+
+				var idx = nx + ny * width;
+				if (state[idx] == EDGE.FILLED) 
+				{
+				    next_x = nx;
+				    next_y = ny;
+					pos_x = nx;
+					pos_y = ny;
+					last_dir = dir;
+				    break;
+				}
+			}
 		
-	array_resize(points_x, point_count);
-	array_resize(points_y, point_count);
+			if (next_x == -1)
+			{ 
+				if (!added_last)
+				{
+					points_x[point_count] = pos_x;
+					points_y[point_count++] = pos_y;
+					
+					_left = min(_left, pos_x);
+					_top = min(_top, pos_y);
+					
+					_right = max(_right, pos_x);
+					_bottom = max(_bottom, pos_y);
+				}
+				surface_area++;
+				break;
+			}
 		
-	if (point_count < 3)
-	{
-		return; // FIX
+			if (d != 0)
+			{
+				points_x[point_count] = next_x;
+				points_y[point_count++] = next_y;
+				
+				_left = min(_left, next_x);
+				_top = min(_top, next_y);
+				
+				_right = max(_right, next_x);
+				_bottom = max(_bottom, next_y);
+				
+				added_last = true;
+			}
+			else added_last = false;
+			
+			surface_area++;
+		}
+	
+		#endregion
+		
+		array_resize(points_x, point_count);
+		array_resize(points_y, point_count);
+		
+		if (point_count < 3)
+		{
+			continue; // FIX
+		}
+		
+		bodies[body_count++] = instance_create_depth(surface_pos_x + bounds[0] + _left, surface_pos_y + bounds[1] + _top, depth - 1, ShapeDrawer, 
+			{
+				points_x: points_x, points_y: points_y, point_count: point_count,
+				sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0),
+			});
 	}
-		
-	var body = instance_create_depth(surface_pos_x + bounds[0] + _left, surface_pos_y + bounds[1] + _top, depth - 1, DrawnPlatforms, 
-		{points_x: points_x, points_y: points_y, point_count: point_count,
-			sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0),
-			surface_area: surface_area});
 	
 	surface_free(surface);	
-	return body;
+	return bodies;
 }

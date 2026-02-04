@@ -11,7 +11,7 @@ if (point_count == -1)
 	point_count = point_count_x;
 }
 
-show_debug_message($"{point_count} points")
+show_debug_message($"Set number of points: {point_count} points")
 
 if (array_length(point_mass) == 0)
 {
@@ -45,6 +45,8 @@ for (var i = 0; i < point_count; i++)
 	inertia += (points_x[i] * points_x[i] + points_y[i] * points_y[i]) * point_mass[i];
 }
 
+show_debug_message($"Centred Points")
+
 centre_of_mass_x = 0;
 centre_of_mass_y = 0;
 
@@ -55,11 +57,17 @@ if (sprite_index != -1)
 	y += -_top;
 }
 
+show_debug_message($"Set Offset")
+
 var fix;
 var polygons = bayazit_decompose(points_x, points_y);
 
+show_debug_message($"Decomposed Points: {array_length(polygons.x)} | {array_length(polygons.y)}")
+
 for (var i = 0; i < array_length(polygons.x); i++)
 {
+	show_debug_message($"decomp {i + 1}")
+	
 	fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
 	physics_fixture_set_collision_group(fix, collision_group);
 	physics_fixture_set_restitution(fix, e);
@@ -75,11 +83,20 @@ for (var i = 0; i < array_length(polygons.x); i++)
 	}
 	catch (excep)
 	{
-		show_debug_message($"points x: {points_x}");
-		show_debug_message($"points y: {points_y}");
-		throw ($"\npoints x: {points_x}\n\npoints y: {points_y}");
+		show_debug_message($"points_x = {points_x}");
+		show_debug_message($"points_y = {points_y}");
+		
+		sprite_save(sprite_index, 0, "platform.png")
+		
+		
+		
+		throw ($"\npoints_x = {points_x}\n\npoints_y = {points_y}");
 	}
+	
+	show_debug_message("bound")
 	
 	physics_fixture_bind(fix, id);
 	physics_fixture_delete(fix);
 }
+
+show_debug_message($"Created Fixture")

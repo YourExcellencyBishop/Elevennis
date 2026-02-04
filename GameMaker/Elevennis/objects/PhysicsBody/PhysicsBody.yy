@@ -41,7 +41,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"TestSprite",
+    "path":"sprites/TestSprite/TestSprite.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

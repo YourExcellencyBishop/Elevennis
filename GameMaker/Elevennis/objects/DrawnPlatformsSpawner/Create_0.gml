@@ -26,6 +26,8 @@ create_physics_body = false;
 creation_data = -1;
 
 drawing = false;
+drew = false;
+premature_draw = false;
 
 draw_area = -1;
 

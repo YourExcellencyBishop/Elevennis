@@ -8,7 +8,6 @@ if (mouse_check_button(mb_left))
 			start_drawing = true;
 	}
 	
-	var in_draw_area = point_in_rectangle(draw_position_x, draw_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);
 	if (changing_draw_area_size)
 	{
 		var overflow;
@@ -71,6 +70,11 @@ if (mouse_check_button(mb_left))
 		start_drawing = false;
 		drawing = true;
 	}
+	else if (drew && !in_draw_area)
+	{
+		create_physics_body = true;
+		premature_draw = true;
+	}
 	
 	var total_draw_bound = brush_size + edgeSafety;
 	
@@ -91,7 +95,8 @@ else
 	
 	if (draw_centre_x != -1)
 	{
-		create_physics_body = true;
+		create_physics_body = drew;
+		show_debug_message("Bishop")
 	
 		draw_position_x = -1;
 		draw_position_y = -1;
@@ -99,5 +104,7 @@ else
 		draw_centre_y = -1;
 	}
 }
+
+drew = drawing && in_draw_area;
 
 //draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
