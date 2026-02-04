@@ -25,11 +25,11 @@ if (draw_centre_x != INVALID && surface_exists(surface))
 	
 	surface_reset_target();
 
-	if (useDebug)
-	{
-		draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, 
-			c_red, c_red, c_red, c_red, false)
-	}
+	//if (useDebug)
+	//{
+	//	draw_rectangle_colour(surface_x, surface_y, surface_x + surface_size, surface_y + surface_size, 
+	//		c_red, c_red, c_red, c_red, false)
+	//}
 	
 	if (!surface_exists(draw_area))
 	{
@@ -45,10 +45,6 @@ if (draw_centre_x != INVALID && surface_exists(surface))
 else if (creation_data != INVALID)
 { 
 	draw_surface(creation_data.surface, surface_x, surface_y);
-	
-	surface_set_target(draw_area);
-	draw_clear_alpha(c_black, 0);
-	surface_reset_target();
 }
 
 draw_set_colour(c_red);

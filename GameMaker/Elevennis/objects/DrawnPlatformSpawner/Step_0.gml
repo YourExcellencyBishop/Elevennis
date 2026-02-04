@@ -2,15 +2,19 @@ if (mouse_check_button(mb_left))
 {	
 	if (mouse_check_button_pressed(mb_left)) 
 	{
-		if (spawner_mode == SpawnerMode.ChangeSize && point_in_circle(draw_position_x, draw_position_y, size_arrow_x, size_arrow_y, 5))
+		if (spawner_mode == SpawnerMode.ChangeSize && 
+			point_in_circle(draw_position_x, draw_position_y, size_arrow_x, size_arrow_y, 5))
+		{
 			changing_draw_area_size = true;
-		else if (spawner_mode == SpawnerMode.Draw)
-			start_drawing = true;
+		}
+		else if (spawner_mode == SpawnerMode.Draw) { start_drawing = true; }
 	}
 	
 	if (changing_draw_area_size)
 	{
 		var overflow;
+		
+		// draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
 		switch (size_arrow_dir)
 		{
 			case SizeArrowDir.Right:
@@ -54,10 +58,10 @@ if (mouse_check_button(mb_left))
 	{
 		surface_index = 0;
 		surface_size = initialDrawSurfaceSize;
-		surface_centre = surface_size/2;
+		surface_centre = surface_size * 0.5;
 		
-		if (surface_exists(draw_surfaces[0])) surface = draw_surfaces[0];
-		else make_new_start_surface = true;
+		if (surface_exists(draw_surfaces[0])) { surface = draw_surfaces[0]; }
+		else { make_new_start_surface = true; }
 		
 		draw_last_position_x = draw_position_x;
 		draw_last_position_y = draw_position_y;
@@ -78,9 +82,15 @@ if (mouse_check_button(mb_left))
 	
 	var total_draw_bound = brush_size + edgeSafety;
 	
-	out_of_bounds_draw = drawing && in_draw_area &&
-		(draw_position_x - total_draw_bound < surface_x || draw_position_x + total_draw_bound >= surface_x + surface_size ||
-		draw_position_y - total_draw_bound < surface_y || draw_position_y + total_draw_bound >= surface_y + surface_size);
+	var oob_x =
+        draw_position_x - total_draw_bound < surface_x ||
+        draw_position_x + total_draw_bound >= surface_x + surface_size;
+
+    var oob_y =
+        draw_position_y - total_draw_bound < surface_y ||
+        draw_position_y + total_draw_bound >= surface_y + surface_size;
+
+    out_of_bounds_draw = drawing && in_draw_area && (oob_x || oob_y);
 }
 else 
 {
@@ -93,17 +103,15 @@ else
 		resize_draw_area = true;
 	}
 	
-	if (draw_centre_x != -1)
+	if (draw_centre_x != INVALID)
 	{
 		create_physics_body = drew;
 
-		draw_position_x = -1;
-		draw_position_y = -1;
-		draw_centre_x = -1;
-		draw_centre_y = -1;
+		draw_position_x = INVALID;
+		draw_position_y = INVALID;
+		draw_centre_x = INVALID;
+		draw_centre_y = INVALID;
 	}
 }
 
 drew = drawing && in_draw_area;
-
-//draw_area_size = (draw_area_x2 - draw_area_x1) * (draw_area_y2 - draw_area_y1);
