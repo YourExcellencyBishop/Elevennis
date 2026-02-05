@@ -5,8 +5,6 @@ with (platform_spawner)
 	brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
 	brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
 
-	in_draw_area = point_in_rectangle(brush_position_x, brush_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);
-
 	var mouse_dist = infinity;
 
 	if (!changing_draw_area_size)

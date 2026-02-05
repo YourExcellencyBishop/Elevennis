@@ -1,0 +1,1 @@
+//draw_line(platform.phy_position_x, platform.phy_position_y, , );

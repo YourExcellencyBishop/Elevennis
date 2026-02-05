@@ -6,3 +6,5 @@ if (create_physics_body)
 	creation_data = INVALID;
 	create_physics_body = false;
 }
+
+in_draw_area = point_in_rectangle(brush_position_x, brush_position_y, draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2);

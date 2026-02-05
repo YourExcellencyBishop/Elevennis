@@ -21,23 +21,37 @@ out_of_play_2.color = c_yellow;
 out_of_play_2.character = id;
 out_of_play_2.func = out_of_play_1.func;
 
-platform = instance_create_depth(-50, -50, depth, AiPlatform, 
-{
-	point_count: 4,
-	points_x: [[-20, 20, 20, -20]], 
-	points_y: [[-1, -1, 1, 1]],
-	body_static: true, 
-	collision_group: 1,
-	e: 1,
-	character: id
-});
-platform.phy_fixed_rotation = true;
+//platform = instance_create_depth(-50, -50, depth, AiPlatform, 
+//{
+//	point_count: 4,
+//	points_x: [[-20, 20, 20, -20]], 
+//	points_y: [[-1, -1, 1, 1]],
+//	body_static: true, 
+//	collision_group: -1,
+//	e: 1,
+//	character: id
+//});
+//platform.phy_fixed_rotation = true;
 
 found_place = false;
 
 // make dynamic
 target_x = 160;
 target_y = 50;
+
+nx = INVALID;
+ny = INVALID;
+
+draw_start_x = INVALID;
+draw_start_y = INVALID;
+
+draw_end_x = INVALID;
+draw_end_y = INVALID;
+
+draw_centre_x = INVALID;
+draw_centre_y = INVALID;
+
+draw_allowance = platform_spawner.brush_size;
 
 function get_time_roots(a, b)
 {
