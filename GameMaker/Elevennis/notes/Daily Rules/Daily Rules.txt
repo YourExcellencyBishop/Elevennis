@@ -6,3 +6,4 @@ out zone changes
 timer
 max touches
 toroidal map
+full draw area

@@ -24,11 +24,13 @@ function calc_value(a, b, c = 0)
                               c);
 }
 
-final_vx = 0;
-final_vy = 0;
+//final_vx = 0;
+//final_vy = 0;
 
-nx = 0;
-ny = 0;
+//nx = 0;
+//ny = 0;
 
+
+// make dynamic
 target_x = 160;
 target_y = 50;

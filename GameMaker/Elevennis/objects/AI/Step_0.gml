@@ -104,8 +104,8 @@ if (start_t < end_t && DrawnPlatformSpawner.spawner_mode == SpawnerMode.ChangeSi
 		
 		if (ball_speed > 0)
 		{
-			nx = -(ball_vx / ball_speed);
-			ny = -(ball_vy / ball_speed);
+			var nx = -(ball_vx / ball_speed);
+			var ny = -(ball_vy / ball_speed);
 			
 			var tx = target_x - platform.phy_position_x;
 			var ty =  target_y - platform.phy_position_y;
@@ -124,18 +124,13 @@ if (start_t < end_t && DrawnPlatformSpawner.spawner_mode == SpawnerMode.ChangeSi
 			
 			platform.phy_rotation = radtodeg(arctan2(nx, -ny));
 			
-			var d = ball_vx * nx + ball_vy * ny;
+			//var dot = ball_vx * nx + ball_vy * ny;
 			
-			final_vx = 5 * (ball_vx - 2.0 * d * nx);
-			final_vy = 5 * (ball_vy - 2.0 * d * ny);
+			//final_vx = 5 * (ball_vx - 2.0 * dot * nx);
+			//final_vy = 5 * (ball_vy - 2.0 * dot * ny);
 		}
-		
-		
 		
 		found_place = true;
 	}
 }
-else
-{
-	found_place = false
-}
+else { found_place = false; }

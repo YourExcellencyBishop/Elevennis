@@ -62,17 +62,10 @@ instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, N
 	body_static: true
 });
 
-instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1, SideSeparator, 
-{
-	half_width: net_thickness, 
-	half_height: (room_height - net_height) / 2
-});
-
-
-//instance_create_depth((room_width / 2) / 2, room_height - 1, depth - 1, OutZone, 
+//instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1, SideSeparator, 
 //{
-//	half_width: room_width / 4, 
-//	half_height: 1
+//	half_width: net_thickness, 
+//	half_height: (room_height - net_height) / 2
 //});
 
 //instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
@@ -80,6 +73,3 @@ instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1,
 //	half_width: net_thickness, 
 //	half_height: room_height / 2
 //});
-
-//var lol = CreateEdgeSurfaceFromSprite(TestSprite, global.SupportR8UnormSurface);
-//CreatePhysicsBodiesFromSprite(lol.surface, 0, 0, lol.width, lol.height, lol.buffer, lol.image_size, lol.bounds, global.SupportR8UnormSurface);
