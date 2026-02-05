@@ -13,6 +13,7 @@
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"body_static","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"e","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1.5",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"body_type","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"PhysicsBodyType.Edge",},
   ],
   "parent":{
     "name":"Objects",
@@ -36,7 +37,6 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"cyclic","filters":[],"listItems":[],"multiselect":false,"name":"cyclic","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"True","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"surface_area","filters":[],"listItems":[],"multiselect":false,"name":"surface_area","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
   ],
   "resourceType":"GMObject",

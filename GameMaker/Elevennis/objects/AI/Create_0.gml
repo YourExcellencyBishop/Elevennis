@@ -16,3 +16,10 @@ bounds_y1 = DrawnPlatformSpawner.bounds_y1;
 bounds_y2 = DrawnPlatformSpawner.bounds_y2;
 
 found_place = false;
+
+function calc_value(a, b, c = 0)
+{
+    return (a > 0 && b > 0) ? min(a, b) :
+           ((a * b <= 0)     ? max(a, b) :
+                              c);
+}

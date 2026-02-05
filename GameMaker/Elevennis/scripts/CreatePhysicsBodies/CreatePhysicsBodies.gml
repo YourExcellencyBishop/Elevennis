@@ -169,7 +169,7 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		}
 	}
 
-	if (!found) return;
+	if (!found) { return; }
 	
 	#endregion
 	
@@ -243,11 +243,6 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		
 	array_resize(points_x, point_count);
 	array_resize(points_y, point_count);
-		
-	if (point_count < 3)
-	{
-		return; // FIX
-	}
 		
 	var body = instance_create_depth(surface_pos_x + bounds[0] + _left, surface_pos_y + bounds[1] + _top, depth - 1, DrawnPlatform, 
 		{points_x: points_x, points_y: points_y, point_count: point_count,
