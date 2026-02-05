@@ -56,8 +56,8 @@ var net_height = surf_height / 3;
 
 instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, Net, 
 {
-	points_x: [-net_thickness, net_thickness, net_thickness, -net_thickness], 
-	points_y: [-net_height / 2, -net_height / 2, net_height / 2, net_height / 2],
+	points_x: [[-net_thickness, net_thickness, net_thickness, -net_thickness]], 
+	points_y: [[-net_height / 2, -net_height / 2, net_height / 2, net_height / 2]],
 	point_count: 4,
 	body_static: true
 });

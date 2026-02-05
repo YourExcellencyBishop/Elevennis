@@ -1,0 +1,7 @@
+length_power
+net height
+gravity
+ball shape
+out zone changes
+timer
+max touches

@@ -30,6 +30,7 @@
   },
   "name":"Elevennis",
   "resources":[
+    {"id":{"name":"Daily Rules","path":"notes/Daily Rules/Daily Rules.yy",},},
     {"id":{"name":"MVP","path":"notes/MVP/MVP.yy",},},
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},},
     {"id":{"name":"Plans","path":"notes/Plans/Plans.yy",},},

@@ -1,8 +1,8 @@
 platform = instance_create_depth(-50, -50, depth, AiPlatform, 
 {
 	point_count: 4,
-	points_x: [-20, 20, 20, -20], 
-	points_y: [-3, -3, 3, 3],
+	points_x: [[-20, 20, 20, -20]], 
+	points_y: [[-3, -3, 3, 3]],
 	body_static: true, 
 	collision_group: 1,
 	e: 1

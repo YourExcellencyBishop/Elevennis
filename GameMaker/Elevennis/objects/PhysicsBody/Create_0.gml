@@ -1,7 +1,20 @@
-if (point_count == -1)
+var point_list_count = array_length(points_x);
+
+if (point_list_count > 1)
 {
-	var point_count_x = array_length(points_x);
-	var point_count_y = array_length(points_y);
+	//show_message(points_x)
+}
+
+if (point_count == INVALID)
+{
+	var point_count_x = 0;
+	var point_count_y = 0;
+	
+	for (var i = 0; i < point_list_count; i++)
+	{
+		point_count_x += array_length(points_x[i]);
+		point_count_y += array_length(points_y[i]);
+	}
 	
 	if ((point_count_x == 0 || point_count_y == 0) || point_count_x != point_count_y)
 	{
@@ -13,40 +26,37 @@ if (point_count == -1)
 
 show_debug_message($"Set number of points: {point_count} points")
 
-if (array_length(point_mass) == 0)
-{
-	point_mass = array_create(point_count, 1);
-} 
-
 var _top = infinity, _left = infinity;
 centre_of_mass_x = 0;
 centre_of_mass_y = 0;
 total_mass = 0;
-inertia = 0;
 
-for (var i = 0; i < point_count; i++)
+for (var i = 0; i < point_list_count; i++)
 {
-	centre_of_mass_x += points_x[i] * point_mass[i];
-	centre_of_mass_y += points_y[i] * point_mass[i];
-	total_mass += point_mass[i];
+	var point_list_length = array_length(points_x[i]);
+	for (var j = 0; j < point_list_length; j++)
+	{
+		centre_of_mass_x += points_x[i][j] * point_mass;
+		centre_of_mass_y += points_y[i][j] * point_mass;
+		total_mass += point_mass;
+	}
 }
 
 centre_of_mass_x /= total_mass;
 centre_of_mass_y /= total_mass;
 
-for (var i = 0; i < point_count; i++)
+for (var i = 0; i < point_list_count; i++)
 {
-	points_x[i] -= centre_of_mass_x;
-	points_y[i] -= centre_of_mass_y;
-	
-	_left = min(floor(points_x[i]), _left);
-	_top = min(floor(points_y[i]), _top);
-	
-	inertia += (points_x[i] * points_x[i] + points_y[i] * points_y[i]) * point_mass[i];
+	var point_list_length = array_length(points_x[i]);
+	for (var j = 0; j < point_list_length; j++)
+	{
+		points_x[i][j] -= centre_of_mass_x;
+		points_y[i][j] -= centre_of_mass_y;
+		
+		_left = min(floor(points_x[i][j]), _left);
+		_top = min(floor(points_y[i][j]), _top);
+	}
 }
-
-centre_of_mass_x = 0;
-centre_of_mass_y = 0;
 
 if (sprite_index != -1)
 {
@@ -59,22 +69,26 @@ var fix;
 switch (body_type)
 {
 	case PhysicsBodyType.Polygon:
-		var polygons = bayazit_decompose(points_x, points_y);
-
-		for (var i = 0; i < array_length(polygons.x); i++)
+		
+		for (var l = 0; l < point_list_count; l++)
 		{
-			fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
-			physics_fixture_set_collision_group(fix, collision_group);
-			physics_fixture_set_restitution(fix, e);
-			physics_fixture_set_density(fix, body_static ? 0 : 1);
-	
-			for (var j = 0; j < array_length(polygons.x[i]); j++)
+			var polygons = bayazit_decompose(points_x[l], points_y[l]);
+
+			for (var i = 0; i < array_length(polygons.x); i++)
 			{
-				physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
-			}
+				fix = physics_fixture_create(); physics_fixture_set_polygon_shape(fix);
+				physics_fixture_set_collision_group(fix, collision_group);
+				physics_fixture_set_restitution(fix, e);
+				physics_fixture_set_density(fix, body_static ? 0 : 1);
 	
-			physics_fixture_bind(fix, id);
-			physics_fixture_delete(fix);
+				for (var j = 0; j < array_length(polygons.x[i]); j++)
+				{
+					physics_fixture_add_point(fix, polygons.x[i][j], polygons.y[i][j]);
+				}
+	
+				physics_fixture_bind(fix, id);
+				physics_fixture_delete(fix);
+			}
 		}
 		break;
 	
@@ -85,11 +99,15 @@ switch (body_type)
 		physics_fixture_set_restitution(fix, e);
 		physics_fixture_set_density(fix, body_static ? 0 : 1);
 		
-		for (var i = 0, j = -1; i < point_count; i++)
+		for (var i = 0; i < point_list_count; i++)
 		{
-			j = (i + 1) % point_count;
-			physics_fixture_set_edge_shape(fix, points_x[i], points_y[i], points_x[j], points_y[j]);
-			physics_fixture_bind(fix, id);
+			var point_list_length = array_length(points_x[i]);
+			for (var j = 0, k = INVALID; j < point_list_length; j++)
+			{
+				k = (j + 1) % point_list_length;
+				physics_fixture_set_edge_shape(fix, points_x[i][j], points_y[i][j], points_x[i][k], points_y[i][k]);
+				physics_fixture_bind(fix, id);
+			}
 		}
 		
 		physics_fixture_delete(fix);

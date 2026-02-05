@@ -2,6 +2,22 @@ Draw Platforms ✓
 Implement Physics ✓
 Win/Lose Conditions
 Game AI
+Daily Mechanics
+Menus => daily game + base game
 Game Juice
-Daily Mechanic
-Menus
+
+ai difficulty
+ai drawing platforms
+points
+menus
+daily mechanics
+tutorial
+----
+calibrate to reddit
+----
+sfx/music
+erasing
+zooms
+camershake
+color schemes
+logos + signatures
