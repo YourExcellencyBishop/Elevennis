@@ -1,4 +1,4 @@
 // Inherit the parent event
 event_inherited();
 
-swing = 5;
+swing = 3;

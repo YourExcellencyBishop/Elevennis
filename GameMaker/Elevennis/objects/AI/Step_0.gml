@@ -86,27 +86,52 @@ var end_t   = min(end_tx, end_ty);
 start_t = max(start_t, 0);
 end_t = max(end_t, 0);
 
-if (start_t < end_t /*&& DrawnPlatformsSpawner.spawner_mode == SpawnerMode.ChangeSize*/)
+if (start_t < end_t && DrawnPlatformSpawner.spawner_mode == SpawnerMode.ChangeSize)
 {	
 	if (!found_place)
 	{
-		var future_time = lerp(start_t, end_t, 0.5);
+		var future_time = lerp(start_t, end_t, random_range(0.2, 0.8));
 		
 		show_debug_message(future_time)
 
 		var ball_vx = Ball.phy_linear_velocity_x * future_time;
 		var ball_vy = Ball.phy_linear_velocity_y * future_time + 0.5 * grv * future_time * future_time;
 
-		var ball_speed = sqrt(sqr(ball_vx) + sqr(ball_vy));
-
-		if (ball_speed > 0)
-		{
-			var nx = -(ball_vy / ball_speed);
-			platform.phy_rotation = sign(-ball_vx) * radtodeg(arccos(nx * -1));
-		}
-
 		platform.phy_position_x = Ball.phy_position_x + ball_vx;
 		platform.phy_position_y = Ball.phy_position_y + ball_vy;
+
+		var ball_speed = sqrt(sqr(ball_vx) + sqr(ball_vy));
+		
+		if (ball_speed > 0)
+		{
+			nx = -(ball_vx / ball_speed);
+			ny = -(ball_vy / ball_speed);
+			
+			var tx = target_x - platform.phy_position_x;
+			var ty =  target_y - platform.phy_position_y;
+			
+			var t_len = sqrt(tx*tx + ty*ty);
+			tx /= t_len;
+			ty /= t_len;
+			
+			nx += tx;
+			ny += ty;
+			
+			var n_len = sqrt(nx*nx + ny*ny);
+			
+			nx /= n_len;
+			ny /= n_len;
+			
+			platform.phy_rotation = radtodeg(arctan2(nx, -ny));
+			
+			var d = ball_vx * nx + ball_vy * ny;
+			
+			final_vx = 5 * (ball_vx - 2.0 * d * nx);
+			final_vy = 5 * (ball_vy - 2.0 * d * ny);
+		}
+		
+		
+		
 		found_place = true;
 	}
 }

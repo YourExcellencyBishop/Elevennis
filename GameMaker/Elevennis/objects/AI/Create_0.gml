@@ -2,7 +2,7 @@ platform = instance_create_depth(-50, -50, depth, AiPlatform,
 {
 	point_count: 4,
 	points_x: [[-20, 20, 20, -20]], 
-	points_y: [[-3, -3, 3, 3]],
+	points_y: [[-1, -1, 1, 1]],
 	body_static: true, 
 	collision_group: 1,
 	e: 1
@@ -23,3 +23,12 @@ function calc_value(a, b, c = 0)
            ((a * b <= 0)     ? max(a, b) :
                               c);
 }
+
+final_vx = 0;
+final_vy = 0;
+
+nx = 0;
+ny = 0;
+
+target_x = 160;
+target_y = 50;
