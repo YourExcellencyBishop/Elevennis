@@ -3,8 +3,12 @@ global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
 global.gravity_x = 0;
-global.gravity_y = 10000;
+global.gravity_y = 100;
 
+#macro pixelstometerscale 0.1
+
+physics_world_create(pixelstometerscale);
+physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
 
 if (useDebug)
 {

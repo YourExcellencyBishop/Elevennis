@@ -1,4 +1,6 @@
-var grv = 10 / 0.1;
+#macro EPS 0.0001
+
+var grv = global.gravity_y;
 
 var y0 = Ball.phy_position_y;
 var a = 0.5 * grv;
@@ -15,7 +17,7 @@ var disc = b*b - 4*a*c;
 
 var y1r1 = -1, y1r2 = -1;
 
-if (disc <  0.0001)
+if (disc <  EPS)
 {
 	if (y0 > bounds_y1) { y1r1 = 0; y1r2 = infinity; }
 	else { exit; }
@@ -30,9 +32,9 @@ else
 	else
 	{
 		y1r1 = (-b - sqrt_disc) / (2 * a);
-		if (y1r1 < 0.0001 ) { y1r1 = infinity; }
+		if (y1r1 < EPS ) { y1r1 = infinity; }
 		y1r2 = (-b + sqrt_disc) / (2 * a);
-		if (y1r2 < 0.0001 ) { y1r2 = infinity; }
+		if (y1r2 < EPS ) { y1r2 = infinity; }
 	}
 }
 
@@ -42,7 +44,7 @@ disc = b*b - 4*a*c;
 
 var y2r1 = -1, y2r2 = -1;
 
-if (disc <  0.0001)
+if (disc <  EPS)
 {
 	if (y0 < bounds_y2) { y2r1 = 0; y2r2 = infinity;  }
 	else { exit; }
@@ -57,9 +59,9 @@ else
 	else 
 	{
 		y2r1 = (-b - sqrt_disc) / (2 * a);
-		if (y2r1 < 0.0001 ) { y2r1 = infinity; }
+		if (y2r1 < EPS ) { y2r1 = infinity; }
 		y2r2 = (-b + sqrt_disc) / (2 * a);
-		if (y2r2 < 0.0001 ) { y2r2 = infinity; }
+		if (y2r2 < EPS ) { y2r2 = infinity; }
 	}
 }
 

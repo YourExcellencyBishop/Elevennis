@@ -9,7 +9,7 @@ for (i = 1; i < 60*5; i += 5)
 	var t = dt * i;
 	
 	centre_x += Ball.phy_linear_velocity_x * t;
-	centre_y += Ball.phy_linear_velocity_y * t + 0.5 * 100 * t * t;
+	centre_y += Ball.phy_linear_velocity_y * t + 0.5 * global.gravity_y * t * t;
 	//show_message(gravity)
 
 	draw_set_alpha(lerp(0.25, 1, 1  - i/120));
