@@ -60,3 +60,11 @@ spawner_mode = SpawnerMode.Draw;
 out_zone = MakeBoxSensor(bounds_x1, room_height - 3, bounds_x2, room_height, OutZone, depth - 1);
 out_zone.color = out_zone_color;
 out_zone.character = character;
+out_zone.func = function()
+{
+	character.enemy.total_score++;
+	with (GameManager)
+	{
+		reset_game();
+	}
+}

@@ -1,5 +1,3 @@
-character.enemy.score++;
-with (GameManager)
-{
-	reset_game();
-}
+collision = other;
+
+if (func != INVALID) func();

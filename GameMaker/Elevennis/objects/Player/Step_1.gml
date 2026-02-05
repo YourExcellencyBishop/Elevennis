@@ -23,6 +23,11 @@ with (platform_spawner)
 	    d = abs(brush_position_y - draw_area_y2);
 	    if (d < mouse_dist) { mouse_dist = d; size_arrow_dir = SizeArrowDir.Down; }
 	}
+	else if (spawner_mode == SpawnerMode.Draw)
+	{
+		changing_draw_area_size = false;
+		resize_draw_area = true;
+	}
 
 	size_arrow_phase = 2 * sin(current_time * 0.014); // change current_time to use delta_time
 

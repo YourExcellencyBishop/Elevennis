@@ -52,10 +52,10 @@ physics_fixture_bind(fix, id);
 
 physics_fixture_delete(fix);
 
-var net_thickness = 2;
-var net_height = surf_height / 3;
+net_thickness = 2;
+net_height = surf_height / 3;
 
-instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, Net, 
+instance_create_depth(room_width / 2, room_height - net_height / 2, depth - 1, Net, 
 {
 	points_x: [[-net_thickness, net_thickness, net_thickness, -net_thickness]], 
 	points_y: [[-net_height / 2, -net_height / 2, net_height / 2, net_height / 2]],
@@ -75,6 +75,78 @@ instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, N
 //	half_height: room_height / 2
 //});
 
+#macro player_bound_x1 40
+#macro player_bound_y1 70
+#macro player_bound_x2 120
+#macro player_bound_y2 160
+#macro zone_separator_e 0.75
+
+player = instance_create_depth(0, 0, depth - 1, Player, 
+{
+	bounds_x1: player_bound_x1,
+	bounds_y1: player_bound_y1,
+	bounds_x2: player_bound_x2,
+	bounds_y2: player_bound_y2,
+	draw_area_side: 50,
+	bounds_color: c_red,
+	out_zone_color: c_blue
+});
+
+instance_create_depth(player_bound_x1, room_height, depth, PhysicsBody,
+{
+	point_count: 4, 
+	points_x: [[-4, 4, 4, -4]], 
+	points_y: [[-12, -12, 12, 12]],
+	point_mass: 1,
+	body_static: true,
+	e: zone_separator_e
+});
+
+instance_create_depth(player_bound_x2, room_height, depth, PhysicsBody,
+{
+	point_count: 4, 
+	points_x: [[-4, 4, 4, -4]], 
+	points_y: [[-12, -12, 12, 12]],
+	point_mass: 1,
+	body_static: true,
+	e: zone_separator_e
+});
+
+opponent = instance_create_depth(0, 0, depth - 1, AI, 
+{
+	bounds_x1: room_width - player_bound_x2,
+	bounds_y1: player_bound_y1,
+	bounds_x2: room_width - player_bound_x1,
+	bounds_y2: player_bound_y2,
+	draw_area_side: 50,
+	bounds_color: c_blue,
+	out_zone_color: c_red,
+	enemy: player
+});
+
+instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
+{
+	point_count: 4, 
+	points_x: [[-4, 4, 4, -4]], 
+	points_y: [[-12, -12, 12, 12]],
+	point_mass: 1,
+	body_static: true,
+	e: zone_separator_e
+});
+
+instance_create_depth(room_width - player_bound_x1, room_height, depth, PhysicsBody,
+{
+	point_count: 4, 
+	points_x: [[-4, 4, 4, -4]], 
+	points_y: [[-12, -12, 12, 12]],
+	point_mass: 1,
+	body_static: true,
+	e: zone_separator_e
+});
+
+player.enemy = opponent;
+
+
 ball = instance_create_depth(160, 90, depth, Ball,
 {
 	point_count: 4, 
@@ -82,31 +154,6 @@ ball = instance_create_depth(160, 90, depth, Ball,
 	points_y: [[-10, -10, 10, 10]],
 	point_mass: 1
 });
-
-player = instance_create_depth(0, 0, depth - 1, Player, 
-{
-	bounds_x1: 40,
-	bounds_y1: 70,
-	bounds_x2: 120,
-	bounds_y2: 160,
-	draw_area_side: 50,
-	bounds_color: c_red,
-	out_zone_color: c_blue
-});
-
-opponent = instance_create_depth(0, 0, depth - 1, AI, 
-{
-	bounds_x1: room_width - 120,
-	bounds_y1: 70,
-	bounds_x2: room_width - 40,
-	bounds_y2: 160,
-	draw_area_side: 50,
-	bounds_color: c_blue,
-	out_zone_color: c_red,
-	enemy: player
-});
-
-player.enemy = opponent;
 
 function reset_game()
 {
