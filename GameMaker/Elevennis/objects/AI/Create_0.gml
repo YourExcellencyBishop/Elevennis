@@ -1,3 +1,5 @@
+event_inherited();
+
 platform = instance_create_depth(-50, -50, depth, AiPlatform, 
 {
 	point_count: 4,
@@ -10,27 +12,15 @@ platform = instance_create_depth(-50, -50, depth, AiPlatform,
 
 platform.phy_fixed_rotation = true;
 
-bounds_x1 = room_width - DrawnPlatformSpawner.bounds_x2;
-bounds_x2 = room_width - DrawnPlatformSpawner.bounds_x1;
-bounds_y1 = DrawnPlatformSpawner.bounds_y1;
-bounds_y2 = DrawnPlatformSpawner.bounds_y2;
-
 found_place = false;
 
-function calc_value(a, b, c = 0)
+// make dynamic
+target_x = 160;
+target_y = 50;
+
+function get_time_roots(a, b, c = 0)
 {
     return (a > 0 && b > 0) ? min(a, b) :
            ((a * b <= 0)     ? max(a, b) :
                               c);
 }
-
-//final_vx = 0;
-//final_vy = 0;
-
-//nx = 0;
-//ny = 0;
-
-
-// make dynamic
-target_x = 160;
-target_y = 50;

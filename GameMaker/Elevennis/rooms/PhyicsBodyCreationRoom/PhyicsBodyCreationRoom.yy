@@ -8,7 +8,6 @@
   "instanceCreationOrder":[
     {"name":"inst_52A9B57A","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
     {"name":"inst_3498C0C7","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
-    {"name":"inst_6D614E07","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -22,7 +21,6 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"point_mass","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},"propertyId":{"name":"body_static","path":"objects/PhysicsBody/PhysicsBody.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":90.0,},
-        {"$GMRInstance":"v4","%Name":"inst_6D614E07","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6D614E07","objectId":{"name":"AI","path":"objects/AI/AI.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
   ],
   "name":"PhyicsBodyCreationRoom",

@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"OutZone",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"Ball","path":"objects/Ball/Ball.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Player",
+  "eventList":[],
   "managed":true,
-  "name":"OutZone",
+  "name":"Player",
   "overriddenProperties":[],
   "parent":{
-    "name":"BoxSensors",
-    "path":"folders/Game/Objects/BoxSensors.yy",
+    "name":"Characters",
+    "path":"folders/Game/Objects/Characters.yy",
   },
   "parentObjectId":{
-    "name":"BoxSensor",
-    "path":"objects/BoxSensor/BoxSensor.yy",
+    "name":"Character",
+    "path":"objects/Character/Character.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
