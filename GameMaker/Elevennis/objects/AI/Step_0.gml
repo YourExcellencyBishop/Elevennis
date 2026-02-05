@@ -86,7 +86,7 @@ var end_t   = min(end_tx, end_ty);
 start_t = max(start_t, 0);
 end_t = max(end_t, 0);
 
-if (start_t < end_t && DrawnPlatformSpawner.spawner_mode == SpawnerMode.ChangeSize)
+if (start_t < end_t && platform_spawner.spawner_mode == SpawnerMode.Draw)
 {	
 	if (!found_place)
 	{
@@ -121,11 +121,6 @@ if (start_t < end_t && DrawnPlatformSpawner.spawner_mode == SpawnerMode.ChangeSi
 			ny /= n_len;
 			
 			platform.phy_rotation = radtodeg(arctan2(nx, -ny));
-			
-			//var dot = ball_vx * nx + ball_vy * ny;
-			
-			//final_vx = 5 * (ball_vx - 2.0 * dot * nx);
-			//final_vy = 5 * (ball_vy - 2.0 * dot * ny);
 		}
 		
 		found_place = true;

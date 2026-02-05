@@ -38,6 +38,7 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"surface_area","filters":[],"listItems":[],"multiselect":false,"name":"surface_area","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"character","filters":[],"listItems":[],"multiselect":false,"name":"character","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

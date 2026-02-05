@@ -9,6 +9,7 @@ global.gravity_y = 100;
 
 physics_world_create(pixelstometerscale);
 physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
+physics_world_update_speed(game_get_speed(gamespeed_fps) * 2);
 
 if (useDebug)
 {
@@ -21,6 +22,8 @@ if (useDebug)
 application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);
+
+
 
 surf = INVALID;
 surf_width = 320;
@@ -72,7 +75,15 @@ instance_create_depth(surf_width / 2, surf_height - net_height / 2, depth - 1, N
 //	half_height: room_height / 2
 //});
 
-instance_create_depth(0, 0, depth - 1, Player, 
+ball = instance_create_depth(160, 90, depth, Ball,
+{
+	point_count: 4, 
+	points_x: [[-10, 10, 10, -10]], 
+	points_y: [[-10, -10, 10, 10]],
+	point_mass: 1
+});
+
+player = instance_create_depth(0, 0, depth - 1, Player, 
 {
 	bounds_x1: 40,
 	bounds_y1: 70,
@@ -83,7 +94,7 @@ instance_create_depth(0, 0, depth - 1, Player,
 	out_zone_color: c_blue
 });
 
-instance_create_depth(0, 0, depth - 1, AI, 
+opponent = instance_create_depth(0, 0, depth - 1, AI, 
 {
 	bounds_x1: room_width - 120,
 	bounds_y1: 70,
@@ -91,5 +102,36 @@ instance_create_depth(0, 0, depth - 1, AI,
 	bounds_y2: 160,
 	draw_area_side: 50,
 	bounds_color: c_blue,
-	out_zone_color: c_red
+	out_zone_color: c_red,
+	enemy: player
 });
+
+player.enemy = opponent;
+
+function reset_game()
+{
+	with (ball)
+	{
+		phy_position_x = 160;
+		phy_position_y = 90;
+		
+		phy_linear_velocity_x = 0;
+		phy_linear_velocity_y = 0;
+		phy_angular_velocity = 0;
+		
+		physics_apply_impulse(phy_com_x, phy_com_y, -15, -30);
+		physics_apply_angular_impulse(-30)
+	}
+	
+	with (DrawnPlatformSpawner)
+	{
+		spawner_mode = SpawnerMode.Draw;
+	}
+	
+	with (DrawnPlatform)
+	{
+		instance_destroy();
+	}
+}
+
+reset_game();

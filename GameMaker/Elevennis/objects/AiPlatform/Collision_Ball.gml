@@ -1,4 +1,5 @@
-DrawnPlatformSpawner.spawner_mode = SpawnerMode.Draw;
+Player.platform_spawner.spawner_mode = SpawnerMode.Draw;
+AI.platform_spawner.spawner_mode = SpawnerMode.ChangeSize;
 
 with (other)
 {

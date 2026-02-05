@@ -48,8 +48,6 @@
     {"id":{"name":"OutZone","path":"objects/OutZone/OutZone.yy",},},
     {"id":{"name":"PhysicsBody","path":"objects/PhysicsBody/PhysicsBody.yy",},},
     {"id":{"name":"Player","path":"objects/Player/Player.yy",},},
-    {"id":{"name":"Rebounder","path":"objects/Rebounder/Rebounder.yy",},},
-    {"id":{"name":"SideSeparator","path":"objects/SideSeparator/SideSeparator.yy",},},
     {"id":{"name":"PhyicsBodyCreationRoom","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},},
     {"id":{"name":"BayazitConvexDecomposition","path":"scripts/BayazitConvexDecomposition/BayazitConvexDecomposition.yy",},},
     {"id":{"name":"CreatePhysicsBodies","path":"scripts/CreatePhysicsBodies/CreatePhysicsBodies.yy",},},

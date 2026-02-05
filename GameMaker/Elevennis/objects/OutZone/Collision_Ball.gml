@@ -1,1 +1,5 @@
-game_restart();
+character.enemy.score++;
+with (GameManager)
+{
+	reset_game();
+}

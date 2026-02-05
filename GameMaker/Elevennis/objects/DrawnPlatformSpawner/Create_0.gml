@@ -57,5 +57,6 @@ size_arrow_dir = SizeArrowDir.Right;
 spawner_mode = SpawnerMode.Draw;
 
 // Out Zone
-out_zone = MakeBoxSensor(bounds_x1, room_height - 1, bounds_x2, room_height + 1, OutZone, depth - 1);
+out_zone = MakeBoxSensor(bounds_x1, room_height - 3, bounds_x2, room_height, OutZone, depth - 1);
 out_zone.color = out_zone_color;
+out_zone.character = character;

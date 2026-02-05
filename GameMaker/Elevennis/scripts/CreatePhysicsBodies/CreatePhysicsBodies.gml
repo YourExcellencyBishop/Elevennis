@@ -92,7 +92,7 @@ function CreateEdgeSurface(surface, support_surface_r8unorm)
 	#endregion
 }
 
-function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, bounds, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
+function CreatePhysicsBodies(character, surface, surface_pos_x, surface_pos_y, width, height, buf, image_size, bounds, support_surface_r8unorm, x_offset = 0.5, y_offset = 0.5)
 {
 
 	#region Algorthim Setup
@@ -258,7 +258,8 @@ function CreatePhysicsBodies(surface, surface_pos_x, surface_pos_y, width, heigh
 		points_x: results_x, points_y: results_y,
 		sprite_index: sprite_create_from_surface(surface, bounds[0] + _left, bounds[1] + _top, floor(_right - _left) + 1, floor(_bottom - _top) + 1, false, false, 0, 0),
 		surface_area: surface_area,
-		body_type: PhysicsBodyType.Edge
+		body_type: PhysicsBodyType.Edge,
+		character: character
 	});
 	
 	surface_free(surface);	
