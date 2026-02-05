@@ -17,7 +17,7 @@ var disc = b*b - 4*a*c;
 
 var y1r1 = -1, y1r2 = -1;
 
-if (disc <  EPS)
+if (disc < EPS)
 {
 	if (y0 > platform_spawner.bounds_y1) { y1r1 = 0; y1r2 = infinity; }
 	else { exit; }
@@ -27,7 +27,7 @@ else
 	sqrt_disc = sqrt(disc);
 	if (y0 > platform_spawner.bounds_y1) 
 	{
-		y1r1 = 0; y1r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a), infinity); 
+		y1r1 = 0; y1r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a)); 
 	}
 	else
 	{
@@ -44,7 +44,7 @@ disc = b*b - 4*a*c;
 
 var y2r1 = -1, y2r2 = -1;
 
-if (disc <  EPS)
+if (disc < EPS)
 {
 	if (y0 < platform_spawner.bounds_y2) { y2r1 = 0; y2r2 = infinity;  }
 	else { exit; }
@@ -54,7 +54,7 @@ else
 	sqrt_disc = sqrt(disc);
 	if (y0 < platform_spawner.bounds_y2) 
 	{
-		y2r1 = 0; y2r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a), infinity); 
+		y2r1 = 0; y2r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a)); 
 	}
 	else 
 	{

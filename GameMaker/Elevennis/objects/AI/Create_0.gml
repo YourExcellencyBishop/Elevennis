@@ -9,7 +9,6 @@ platform = instance_create_depth(-50, -50, depth, AiPlatform,
 	collision_group: 1,
 	e: 1
 });
-
 platform.phy_fixed_rotation = true;
 
 found_place = false;
@@ -18,9 +17,19 @@ found_place = false;
 target_x = 160;
 target_y = 50;
 
-function get_time_roots(a, b, c = 0)
+function get_time_roots(a, b)
 {
     return (a > 0 && b > 0) ? min(a, b) :
-           ((a * b <= 0)     ? max(a, b) :
-                              c);
+           ((a * b <= 0)    ? max(a, b) :
+                              infinity);
 }
+
+/*/
+ *
+ *  AI difficulty properties:
+ *	Draw Length (Power)
+ *	Draw Speed
+ *	Draw Time
+ *	Angle
+ *
+/*/
