@@ -1,11 +1,11 @@
-randomise()
-
 global.SupportR8UnormSurface = surface_format_is_supported(surface_r8unorm);
 global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
 global.gravity_x = 0;
 global.gravity_y = 100;
+
+randomise()
 
 if (useDebug)
 {
@@ -51,6 +51,8 @@ physics_fixture_set_edge_shape(fix, 0, room_height, 0, 0); // left
 physics_fixture_bind(fix, id);
 
 physics_fixture_delete(fix);
+
+instance_create_depth(x, y, depth, PauseManager);
 
 net_thickness = 2;
 net_height = surf_height / 3;

@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"ScoreFont",
+  "%Name":"MenuFont",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":102,
@@ -117,7 +117,7 @@
   "last":0,
   "lineHeight":133,
   "maintainGms1Font":false,
-  "name":"ScoreFont",
+  "name":"MenuFont",
   "parent":{
     "name":"Fonts",
     "path":"folders/Fonts.yy",

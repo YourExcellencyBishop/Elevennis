@@ -1,12 +1,15 @@
 {
   "$GMRoom":"v1",
-  "%Name":"PhyicsBodyCreationRoom",
-  "creationCodeFile":"rooms/PhyicsBodyCreationRoom/RoomCreationCode.gml",
+  "%Name":"GameRoom",
+  "creationCodeFile":"rooms/GameRoom/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,
   "instanceCreationOrder":[
-    {"name":"inst_52A9B57A","path":"rooms/PhyicsBodyCreationRoom/PhyicsBodyCreationRoom.yy",},
+    {"name":"inst_52A9B57A","path":"rooms/GameRoom/GameRoom.yy",},
+    {"name":"inst_67592B59","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_513F4A10","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_43296DDE","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -14,7 +17,7 @@
         {"$GMRInstance":"v4","%Name":"inst_52A9B57A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_52A9B57A","objectId":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
   ],
-  "name":"PhyicsBodyCreationRoom",
+  "name":"GameRoom",
   "parent":{
     "name":"Rooms",
     "path":"folders/Rooms.yy",
@@ -30,10 +33,10 @@
   "resourceType":"GMRoom",
   "resourceVersion":"2.0",
   "roomSettings":{
-    "Height":1,
+    "Height":180,
     "inheritRoomSettings":false,
     "persistent":false,
-    "Width":1,
+    "Width":320,
   },
   "sequenceId":null,
   "views":[

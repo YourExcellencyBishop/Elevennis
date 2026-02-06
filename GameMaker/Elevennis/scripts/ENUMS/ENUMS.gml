@@ -12,3 +12,8 @@ enum PhysicsBodyType
 {
 	Edge, Polygon	
 }
+
+enum ButtonID
+{
+	None, Resume, Settings, Quit
+}

@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"ScoreFont",
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "name":"Game",
+    "path":"folders/Game.yy",
   },
   "pointRounding":0,
   "ranges":[
