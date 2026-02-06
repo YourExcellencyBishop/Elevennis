@@ -22,6 +22,8 @@ bounds_height = bounds_y2 - bounds_y1;
 bounds_centre_x = bounds_x1 + bounds_width * 0.5;
 bounds_centre_y = bounds_y1 + bounds_height * 0.5;
 
+#macro ready_to_play_space 10
+
 // Surface
 surface = INVALID;
 #macro surface_x bounds_x1

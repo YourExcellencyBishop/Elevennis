@@ -90,8 +90,8 @@ with (platform_spawner)
 		
 		if (mouse_check_button_released(mb_left) and
 			point_in_rectangle(brush_position_x, brush_position_y, 
-			bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
-			bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5))
+			bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space - string_height("Ready? [  X  ]"), 
+			bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space))
 		{
 			other.ready_to_play = !other.ready_to_play;
 		}

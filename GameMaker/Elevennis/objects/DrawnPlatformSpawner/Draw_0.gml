@@ -73,12 +73,17 @@ if (!PauseManager.ready_to_play)
 	//draw_set_colour(c_white)
 	
 	var hovering = point_in_rectangle(brush_position_x, brush_position_y, 
-		bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
-		bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5);
+		bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space - string_height("Ready? [  X  ]"), 
+		bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space);
 	
 	var not_ready_text = hovering ? "Ready? [  _  ]" :  "Ready? [     ]";
 	
 	draw_set_colour(character.ready_to_play ? c_lime : (hovering ? c_yellow : c_maroon));
-	draw_text(bounds_centre_x, bounds_y1 - 5, character.ready_to_play ? "Ready? [  X  ]" : not_ready_text);
+	draw_text(bounds_centre_x, bounds_y1 - ready_to_play_space, character.ready_to_play ? "Ready? [  X  ]" : not_ready_text);
 	draw_set_colour(c_white);
+}
+
+if (spawner_mode == SpawnerMode.Draw)
+{
+	draw_sprite(AreaLock, 0, bounds_x1, bounds_y1);
 }
