@@ -1,3 +1,5 @@
+randomise()
+
 global.SupportR8UnormSurface = surface_format_is_supported(surface_r8unorm);
 global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
@@ -119,7 +121,8 @@ opponent = instance_create_depth(0, 0, depth - 1, AI,
 	draw_area_side: sqrt((player_bound_x2 - player_bound_x1) * (player_bound_y2 - player_bound_y1) - 1),
 	bounds_color: c_blue,
 	out_zone_color: c_red,
-	enemy: player
+	enemy: player,
+	difficulty: 11/11
 });
 
 instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,

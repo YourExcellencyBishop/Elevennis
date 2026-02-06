@@ -1,3 +1,5 @@
+if (draw_delay > 0) exit;
+
 if (!platform_spawner.drawing)
 {
 	#macro EPS 0.0001
@@ -92,16 +94,46 @@ if (!platform_spawner.drawing)
 	{	
 		if (!found_place)
 		{
-			var future_time = lerp(start_t, end_t, random_range(0.3, 0.7));
+			var future_time = lerp(start_t, end_t, random_range(time_range_low, time_range_high));
 
 			var ball_vx = Ball.phy_linear_velocity_x * future_time;
 			var ball_vy = Ball.phy_linear_velocity_y * future_time + 0.5 * grv * future_time * future_time;
 
-			draw_centre_x = Ball.phy_position_x + ball_vx;
+			draw_centre_x = (Ball.phy_position_x + ball_vx);
 			draw_centre_y = Ball.phy_position_y + ball_vy;
 			
 			//platform.phy_position_x = draw_centre_x;
 			//platform.phy_position_y = draw_centre_y;
+			
+			draw_centre_x = (platform_spawner.draw_area_x1 - draw_centre_x) > (draw_centre_x - platform_spawner.draw_area_x2) ? 
+				draw_centre_x - (lerp(0, max_position_variance, random(1 - difficulty))) :
+				draw_centre_x + (lerp(0, max_position_variance, random(1 - difficulty)));
+				
+			draw_centre_y = (platform_spawner.draw_area_y1 - draw_centre_y) > (draw_centre_y - platform_spawner.draw_area_y2) ? 
+				draw_centre_y - (lerp(0, max_position_variance, random(1 - difficulty))) :
+				draw_centre_y + (lerp(0, max_position_variance, random(1 - difficulty)));
+			
+			if (difficulty > 8/11)
+			{
+				var _draw_area_width = (platform_spawner.draw_area_x2 - platform_spawner.draw_area_x1);
+				var _draw_area_height = (platform_spawner.draw_area_y2 - platform_spawner.draw_area_y1);
+				var _x = (draw_centre_x - platform_spawner.draw_area_x1) / _draw_area_width;
+				var _y = (draw_centre_y - platform_spawner.draw_area_y1) / _draw_area_height;
+				
+				draw_length = lerp(max_draw_length, min_draw_length, 
+					((_x * _draw_area_width) + (_y * _draw_area_height)) / (_draw_area_width + _draw_area_height));
+			}
+			else if (difficulty > 5/11)
+			{
+				var axis = random_range(-1, 1) > 0 ? 
+					(draw_centre_x - platform_spawner.draw_area_x1) / (platform_spawner.draw_area_x2 - platform_spawner.draw_area_x1) :
+					(draw_centre_y - platform_spawner.draw_area_y1) / (platform_spawner.draw_area_y2 - platform_spawner.draw_area_y1);
+				draw_length = lerp(max_draw_length, min_draw_length, axis);
+			}
+			else
+			{
+				draw_length = lerp(max_draw_length, min_draw_length + (6 - 11 * difficulty), random(1));
+			}
 			
 			var ball_speed = sqrt(sqr(ball_vx) + sqr(ball_vy));
 		
@@ -125,10 +157,10 @@ if (!platform_spawner.drawing)
 				nx /= n_len;
 				ny /= n_len;
 			
-				var angle = arctan2(nx, -ny);
-				var x_end = cos(angle) * 10;
-				var y_end = sin(angle) * 10;
-				//platform.phy_rotation = radtodeg(angle);
+				var angle = arctan2(nx, -ny) + random_range(-angle_variance, angle_variance);
+				var x_end = cos(angle) * draw_length;
+				var y_end = sin(angle) * draw_length;
+				// platform.phy_rotation = radtodeg(angle);
 			
 				draw_start_x = draw_centre_x + x_end;
 				draw_start_y = draw_centre_y + y_end;
@@ -157,8 +189,8 @@ else
 	{
 		prev_brush_position_x = brush_position_x;
 		prev_brush_position_y = brush_position_y;
-		brush_position_x = lerp(brush_position_x, other.draw_end_x, 0.35);
-		brush_position_y = lerp(brush_position_y, other.draw_end_y, 0.35);
+		brush_position_x = lerp(brush_position_x, other.draw_end_x, other.draw_speed);
+		brush_position_y = lerp(brush_position_y, other.draw_end_y, other.draw_speed);
 		
 		if (in_draw_area) { drew = true; }
 	
@@ -168,6 +200,7 @@ else
 			brush_position_x = other.draw_end_x;
 			brush_position_y = other.draw_end_y;
 			create_physics_body = drew;
+			other.draw_delay = lerp(other.max_draw_delay, 0, other.difficulty);
 		}
 	}
 }

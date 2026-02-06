@@ -60,6 +60,24 @@ function get_time_roots(a, b)
                               infinity);
 }
 
+draw_speed = lerp(0.25, 0.5, difficulty * difficulty);
+
+time_range_low = 0.5 - lerp(0.4, 0.1, difficulty);
+time_range_high = 0.5 + lerp(0.4, 0.1, difficulty);
+
+max_position_variance = 25;
+
+angle_accuracy = difficulty;
+angle_variance = degtorad(45 * (1 - difficulty));
+
+max_draw_length = 20;
+min_draw_length = 2;
+
+draw_length = 20;
+
+max_draw_delay = game_get_speed(gamespeed_fps) * 2;
+draw_delay = INVALID;
+
 /*/
  *
  *  AI difficulty properties:
