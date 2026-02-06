@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Game/Objects.yy",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":{
     "name":"PhysicsBody",

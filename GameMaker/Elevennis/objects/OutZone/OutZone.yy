@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"BoxSensors",
-    "path":"folders/Game/Objects/BoxSensors.yy",
+    "path":"folders/Objects/BoxSensors.yy",
   },
   "parentObjectId":{
     "name":"BoxSensor",

@@ -6,7 +6,7 @@ Daily Mechanics
 Menus => daily game + base game
 Game Juice
 
-ai difficulty
+ai difficulty ✓
 ai drawing platforms ✓
 points ✓
 menus
