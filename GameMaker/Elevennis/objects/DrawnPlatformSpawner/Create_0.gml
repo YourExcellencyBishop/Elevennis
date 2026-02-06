@@ -47,6 +47,32 @@ draw_area_y2 = bounds_centre_y + draw_area_side * 0.5;
 min_draw_area_width = draw_area_size / bounds_height;
 min_draw_area_height = draw_area_size / bounds_width;
 
+var overflow;
+
+draw_area_x2 = clamp(draw_area_x2, draw_area_x1 + min_draw_area_width, bounds_x2);
+draw_area_y1 = draw_area_y2 - (draw_area_size / (draw_area_x2 - draw_area_x1));
+overflow = min(0, draw_area_y1 - bounds_y1);
+draw_area_y2 -= overflow;
+draw_area_y1 -= overflow;
+				
+draw_area_x1 = clamp(draw_area_x1, bounds_x1, draw_area_x2 - min_draw_area_width);
+draw_area_y2 = (draw_area_size / (draw_area_x2 - draw_area_x1)) + draw_area_y1;
+overflow = max(0, draw_area_y2 - bounds_y2);
+draw_area_y1 -= overflow;
+draw_area_y2 -= overflow;
+				
+draw_area_y1 = clamp(draw_area_y1, bounds_y1, draw_area_y2 - min_draw_area_height);
+draw_area_x2 = (draw_area_size / (draw_area_y2 - draw_area_y1)) + draw_area_x1;	
+overflow = max(0, draw_area_x2 - bounds_x2);
+draw_area_x1 -= overflow;
+draw_area_x2 -= overflow;
+				
+draw_area_y2 = clamp(draw_area_y2, draw_area_y1 + min_draw_area_height, bounds_y2);
+draw_area_x1 = draw_area_x2 - (draw_area_size / (draw_area_y2 - draw_area_y1));
+overflow = min(0, draw_area_x1 - bounds_x1);
+draw_area_x2 -= overflow;
+draw_area_x1 -= overflow;
+
 // Size Arrow
 size_arrow_x = INVALID;
 size_arrow_y = INVALID;

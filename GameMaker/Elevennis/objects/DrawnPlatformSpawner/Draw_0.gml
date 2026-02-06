@@ -36,8 +36,6 @@ draw_set_colour(bounds_color);
 draw_rectangle(bounds_x1 - 1, bounds_y1 - 1, bounds_x2 + 1, bounds_y2 + 1, true);
 draw_set_colour(c_white);
 
-draw_rectangle(draw_area_x1, draw_area_y1, draw_area_x2, draw_area_y2, true);
-
 if (spawner_mode == SpawnerMode.ChangeSize)
 {
 	var size_arrow_xx = size_arrow_x; 

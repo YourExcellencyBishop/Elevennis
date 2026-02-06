@@ -13,7 +13,7 @@ if (!platform_spawner.drawing)
 	var ty1 = -1, ty2 = -1;
 
 	// Y1
-	var c = y0 - platform_spawner.draw_area_y1 + draw_allowance;
+	var c = y0 - (platform_spawner.draw_area_y1 + draw_allowance);
 	var sqrt_disc;
 	var disc = b*b - 4*a*c;
 
@@ -21,13 +21,13 @@ if (!platform_spawner.drawing)
 
 	if (disc < EPS)
 	{
-		if (y0 > platform_spawner.draw_area_y1 + draw_allowance) { y1r1 = 0; y1r2 = infinity; }
+		if (y0 > (platform_spawner.draw_area_y1 + draw_allowance)) { y1r1 = 0; y1r2 = infinity; }
 		else { exit; }
 	}
 	else
 	{
 		sqrt_disc = sqrt(disc);
-		if (y0 > platform_spawner.draw_area_y1 + draw_allowance) 
+		if (y0 > (platform_spawner.draw_area_y1 + draw_allowance)) 
 		{
 			y1r1 = 0; y1r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a)); 
 		}
@@ -41,20 +41,20 @@ if (!platform_spawner.drawing)
 	}
 
 	// Y2
-	c = y0 - platform_spawner.draw_area_y2 - draw_allowance;
+	c = y0 - (platform_spawner.draw_area_y2 - draw_allowance);
 	disc = b*b - 4*a*c;
 
 	var y2r1 = -1, y2r2 = -1;
 
 	if (disc < EPS)
 	{
-		if (y0 < platform_spawner.draw_area_y2 - draw_allowance) { y2r1 = 0; y2r2 = infinity;  }
+		if (y0 < (platform_spawner.draw_area_y2 - draw_allowance)) { y2r1 = 0; y2r2 = infinity;  }
 		else { exit; }
 	}
 	else
 	{
 		sqrt_disc = sqrt(disc);
-		if (y0 < platform_spawner.draw_area_y2 - draw_allowance) 
+		if (y0 < (platform_spawner.draw_area_y2 - draw_allowance)) 
 		{
 			y2r1 = 0; y2r2 = get_time_roots((-b - sqrt_disc) / (2 * a), (-b + sqrt_disc) / (2 * a)); 
 		}
@@ -72,8 +72,8 @@ if (!platform_spawner.drawing)
 
 	if (ty1 > ty2) { exit; }
 
-	var tx1 = (platform_spawner.draw_area_x1 + draw_allowance - Ball.phy_position_x) / Ball.phy_linear_velocity_x;
-	var tx2 = (platform_spawner.draw_area_x2 - draw_allowance - Ball.phy_position_x) / Ball.phy_linear_velocity_x;
+	var tx1 = ((platform_spawner.draw_area_x1 + draw_allowance) - Ball.phy_position_x) / Ball.phy_linear_velocity_x;
+	var tx2 = ((platform_spawner.draw_area_x2 - draw_allowance) - Ball.phy_position_x) / Ball.phy_linear_velocity_x;
 
 	var start_tx = min(tx1, tx2);
 	var end_tx   = max(tx1, tx2);
@@ -99,7 +99,10 @@ if (!platform_spawner.drawing)
 
 			draw_centre_x = Ball.phy_position_x + ball_vx;
 			draw_centre_y = Ball.phy_position_y + ball_vy;
-
+			
+			//platform.phy_position_x = draw_centre_x;
+			//platform.phy_position_y = draw_centre_y;
+			
 			var ball_speed = sqrt(sqr(ball_vx) + sqr(ball_vy));
 		
 			if (ball_speed > 0)
@@ -123,13 +126,15 @@ if (!platform_spawner.drawing)
 				ny /= n_len;
 			
 				var angle = arctan2(nx, -ny);
+				var x_end = cos(angle) * 10;
+				var y_end = sin(angle) * 10;
 				//platform.phy_rotation = radtodeg(angle);
 			
-				draw_start_x = draw_centre_x + cos(angle) * 10;
-				draw_start_y = draw_centre_y + sin(angle) * 10;
+				draw_start_x = draw_centre_x + x_end;
+				draw_start_y = draw_centre_y + y_end;
 			
-				draw_end_x = draw_centre_x - cos(angle) * 10;
-				draw_end_y = draw_centre_y - sin(angle) * 10;
+				draw_end_x = draw_centre_x - x_end;
+				draw_end_y = draw_centre_y - y_end;
 			
 				with (platform_spawner)
 				{

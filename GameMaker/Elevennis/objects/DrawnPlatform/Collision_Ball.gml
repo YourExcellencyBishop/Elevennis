@@ -1,5 +1,17 @@
-character.platform_spawner.spawner_mode = SpawnerMode.ChangeSize;
-character.enemy.platform_spawner.spawner_mode = SpawnerMode.Draw;
+with (character.platform_spawner)
+{
+	spawner_mode = SpawnerMode.ChangeSize;
+	start_drawing = false;
+	drawing = false;
+	create_physics_body = drew;
+}
+
+with (character.enemy.platform_spawner)
+{
+	spawner_mode = SpawnerMode.Draw;
+	changing_draw_area_size = false;
+	resize_draw_area = true;
+}
 
 
 with (other)
@@ -13,5 +25,6 @@ with (other)
 
 with (DrawnPlatform)
 {
-	instance_destroy();
+	if (character == other.character)
+		instance_destroy();
 }

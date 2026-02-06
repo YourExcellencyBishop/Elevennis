@@ -5,12 +5,6 @@ global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 global.gravity_x = 0;
 global.gravity_y = 100;
 
-#macro pixelstometerscale 0.1
-
-physics_world_create(pixelstometerscale);
-physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
-physics_world_update_speed(game_get_speed(gamespeed_fps) * 2);
-
 if (useDebug)
 {
 	show_debug_overlay(1);
@@ -19,11 +13,15 @@ if (useDebug)
 	if (!shader_is_compiled(OnlyEdgesShaderR8)) show_message($"The shader {shader_get_name(OnlyEdgesShaderR8)} did not compile");
 }
 
+#macro pixelstometerscale 0.1
+
+physics_world_create(pixelstometerscale);
+physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
+physics_world_update_speed(game_get_speed(gamespeed_fps) * 2);
+
 application_surface_enable(0)
 application_surface_draw_enable(0);
 surface_depth_disable(true);
-
-
 
 surf = INVALID;
 surf_width = 320;
@@ -118,7 +116,7 @@ opponent = instance_create_depth(0, 0, depth - 1, AI,
 	bounds_y1: player_bound_y1,
 	bounds_x2: room_width - player_bound_x1,
 	bounds_y2: player_bound_y2,
-	draw_area_side: 50,
+	draw_area_side: sqrt((player_bound_x2 - player_bound_x1) * (player_bound_y2 - player_bound_y1) - 1),
 	bounds_color: c_blue,
 	out_zone_color: c_red,
 	enemy: player
