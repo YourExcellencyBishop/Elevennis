@@ -57,3 +57,28 @@ if (spawner_mode == SpawnerMode.ChangeSize)
 
 	draw_sprite_ext(SizeArrow, 0, size_arrow_xx, size_arrow_yy, 1, 1, size_arrow_rot, c_white, 1);
 }
+
+if (!PauseManager.ready_to_play)
+{
+	draw_set_font(InGameFont);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
+	
+	//draw_set_colour(c_green)
+	//draw_rectangle( 
+	//	bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
+	//	bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5, false)
+	
+	//draw_circle(brush_position_x, brush_position_y, 4, false);
+	//draw_set_colour(c_white)
+	
+	var hovering = point_in_rectangle(brush_position_x, brush_position_y, 
+		bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
+		bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5);
+	
+	var not_ready_text = hovering ? "Ready? [  _  ]" :  "Ready? [     ]";
+	
+	draw_set_colour(character.ready_to_play ? c_lime : (hovering ? c_yellow : c_maroon));
+	draw_text(bounds_centre_x, bounds_y1 - 5, character.ready_to_play ? "Ready? [  X  ]" : not_ready_text);
+	draw_set_colour(c_white);
+}

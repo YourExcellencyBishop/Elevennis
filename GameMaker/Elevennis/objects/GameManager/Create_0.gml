@@ -160,28 +160,34 @@ ball = instance_create_depth(160, 90, depth, Ball,
 
 function reset_game()
 {
+	physics_pause_enable(true);
+	
 	with (ball)
 	{
 		phy_position_x = 160;
 		phy_position_y = 90;
+		phy_rotation = 0;
 		
 		phy_linear_velocity_x = 0;
 		phy_linear_velocity_y = 0;
 		phy_angular_velocity = 0;
 		
-		physics_apply_impulse(phy_com_x, phy_com_y, -15, -30);
-		physics_apply_angular_impulse(-30)
+		physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(10, 20) : random_range(10, 20)  , -random_range(15, 40));
+		physics_apply_angular_impulse(random_range(-60, 60))
 	}
 	
 	with (DrawnPlatformSpawner)
 	{
-		spawner_mode = SpawnerMode.Draw;
+		spawner_mode = SpawnerMode.ChangeSize;
 	}
 	
 	with (DrawnPlatform)
 	{
 		instance_destroy();
 	}
+	
+	PauseManager.ready_to_play = false;
+	Character.ready_to_play = false;
 }
 
 reset_game();

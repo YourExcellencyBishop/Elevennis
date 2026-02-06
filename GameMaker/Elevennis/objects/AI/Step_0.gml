@@ -206,3 +206,8 @@ else
 		}
 	}
 }
+
+if (!PauseManager.ready_to_play)
+{
+	other.ready_to_play = true;
+}

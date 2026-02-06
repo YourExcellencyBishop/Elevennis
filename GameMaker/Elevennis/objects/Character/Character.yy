@@ -35,6 +35,7 @@
     {"$GMObjectProperty":"v2","%Name":"out_zone_color","filters":[],"listItems":[],"multiselect":false,"name":"out_zone_color","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"total_score","filters":[],"listItems":[],"multiselect":false,"name":"total_score","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"enemy","filters":[],"listItems":[],"multiselect":false,"name":"enemy","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"ready_to_play","filters":[],"listItems":[],"multiselect":false,"name":"ready_to_play","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

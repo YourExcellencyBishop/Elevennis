@@ -61,6 +61,7 @@
   },
   "name":"Elevennis",
   "resources":[
+    {"id":{"name":"InGameFont","path":"fonts/InGameFont/InGameFont.yy",},},
     {"id":{"name":"MenuFont","path":"fonts/MenuFont/MenuFont.yy",},},
     {"id":{"name":"ScoreFont","path":"fonts/ScoreFont/ScoreFont.yy",},},
     {"id":{"name":"Daily Rules","path":"notes/Daily Rules/Daily Rules.yy",},},

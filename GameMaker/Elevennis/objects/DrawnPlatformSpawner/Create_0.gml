@@ -19,8 +19,8 @@ start_drawing = false;
 // Bounds
 bounds_width = bounds_x2 - bounds_x1;
 bounds_height = bounds_y2 - bounds_y1;
-var bounds_centre_x = bounds_x1 + bounds_width * 0.5;
-var bounds_centre_y = bounds_y1 + bounds_height * 0.5;
+bounds_centre_x = bounds_x1 + bounds_width * 0.5;
+bounds_centre_y = bounds_y1 + bounds_height * 0.5;
 
 // Surface
 surface = INVALID;
@@ -78,9 +78,6 @@ size_arrow_x = INVALID;
 size_arrow_y = INVALID;
 size_arrow_rot = 0;
 size_arrow_dir = SizeArrowDir.Right;
-
-// Mode
-spawner_mode = SpawnerMode.Draw;
 
 // Out Zone
 out_zone = MakeBoxSensor(bounds_x1, room_height - 3, bounds_x2, room_height, OutZone, depth - 1);

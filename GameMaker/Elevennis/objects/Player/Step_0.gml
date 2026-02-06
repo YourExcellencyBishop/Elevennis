@@ -81,4 +81,19 @@ with (platform_spawner)
 			create_physics_body = drew;
 		}
 	}
+	
+	if (!PauseManager.ready_to_play)
+	{
+		draw_set_font(InGameFont);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_bottom);
+		
+		if (mouse_check_button_released(mb_left) and
+			point_in_rectangle(brush_position_x, brush_position_y, 
+			bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
+			bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5))
+		{
+			other.ready_to_play = !other.ready_to_play;
+		}
+	}
 }

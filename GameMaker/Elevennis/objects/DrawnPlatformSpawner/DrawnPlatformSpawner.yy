@@ -40,6 +40,7 @@
     {"$GMObjectProperty":"v2","%Name":"bounds_color","filters":[],"listItems":[],"multiselect":false,"name":"bounds_color","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"out_zone_color","filters":[],"listItems":[],"multiselect":false,"name":"out_zone_color","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"character","filters":[],"listItems":[],"multiselect":false,"name":"character","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"spawner_mode","filters":[],"listItems":[],"multiselect":false,"name":"spawner_mode","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"SpawnerMode.ChangeSize","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

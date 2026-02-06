@@ -10,7 +10,9 @@
   ],
   "managed":true,
   "name":"AI",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"Character","path":"objects/Character/Character.yy",},"propertyId":{"name":"ready_to_play","path":"objects/Character/Character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+  ],
   "parent":{
     "name":"Characters",
     "path":"folders/Objects/Characters.yy",
