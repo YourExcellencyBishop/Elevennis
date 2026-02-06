@@ -21,7 +21,7 @@ physics_world_create(pixelstometerscale);
 physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
 physics_world_update_speed(game_get_speed(gamespeed_fps) * 2);
 
-application_surface_enable(0)
+application_surface_enable(1) // Enabled for FX
 application_surface_draw_enable(0);
 surface_depth_disable(true);
 

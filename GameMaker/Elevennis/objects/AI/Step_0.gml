@@ -1,3 +1,5 @@
+if (PauseManager.paused) exit;
+
 if (draw_delay > 0) exit;
 
 if (!platform_spawner.drawing)

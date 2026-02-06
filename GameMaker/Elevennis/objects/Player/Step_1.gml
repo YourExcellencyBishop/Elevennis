@@ -1,3 +1,5 @@
+if (PauseManager.paused) exit;
+
 with (platform_spawner)
 {
 	prev_brush_position_x = brush_position_x;
