@@ -88,6 +88,7 @@
     {"id":{"name":"CreatePhysicsBodies","path":"scripts/CreatePhysicsBodies/CreatePhysicsBodies.yy",},},
     {"id":{"name":"CreatePhysicsBodiesFromSprite","path":"scripts/CreatePhysicsBodiesFromSprite/CreatePhysicsBodiesFromSprite.yy",},},
     {"id":{"name":"ENUMS","path":"scripts/ENUMS/ENUMS.yy",},},
+    {"id":{"name":"LoadMenu","path":"scripts/LoadMenu/LoadMenu.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"MakeBoxSensor","path":"scripts/MakeBoxSensor/MakeBoxSensor.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},

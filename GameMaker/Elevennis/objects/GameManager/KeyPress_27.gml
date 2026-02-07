@@ -1,1 +1,0 @@
-if (useDebug) { show_debug_overlay(!is_debug_overlay_open()); }

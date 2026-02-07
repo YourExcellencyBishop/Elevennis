@@ -9,7 +9,15 @@ switch (button_id)
 		break;
 		
 	case ButtonID.Quit:
-		game_end();
+		GameManager.end_game();
+		break;
+		
+	case ButtonID.StartGame:
+		GameManager.start_game();
+		break;
+		
+	case ButtonID.PlaySettings:
+		LoadMenu(PlayMenuLayer);
 		break;
 	
 	case ButtonID.None:

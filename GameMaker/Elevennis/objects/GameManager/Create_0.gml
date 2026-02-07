@@ -59,40 +59,14 @@ enum GameState
 	MainMenu, MainGame
 }
 
+LoadMenu(MainMenuLayer);
 
-var _main_menu_layer = layer_get_flexpanel_node("MainMenu");
+var _main_menu_layer = layer_get_flexpanel_node(MainMenuLayer);
 var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
 
-layer_text_text(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId, "Bruh");
-show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
+//layer_text_text(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId, "Bruh");
+//show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
 //show_message(flexpanel_node_get_data(_play_flex))
-
-/*
-
-instance_create_depth(x, y, depth, PauseManager);
-
-net_thickness = 2;
-net_height = surf_height / 3;
-
-instance_create_depth(room_width / 2, room_height - net_height / 2, depth - 1, Net, 
-{
-	points_x: [[-net_thickness, net_thickness, net_thickness, -net_thickness]], 
-	points_y: [[-net_height / 2, -net_height / 2, net_height / 2, net_height / 2]],
-	point_count: 4,
-	body_static: true
-});
-
-//instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1, SideSeparator, 
-//{
-//	half_width: net_thickness, 
-//	half_height: (room_height - net_height) / 2
-//});
-
-//instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
-//{
-//	half_width: net_thickness, 
-//	half_height: room_height / 2
-//});
 
 #macro player_bound_x1 40
 #macro player_bound_y1 70
@@ -100,80 +74,114 @@ instance_create_depth(room_width / 2, room_height - net_height / 2, depth - 1, N
 #macro player_bound_y2 160
 #macro zone_separator_e 0.75
 
-player = instance_create_depth(0, 0, depth - 1, Player, 
+function start_game()
 {
-	bounds_x1: player_bound_x1,
-	bounds_y1: player_bound_y1,
-	bounds_x2: player_bound_x2,
-	bounds_y2: player_bound_y2,
-	draw_area_side: 50,
-	bounds_color: c_red,
-	out_zone_color: c_blue
-});
+	game_state = GameState.MainGame;
+	
+	layer_set_visible(MainMenuLayer, false);
+	layer_set_visible(PlayMenuLayer, false);
+	
+	instance_create_depth(x, y, depth, PauseManager);
 
-instance_create_depth(player_bound_x1, room_height, depth, PhysicsBody,
-{
-	point_count: 4, 
-	points_x: [[-4, 4, 4, -4]], 
-	points_y: [[-12, -12, 12, 12]],
-	point_mass: 1,
-	body_static: true,
-	e: zone_separator_e
-});
+	net_thickness = 2;
+	net_height = surf_height / 3;
 
-instance_create_depth(player_bound_x2, room_height, depth, PhysicsBody,
-{
-	point_count: 4, 
-	points_x: [[-4, 4, 4, -4]], 
-	points_y: [[-12, -12, 12, 12]],
-	point_mass: 1,
-	body_static: true,
-	e: zone_separator_e
-});
+	instance_create_depth(room_width / 2, room_height - net_height / 2, depth - 1, Net, 
+	{
+		points_x: [[-net_thickness, net_thickness, net_thickness, -net_thickness]], 
+		points_y: [[-net_height / 2, -net_height / 2, net_height / 2, net_height / 2]],
+		point_count: 4,
+		body_static: true
+	});
 
-opponent = instance_create_depth(0, 0, depth - 1, AI, 
-{
-	bounds_x1: room_width - player_bound_x2,
-	bounds_y1: player_bound_y1,
-	bounds_x2: room_width - player_bound_x1,
-	bounds_y2: player_bound_y2,
-	draw_area_side: sqrt((player_bound_x2 - player_bound_x1) * (player_bound_y2 - player_bound_y1) - 1),
-	bounds_color: c_blue,
-	out_zone_color: c_red,
-	enemy: player,
-	difficulty: 11/11
-});
+	//instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1, SideSeparator, 
+	//{
+	//	half_width: net_thickness, 
+	//	half_height: (room_height - net_height) / 2
+	//});
 
-instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
-{
-	point_count: 4, 
-	points_x: [[-4, 4, 4, -4]], 
-	points_y: [[-12, -12, 12, 12]],
-	point_mass: 1,
-	body_static: true,
-	e: zone_separator_e
-});
+	//instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
+	//{
+	//	half_width: net_thickness, 
+	//	half_height: room_height / 2
+	//});
 
-instance_create_depth(room_width - player_bound_x1, room_height, depth, PhysicsBody,
-{
-	point_count: 4, 
-	points_x: [[-4, 4, 4, -4]], 
-	points_y: [[-12, -12, 12, 12]],
-	point_mass: 1,
-	body_static: true,
-	e: zone_separator_e
-});
+	player = instance_create_depth(0, 0, depth - 1, Player, 
+	{
+		bounds_x1: player_bound_x1,
+		bounds_y1: player_bound_y1,
+		bounds_x2: player_bound_x2,
+		bounds_y2: player_bound_y2,
+		draw_area_side: 50,
+		bounds_color: c_red,
+		out_zone_color: c_blue
+	});
 
-player.enemy = opponent;
+	instance_create_depth(player_bound_x1, room_height, depth, PhysicsBody,
+	{
+		point_count: 4, 
+		points_x: [[-4, 4, 4, -4]], 
+		points_y: [[-12, -12, 12, 12]],
+		point_mass: 1,
+		body_static: true,
+		e: zone_separator_e
+	});
 
+	instance_create_depth(player_bound_x2, room_height, depth, PhysicsBody,
+	{
+		point_count: 4, 
+		points_x: [[-4, 4, 4, -4]], 
+		points_y: [[-12, -12, 12, 12]],
+		point_mass: 1,
+		body_static: true,
+		e: zone_separator_e
+	});
 
-ball = instance_create_depth(160, 90, depth, Ball,
-{
-	point_count: 4, 
-	points_x: [[-10, 10, 10, -10]], 
-	points_y: [[-10, -10, 10, 10]],
-	point_mass: 1
-});
+	opponent = instance_create_depth(0, 0, depth - 1, AI, 
+	{
+		bounds_x1: room_width - player_bound_x2,
+		bounds_y1: player_bound_y1,
+		bounds_x2: room_width - player_bound_x1,
+		bounds_y2: player_bound_y2,
+		draw_area_side: sqrt((player_bound_x2 - player_bound_x1) * (player_bound_y2 - player_bound_y1) - 1),
+		bounds_color: c_blue,
+		out_zone_color: c_red,
+		enemy: player,
+		difficulty: 11/11
+	});
+
+	instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
+	{
+		point_count: 4, 
+		points_x: [[-4, 4, 4, -4]], 
+		points_y: [[-12, -12, 12, 12]],
+		point_mass: 1,
+		body_static: true,
+		e: zone_separator_e
+	});
+
+	instance_create_depth(room_width - player_bound_x1, room_height, depth, PhysicsBody,
+	{
+		point_count: 4, 
+		points_x: [[-4, 4, 4, -4]], 
+		points_y: [[-12, -12, 12, 12]],
+		point_mass: 1,
+		body_static: true,
+		e: zone_separator_e
+	});
+
+	player.enemy = opponent;
+
+	ball = instance_create_depth(160, 90, depth, Ball,
+	{
+		point_count: 4, 
+		points_x: [[-10, 10, 10, -10]], 
+		points_y: [[-10, -10, 10, 10]],
+		point_mass: 1
+	});
+
+	reset_game();
+}
 
 function reset_game()
 {
@@ -207,5 +215,18 @@ function reset_game()
 	Character.ready_to_play = false;
 }
 
-reset_game();
-*/
+function end_game(_target_menu = MainMenuLayer)
+{
+	game_state = GameState.MainMenu;
+	
+	//fx_set_parameter(PauseManager.game_blur, "g_intensity", 0);
+	physics_pause_enable(true);
+	instance_activate_all();
+	
+	with (all)
+	{
+		if (!persistent) instance_destroy();
+	}
+	
+	LoadMenu(_target_menu);
+}

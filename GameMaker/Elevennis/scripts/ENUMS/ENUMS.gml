@@ -10,10 +10,11 @@ enum SizeArrowDir
 
 enum PhysicsBodyType
 {
-	Edge, Polygon	
+	Edge, Polygon
 }
 
 enum ButtonID
 {
-	None, Resume, Settings, Quit
+	None, Resume, Settings, Quit,
+	StartGame, PlaySettings
 }

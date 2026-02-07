@@ -9,4 +9,4 @@ alarm[0] = 1;
 
 if (point_count == 0) throw "No points";
 
-show_debug_message($"Surface Area of {surface_area}");
+// show_debug_message($"Surface Area of {surface_area}");

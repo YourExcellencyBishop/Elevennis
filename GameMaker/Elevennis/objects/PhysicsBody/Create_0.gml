@@ -1,10 +1,5 @@
 var point_list_count = array_length(points_x);
 
-if (point_list_count > 1)
-{
-	//show_message(points_x)
-}
-
 if (point_count == INVALID)
 {
 	var point_count_x = 0;
@@ -24,7 +19,7 @@ if (point_count == INVALID)
 	point_count = point_count_x;
 }
 
-show_debug_message($"Set number of points: {point_count} points")
+// show_debug_message($"Set number of points: {point_count} points")
 
 var _top = infinity, _left = infinity;
 centre_of_mass_x = 0;

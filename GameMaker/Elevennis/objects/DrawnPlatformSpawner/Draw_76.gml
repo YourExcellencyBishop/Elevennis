@@ -4,7 +4,7 @@ if (!surface_exists(surface))
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0);
 	surface_reset_target();
-	show_debug_message("Recreated Surface");
+	// show_debug_message("Recreated Surface");
 }
 
 if (!surface_exists(draw_area)) 
@@ -13,5 +13,5 @@ if (!surface_exists(draw_area))
 	surface_set_target(draw_area);
     draw_clear_alpha(c_black, 0);
 	surface_reset_target();
-	show_debug_message("Recreated Draw Area");
+	// show_debug_message("Recreated Draw Area");
 }
