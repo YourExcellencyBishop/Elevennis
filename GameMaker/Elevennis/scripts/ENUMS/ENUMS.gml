@@ -18,3 +18,8 @@ enum ButtonID
 	None, Resume, Settings, Quit,
 	StartGame, PlaySettings
 }
+
+enum ValueID
+{
+	None, EnemyDifficulty
+}

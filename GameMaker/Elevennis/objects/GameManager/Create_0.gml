@@ -68,6 +68,8 @@ var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
 //show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
 //show_message(flexpanel_node_get_data(_play_flex))
 
+layer_text_text(flexpanel_node_get_struct(flexpanel_node_get_child(layer_get_flexpanel_node(PlayMenuLayer), "EnemyDifficulty")).nodes[2].layerElements[0].elementId, "lol");
+
 #macro player_bound_x1 40
 #macro player_bound_y1 70
 #macro player_bound_x2 120
@@ -147,7 +149,7 @@ function start_game()
 		bounds_color: c_blue,
 		out_zone_color: c_red,
 		enemy: player,
-		difficulty: 11/11
+		difficulty: enemy_difficulty / 11
 	});
 
 	instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
