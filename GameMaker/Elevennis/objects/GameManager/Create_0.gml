@@ -59,6 +59,7 @@ enum GameState
 	MainMenu, MainGame
 }
 
+
 var _main_menu_layer = layer_get_flexpanel_node("MainMenu");
 var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
 
