@@ -37,6 +37,7 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"enemy_difficulty","filters":[],"listItems":[],"multiselect":false,"name":"enemy_difficulty","rangeEnabled":true,"rangeMax":11.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"6","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"page","filters":[],"listItems":[],"multiselect":false,"name":"page","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

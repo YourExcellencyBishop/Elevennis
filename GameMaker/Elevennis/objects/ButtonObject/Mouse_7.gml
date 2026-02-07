@@ -19,6 +19,14 @@ switch (button_id)
 	case ButtonID.PlaySettings:
 		LoadMenu(PlayMenuLayer);
 		break;
+		
+	case ButtonID.NextPage:
+		GameManager.set_game_setting_page(GameManager.page + 1);
+		break;
+		
+	case ButtonID.PrevPage:
+		GameManager.set_game_setting_page(GameManager.page - 1);
+		break;
 	
 	case ButtonID.None:
 	default:

@@ -68,7 +68,7 @@ var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
 //show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
 //show_message(flexpanel_node_get_data(_play_flex))
 
-layer_text_text(flexpanel_node_get_struct(flexpanel_node_get_child(layer_get_flexpanel_node(PlayMenuLayer), "EnemyDifficulty")).nodes[2].layerElements[0].elementId, "lol");
+//show_message(flexpanel_node_get_struct(flexpanel_node_get_child(layer_get_flexpanel_node(PlayMenuLayer), "EnemyDifficulty")));
 
 #macro player_bound_x1 40
 #macro player_bound_y1 70
@@ -231,4 +231,17 @@ function end_game(_target_menu = MainMenuLayer)
 	}
 	
 	LoadMenu(_target_menu);
+}
+
+function set_game_setting_page(_page)
+{
+	var ui_root = layer_get_flexpanel_node(PlayMenuLayer);
+	var pages = flexpanel_node_get_child(ui_root, "Pages");
+	var max_page_index = flexpanel_node_get_num_children(pages) - 1;
+	
+	GameManager.page = clamp(_page, 0, max_page_index);
+	
+	var pages_left_pos = max_page_index * 200 - GameManager.page * 400;
+	
+	flexpanel_node_style_set_position(pages, flexpanel_edge.left, pages_left_pos, flexpanel_unit.point);
 }

@@ -12,6 +12,7 @@ function LoadMenu(_target)
 			break
 			
 		case PlayMenuLayer:
+			GameManager.set_game_setting_page(0);
 			layer_set_visible(PauseMenuLayer, false);
 			layer_set_visible(MainMenuLayer, false);
 			break;
