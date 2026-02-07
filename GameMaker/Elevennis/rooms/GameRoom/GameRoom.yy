@@ -10,6 +10,10 @@
     {"name":"inst_513F4A10","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_43296DDE","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"Manager","path":"rooms/GameRoom/GameRoom.yy",},
+    {"name":"inst_6ED04DD7","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_73DF8063","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_40BD5258","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_5F734B65","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,
   "layers":[

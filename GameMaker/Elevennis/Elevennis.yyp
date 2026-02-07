@@ -62,7 +62,8 @@
   "name":"Elevennis",
   "resources":[
     {"id":{"name":"InGameFont","path":"fonts/InGameFont/InGameFont.yy",},},
-    {"id":{"name":"MenuFont","path":"fonts/MenuFont/MenuFont.yy",},},
+    {"id":{"name":"MainMenuFont","path":"fonts/MainMenuFont/MainMenuFont.yy",},},
+    {"id":{"name":"PauseMenuFont","path":"fonts/PauseMenuFont/PauseMenuFont.yy",},},
     {"id":{"name":"ScoreFont","path":"fonts/ScoreFont/ScoreFont.yy",},},
     {"id":{"name":"Daily Rules","path":"notes/Daily Rules/Daily Rules.yy",},},
     {"id":{"name":"MVP","path":"notes/MVP/MVP.yy",},},
@@ -92,6 +93,7 @@
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
     {"id":{"name":"OnlyEdgesShaderR8","path":"shaders/OnlyEdgesShaderR8/OnlyEdgesShaderR8.yy",},},
     {"id":{"name":"AreaLock","path":"sprites/AreaLock/AreaLock.yy",},},
+    {"id":{"name":"GameLogo","path":"sprites/GameLogo/GameLogo.yy",},},
     {"id":{"name":"QuitButtonIcon","path":"sprites/QuitButtonIcon/QuitButtonIcon.yy",},},
     {"id":{"name":"ResumeButtonIcon","path":"sprites/ResumeButtonIcon/ResumeButtonIcon.yy",},},
     {"id":{"name":"SettingsButtonIcon","path":"sprites/SettingsButtonIcon/SettingsButtonIcon.yy",},},

@@ -52,6 +52,8 @@ physics_fixture_bind(fix, id);
 
 physics_fixture_delete(fix);
 
+exit;
+
 instance_create_depth(x, y, depth, PauseManager);
 
 net_thickness = 2;
@@ -172,7 +174,7 @@ function reset_game()
 		phy_linear_velocity_y = 0;
 		phy_angular_velocity = 0;
 		
-		physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(10, 20) : random_range(10, 20)  , -random_range(15, 40));
+		physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(15, 20) : random_range(15, 20)  , -random_range(15, 40));
 		physics_apply_angular_impulse(random_range(-60, 60))
 	}
 	

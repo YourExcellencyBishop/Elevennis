@@ -1,7 +1,7 @@
 Draw Platforms ✓
 Implement Physics ✓
 Win/Lose Conditions
-Game AI
+Game AI ✓
 Daily Mechanics
 Menus => daily game + base game
 Game Juice
