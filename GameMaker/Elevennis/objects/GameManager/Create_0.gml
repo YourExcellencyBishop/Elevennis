@@ -52,7 +52,21 @@ physics_fixture_bind(fix, id);
 
 physics_fixture_delete(fix);
 
-exit;
+game_state = GameState.MainMenu;
+
+enum GameState
+{
+	MainMenu, MainGame
+}
+
+var _main_menu_layer = layer_get_flexpanel_node("MainMenu");
+var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
+
+layer_text_text(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId, "Bruh");
+show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
+//show_message(flexpanel_node_get_data(_play_flex))
+
+/*
 
 instance_create_depth(x, y, depth, PauseManager);
 
@@ -193,3 +207,4 @@ function reset_game()
 }
 
 reset_game();
+*/

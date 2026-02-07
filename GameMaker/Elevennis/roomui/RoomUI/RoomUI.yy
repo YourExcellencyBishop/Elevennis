@@ -2,6 +2,14 @@
   "$GMRoomUI":"",
   "%Name":"RoomUI",
   "children":[
+    {"$GMRUILayer":"v1","%Name":"PlayMenu","alignItems":2,"children":[
+        {"$GMRFlexPanel":"","%Name":"FlexPanel","alignItems":2,"children":[
+            {"$GMRSpriteGraphic":"v1","%Name":"graphic_53859759","animationSpeed":1.0,"colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps","stretchHeight":true,"stretchWidth":true,},"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_53859759","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"UI_BOX","path":"sprites/UI_BOX/UI_BOX.yy",},"x":0.0,"y":0.0,},
+          ],"flexDirection":0,"height":{"unit":1,"value":600.0,},"justifyContent":1,"marginLeft":{"unit":1,"value":50.0,},"marginRight":{"unit":1,"value":50.0,},"name":"FlexPanel","nodeColour":4284150344,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":1,"value":500.0,},},
+        {"$GMRFlexPanel":"","%Name":"FlexPanel","alignItems":2,"children":[
+            {"$GMRSpriteGraphic":"v1","%Name":"graphic_179FFE4C","animationSpeed":1.0,"colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps","stretchHeight":true,"stretchWidth":true,},"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_179FFE4C","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"UI_BOX","path":"sprites/UI_BOX/UI_BOX.yy",},"x":0.0,"y":0.0,},
+          ],"flexDirection":0,"height":{"unit":1,"value":600.0,},"justifyContent":1,"marginLeft":{"unit":1,"value":50.0,},"marginRight":{"unit":1,"value":50.0,},"name":"FlexPanel","nodeColour":4284150344,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":1,"value":500.0,},},
+      ],"flexDirection":2,"gridX":32,"gridY":32,"justifyContent":1,"name":"PlayMenu","nodeColour":4294068363,"resourceType":"GMRUILayer","resourceVersion":"2.0","visible":false,},
     {"$GMRUILayer":"v1","%Name":"MainMenu","alignItems":2,"children":[
         {"$GMRFlexPanel":"","%Name":"MenuOptionsPanel","alignItems":2,"children":[
             {"$GMRFlexPanel":"","%Name":"TutorialButton","alignItems":2,"children":[
