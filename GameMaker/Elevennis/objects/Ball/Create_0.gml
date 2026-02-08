@@ -18,7 +18,6 @@ else
 {
 	points_x = [[ball_radius]];
 	body_type = PhysicsBodyType.Circle;
-	show_message("Ball")
 }
 
 event_inherited();

@@ -2,8 +2,9 @@ global.SupportR8UnormSurface = surface_format_is_supported(surface_r8unorm);
 global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
+#macro base_gravity 100
 global.gravity_x = 0;
-global.gravity_y = 100;
+global.gravity_y = base_gravity;
 
 randomise()
 
@@ -18,7 +19,6 @@ if (useDebug)
 #macro pixelstometerscale 0.1
 
 physics_world_create(pixelstometerscale);
-physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
 physics_world_update_speed(game_get_speed(gamespeed_fps) * 2);
 
 application_surface_enable(1) // Enabled for FX
@@ -84,6 +84,10 @@ function start_game()
 	layer_set_visible(PlayMenuLayer, false);
 	
 	instance_create_depth(x, y, depth, PauseManager);
+	
+	global.gravity_y = gravity_scale * base_gravity;
+	
+	physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
 
 	net_thickness = 2;
 	net_height = surf_height / 3;

@@ -20,7 +20,16 @@ switch (value_id)
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BallEdges"));
 			elementId = setting.nodes[2].layerElements[0].elementId;
 			layer_text_text(elementId, $"{GameManager.ball_edges == 9 ? "inf": GameManager.ball_edges}");
-			//layer_text_halign(elementId, textalign_center);
+		}
+		break;
+	
+	case ValueID.Gravity:
+		if (GameManager.page == 0)
+		{
+			GameManager.gravity_scale = clamp(GameManager.gravity_scale + (increments ? 0.1 : -0.1), 0.5, 1.5);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Gravity"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{string_format(GameManager.gravity_scale, 1, 1)}x");
 		}
 		break;
 		
