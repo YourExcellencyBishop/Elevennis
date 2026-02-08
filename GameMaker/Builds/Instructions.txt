@@ -1,0 +1,6 @@
+Draw paddles with a mouse to hit the ball
+You can only draw in your limited draw area which is shown by a white square
+You can move the draw area when you see the arrows
+ESC - to pause
+Not all features implements + implemented features not all implemented correctly.
+f1 and f2 do something... but don't touch those

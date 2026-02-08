@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"MainMenuFont",
+  "%Name":"MenuFont",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":20,
@@ -117,7 +117,7 @@
   "last":0,
   "lineHeight":27,
   "maintainGms1Font":false,
-  "name":"MainMenuFont",
+  "name":"MenuFont",
   "parent":{
     "name":"Fonts",
     "path":"folders/Fonts.yy",
