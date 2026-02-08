@@ -53,6 +53,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.HitPower:
+		if (GameManager.page == 1)
+		{
+			GameManager.hit_power = clamp(GameManager.hit_power + (increments ? 0.1 : -0.1), 1, 2);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "HitPower"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{string_format(GameManager.hit_power, 1, 1)}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");

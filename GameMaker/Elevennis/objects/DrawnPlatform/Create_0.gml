@@ -62,8 +62,8 @@ if (sprite_index != -1)
 
 event_inherited();
 
-#macro max_power 5
-#macro min_power 0.5
+#macro max_power (5 * GameManager.hit_power)
+#macro min_power (0.5 * GameManager.hit_power)
 
 swing = lerp(min_power, max_power, 1 - min(1, surface_area / 100));
 color = make_colour_rgb(255 * swing / max_power, 255 * (1 - swing / max_power), 1);
