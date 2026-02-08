@@ -94,6 +94,7 @@ with (platform_spawner)
 			bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space))
 		{
 			other.ready_to_play = !other.ready_to_play;
+			audio_play_sound(snd_collision_net, 2, false);
 		}
 	}
 }

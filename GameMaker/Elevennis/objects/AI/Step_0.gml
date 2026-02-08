@@ -207,7 +207,7 @@ else
 	}
 }
 
-if (!PauseManager.ready_to_play)
+if (!PauseManager.ready_to_play && !ready_to_play && alarm[1] == -1)
 {
-	other.ready_to_play = true;
+	alarm[1] = ceil(game_get_speed(gamespeed_fps) * random_range(0.5, lerp(1, 3, 1 - difficulty)));
 }

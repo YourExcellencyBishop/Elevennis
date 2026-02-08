@@ -190,6 +190,7 @@ function start_game()
 		brush_size = other.brush_size;
 	}
 
+	audio_play_sound(snd_main_game, 0, true);
 	reset_game();
 }
 
@@ -239,6 +240,8 @@ function end_game(_target_menu = MainMenuLayer)
 	{
 		if (!persistent) instance_destroy();
 	}
+	
+	audio_stop_sound(snd_main_game);
 	
 	LoadMenu(_target_menu);
 }
