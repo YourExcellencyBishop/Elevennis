@@ -37,10 +37,12 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"page","filters":[],"listItems":[],"multiselect":false,"name":"page","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"fix","filters":[],"listItems":[],"multiselect":false,"name":"fix","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"enemy_difficulty","filters":[],"listItems":[],"multiselect":false,"name":"enemy_difficulty","rangeEnabled":true,"rangeMax":11.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"6","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"ball_edges","filters":[],"listItems":[],"multiselect":false,"name":"ball_edges","rangeEnabled":true,"rangeMax":9.0,"rangeMin":3.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"gravity_scale","filters":[],"listItems":[],"multiselect":false,"name":"gravity_scale","rangeEnabled":true,"rangeMax":1.5,"rangeMin":0.5,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
     {"$GMObjectProperty":"v2","%Name":"ball_radius","filters":[],"listItems":[],"multiselect":false,"name":"ball_radius","rangeEnabled":false,"rangeMax":20.0,"rangeMin":5.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"15","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"wall_bounce","filters":[],"listItems":[],"multiselect":false,"name":"wall_bounce","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.75","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

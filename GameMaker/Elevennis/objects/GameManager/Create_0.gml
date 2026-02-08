@@ -35,22 +35,7 @@ room_height = surf_height;
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
-var fix = physics_fixture_create();
-physics_fixture_set_collision_group(fix, 1)
-physics_fixture_set_restitution(fix, 0.75);
-physics_fixture_set_edge_shape(fix, 0, 0, room_width, 0); // top
-physics_fixture_bind(fix, id);
-
-physics_fixture_set_edge_shape(fix, room_width, 0, room_width, room_height); // right
-physics_fixture_bind(fix, id);
-
-physics_fixture_set_edge_shape(fix, room_width, room_height, 0, room_height); // bottom
-physics_fixture_bind(fix, id);
-
-physics_fixture_set_edge_shape(fix, 0, room_height, 0, 0); // left
-physics_fixture_bind(fix, id);
-
-physics_fixture_delete(fix);
+//physics_fixture_delete(fix);
 
 game_state = GameState.MainMenu;
 
@@ -87,7 +72,22 @@ function start_game()
 	
 	global.gravity_y = gravity_scale * base_gravity;
 	
-	physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale)
+	physics_world_gravity(global.gravity_x * pixelstometerscale, global.gravity_y * pixelstometerscale);
+	
+	fix = physics_fixture_create();
+	physics_fixture_set_collision_group(fix, 1)
+	physics_fixture_set_restitution(fix, wall_bounce);
+	physics_fixture_set_edge_shape(fix, 0, 0, room_width, 0); // top
+	physics_fixture_bind(fix, id);
+
+	physics_fixture_set_edge_shape(fix, room_width, 0, room_width, room_height); // right
+	physics_fixture_bind(fix, id);
+
+	physics_fixture_set_edge_shape(fix, room_width, room_height, 0, room_height); // bottom
+	physics_fixture_bind(fix, id);
+
+	physics_fixture_set_edge_shape(fix, 0, room_height, 0, 0); // left
+	physics_fixture_bind(fix, id);
 
 	net_thickness = 2;
 	net_height = surf_height / 3;
@@ -225,6 +225,7 @@ function end_game(_target_menu = MainMenuLayer)
 	game_state = GameState.MainMenu;
 	
 	//fx_set_parameter(PauseManager.game_blur, "g_intensity", 0);
+	physics_remove_fixture(id, fix);
 	physics_pause_enable(true);
 	instance_activate_all();
 	

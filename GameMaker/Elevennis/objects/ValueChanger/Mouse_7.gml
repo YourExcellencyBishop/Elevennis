@@ -43,6 +43,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.WallBounce:
+		if (GameManager.page == 1)
+		{
+			GameManager.wall_bounce = clamp(GameManager.wall_bounce + (increments ? 0.05 : -0.05), 0.25, 1.5);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WallBounce"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.wall_bounce}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");
