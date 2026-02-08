@@ -92,7 +92,6 @@
     {"id":{"name":"LoadMenu","path":"scripts/LoadMenu/LoadMenu.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"MakeBoxSensor","path":"scripts/MakeBoxSensor/MakeBoxSensor.yy",},},
-    {"id":{"name":"MakeGameSetting","path":"scripts/MakeGameSetting/MakeGameSetting.yy",},},
     {"id":{"name":"OnlyEdgesShader","path":"shaders/OnlyEdgesShader/OnlyEdgesShader.yy",},},
     {"id":{"name":"OnlyEdgesShaderR8","path":"shaders/OnlyEdgesShaderR8/OnlyEdgesShaderR8.yy",},},
     {"id":{"name":"AreaLock","path":"sprites/AreaLock/AreaLock.yy",},},

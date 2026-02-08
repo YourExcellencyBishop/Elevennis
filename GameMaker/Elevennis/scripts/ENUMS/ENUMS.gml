@@ -10,7 +10,7 @@ enum SizeArrowDir
 
 enum PhysicsBodyType
 {
-	Edge, Polygon
+	Edge, Polygon, Circle
 }
 
 enum ButtonID
@@ -22,5 +22,5 @@ enum ButtonID
 
 enum ValueID
 {
-	None, EnemyDifficulty
+	None, EnemyDifficulty, BallEdges
 }

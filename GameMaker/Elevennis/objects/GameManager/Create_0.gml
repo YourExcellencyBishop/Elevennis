@@ -176,9 +176,8 @@ function start_game()
 
 	ball = instance_create_depth(160, 90, depth, Ball,
 	{
-		point_count: 4, 
-		points_x: [[-10, 10, 10, -10]], 
-		points_y: [[-10, -10, 10, 10]],
+		point_count: ball_edges, 
+		ball_radius: 15,
 		point_mass: 1
 	});
 
