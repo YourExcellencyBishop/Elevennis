@@ -41,6 +41,7 @@
     {"$GMObjectProperty":"v2","%Name":"out_zone_color","filters":[],"listItems":[],"multiselect":false,"name":"out_zone_color","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"character","filters":[],"listItems":[],"multiselect":false,"name":"character","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"INVALID","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"spawner_mode","filters":[],"listItems":[],"multiselect":false,"name":"spawner_mode","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"SpawnerMode.ChangeSize","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"paddles","filters":[],"listItems":[],"multiselect":false,"name":"paddles","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

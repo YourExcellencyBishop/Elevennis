@@ -63,6 +63,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.MaxPaddles:
+		if (GameManager.page == 1)
+		{
+			GameManager.max_paddles = clamp(GameManager.max_paddles + (increments ? 1 : -1), 1, 4);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "MaxPaddles"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.max_paddles == 4 ? "inf" : GameManager.max_paddles}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");

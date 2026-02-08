@@ -72,3 +72,33 @@ alarm[0] = 1;
 if (point_count == 0) throw "No points";
 
 // show_debug_message($"Surface Area of {surface_area}");
+
+if (GameManager.max_paddles != 4)
+{ 
+	paddle_destroyed = false;
+
+	with (DrawnPlatform)
+	{
+		if (character == other.character && other.paddle_number > GameManager.max_paddles)
+		{
+			if (paddle_number <=  other.paddle_number - GameManager.max_paddles)
+			{
+				instance_destroy();
+				other.paddle_destroyed = true;
+			}
+		}
+	}
+
+	if (paddle_destroyed)
+	{
+		with (DrawnPlatform)
+		{
+			if (character == other.character)
+			{
+				paddle_number--;
+			}
+		}
+	
+		character.platform_spawner.paddles--;
+	}
+}

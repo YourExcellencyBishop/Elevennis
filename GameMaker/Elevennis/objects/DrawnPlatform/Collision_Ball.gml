@@ -26,5 +26,8 @@ with (other)
 with (DrawnPlatform)
 {
 	if (character == other.character)
+	{
+		character.platform_spawner.paddles = 0;
 		instance_destroy();
+	}
 }

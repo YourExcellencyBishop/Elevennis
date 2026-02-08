@@ -209,6 +209,7 @@ function reset_game()
 	with (DrawnPlatformSpawner)
 	{
 		spawner_mode = SpawnerMode.ChangeSize;
+		paddles = 0;
 	}
 	
 	with (DrawnPlatform)

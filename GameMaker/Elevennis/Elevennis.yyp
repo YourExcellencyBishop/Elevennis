@@ -87,7 +87,6 @@
     {"id":{"name":"RoomUI","path":"roomui/RoomUI/RoomUI.yy",},},
     {"id":{"name":"BayazitConvexDecomposition","path":"scripts/BayazitConvexDecomposition/BayazitConvexDecomposition.yy",},},
     {"id":{"name":"CreatePhysicsBodies","path":"scripts/CreatePhysicsBodies/CreatePhysicsBodies.yy",},},
-    {"id":{"name":"CreatePhysicsBodiesFromSprite","path":"scripts/CreatePhysicsBodiesFromSprite/CreatePhysicsBodiesFromSprite.yy",},},
     {"id":{"name":"ENUMS","path":"scripts/ENUMS/ENUMS.yy",},},
     {"id":{"name":"LoadMenu","path":"scripts/LoadMenu/LoadMenu.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},

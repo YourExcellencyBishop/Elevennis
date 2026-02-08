@@ -44,6 +44,7 @@
     {"$GMObjectProperty":"v2","%Name":"ball_radius","filters":[],"listItems":[],"multiselect":false,"name":"ball_radius","rangeEnabled":false,"rangeMax":20.0,"rangeMin":5.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"15","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"wall_bounce","filters":[],"listItems":[],"multiselect":false,"name":"wall_bounce","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.75","varType":0,},
     {"$GMObjectProperty":"v2","%Name":"hit_power","filters":[],"listItems":[],"multiselect":false,"name":"hit_power","rangeEnabled":true,"rangeMax":2.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"max_paddles","filters":[],"listItems":[],"multiselect":false,"name":"max_paddles","rangeEnabled":true,"rangeMax":4.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
