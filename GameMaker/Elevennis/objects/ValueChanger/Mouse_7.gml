@@ -73,6 +73,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.BrushSize:
+		if (GameManager.page == 1)
+		{
+			GameManager.brush_size = clamp(GameManager.brush_size + (increments ? 1 : -1), 1, 4);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BrushSize"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.brush_size}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");

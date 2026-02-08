@@ -9,8 +9,6 @@ brush_position_y = INVALID;
 prev_brush_position_x = INVALID;
 prev_brush_position_y = INVALID;
 
-brush_size = 2;
-
 // Checks
 drawing = false;
 drew = false;

@@ -184,6 +184,11 @@ function start_game()
 		ball_radius: ball_radius,
 		point_mass: 1
 	});
+	
+	with (DrawnPlatformSpawner)
+	{
+		brush_size = other.brush_size;
+	}
 
 	reset_game();
 }
@@ -242,9 +247,14 @@ function set_game_setting_page(_page)
 {
 	var ui_root = layer_get_flexpanel_node(PlayMenuLayer);
 	var pages = flexpanel_node_get_child(ui_root, "Pages");
-	var max_page_index = flexpanel_node_get_num_children(pages) - 1;
+	var max_pages = flexpanel_node_get_num_children(pages);
+	var max_page_index = max_pages - 1;
 	
 	GameManager.page = clamp(_page, 0, max_page_index);
+	
+	var settings_title = flexpanel_node_get_child(ui_root, "GameSettingsPanel");
+	layer_text_text(flexpanel_node_get_struct(settings_title).layerElements[0].elementId, 
+		$"Game Settings  ({GameManager.page + 1}/{max_pages})")
 	
 	var pages_left_pos = max_page_index * 200 - GameManager.page * 400;
 	
