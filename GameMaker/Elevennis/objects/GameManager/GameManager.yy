@@ -40,6 +40,7 @@
     {"$GMObjectProperty":"v2","%Name":"enemy_difficulty","filters":[],"listItems":[],"multiselect":false,"name":"enemy_difficulty","rangeEnabled":true,"rangeMax":11.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"6","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"ball_edges","filters":[],"listItems":[],"multiselect":false,"name":"ball_edges","rangeEnabled":true,"rangeMax":9.0,"rangeMin":3.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"gravity_scale","filters":[],"listItems":[],"multiselect":false,"name":"gravity_scale","rangeEnabled":true,"rangeMax":1.5,"rangeMin":0.5,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"ball_radius","filters":[],"listItems":[],"multiselect":false,"name":"ball_radius","rangeEnabled":false,"rangeMax":20.0,"rangeMin":5.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"15","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

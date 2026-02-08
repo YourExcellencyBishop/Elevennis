@@ -33,6 +33,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.BallRadius:
+		if (GameManager.page == 0)
+		{
+			GameManager.ball_radius = clamp(GameManager.ball_radius + (increments ? 1 : -1), 5, 20);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BallRadius"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.ball_radius}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");

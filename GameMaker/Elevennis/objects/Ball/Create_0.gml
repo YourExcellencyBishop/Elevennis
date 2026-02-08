@@ -8,8 +8,8 @@ if (point_count != 9)
 
 	for (var i = 0, angle = 0, angle_incr = 360 / point_count; i < point_count; i++)
 	{
-		points_x[0][i] = dcos(angle) * 15;
-		points_y[0][i] = dsin(angle) * 15;
+		points_x[0][i] = dcos(angle) * ball_radius;
+		points_y[0][i] = dsin(angle) * ball_radius;
 	
 		angle += angle_incr;
 	}

@@ -22,5 +22,5 @@ enum ButtonID
 
 enum ValueID
 {
-	None, EnemyDifficulty, BallEdges, Gravity
+	None, EnemyDifficulty, BallEdges, Gravity, BallRadius
 }
