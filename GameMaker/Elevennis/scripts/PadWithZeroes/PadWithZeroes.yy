@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PadWithZeroes",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PadWithZeroes",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

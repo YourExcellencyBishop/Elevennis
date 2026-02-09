@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.5454649,
+  "duration":2.1818368,
   "exportDir":"",
   "name":"snd_collision_physics_body",
   "parent":{

@@ -87,13 +87,21 @@ switch (value_id)
 		if (GameManager.page == 2)
 		{
 			GameManager.win_score = clamp(GameManager.win_score + (increments ? 1 : -1), 1, 100);
-			if (GameManager.endless) GameManager.win_score = 11;
+			if (GameManager.endless)
+			{
+				GameManager.win_score = 11;
+				GameManager.game_length = 3;
+				GameManager.endless = false;
+			}
 			
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
 			elementId = setting.nodes[2].layerElements[0].elementId;
-			layer_text_text(elementId, $"{GameManager.win_score == 0 ? "inf" : GameManager.win_score}");
+			layer_text_text(elementId, $"{GameManager.win_score}");
 			
-			GameManager.endless = false;
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Time"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.game_length}");
+			
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Endless"));
 			elementId = setting.nodes[2].layerElements[0].elementId;
 			layer_text_text(elementId, "OFF");
@@ -111,16 +119,47 @@ switch (value_id)
 			var win_score_setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
 			var win_score_elementId = win_score_setting.nodes[2].layerElements[0].elementId;
 			
+			GameManager.game_length = 3;
+			var game_length_setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Time"));
+			var game_length_elementId = game_length_setting.nodes[2].layerElements[0].elementId;
+			
 			if (GameManager.endless)
 			{
 				layer_text_text(elementId, "ON");
 				layer_text_text(win_score_elementId, "inf");
+				layer_text_text(game_length_elementId, "inf");
 			}
 			else
 			{
 				layer_text_text(elementId, "OFF");
 				layer_text_text(win_score_elementId, $"{GameManager.win_score}");
+				layer_text_text(game_length_elementId, $"{GameManager.game_length}");
 			}
+		}
+		break;
+		
+	case ValueID.Time:
+		if (GameManager.page == 2)
+		{
+			GameManager.game_length = clamp(GameManager.game_length + (increments ? 1 : -1), 1, 100);
+			if (GameManager.endless) 
+			{
+				GameManager.game_length = 3;
+				GameManager.win_score = 11;
+				GameManager.endless = false;
+			}
+			
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Time"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.game_length}");
+			
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.win_score}");
+			
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Endless"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, "OFF");
 		}
 		break;
 		

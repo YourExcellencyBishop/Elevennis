@@ -25,5 +25,5 @@ enum ValueID
 {
 	None, EnemyDifficulty, BallEdges, Gravity, BallRadius,
 	WallBounce, HitPower, MaxPaddles, BrushSize, WinScore, 
-	Endless
+	Endless, Time
 }

@@ -1,5 +1,12 @@
 collision = other;
 
+with (PauseManager)
+{
+	var now = get_timer();
+	var seconds = (now - start_time) / 1_000_000;
+	total_time += seconds;
+}
+
 if (func != INVALID) func();
 
 with (GameManager)

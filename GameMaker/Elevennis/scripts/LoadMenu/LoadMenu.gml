@@ -11,6 +11,7 @@ function LoadMenu(_target)
 	switch (_target) 
 	{
 		case PauseMenuLayer:
+			layer_set_visible(InGameLayer, false);
 			break;
 			
 		case PlayMenuLayer:
@@ -18,21 +19,32 @@ function LoadMenu(_target)
 			layer_set_visible(PauseMenuLayer, false);
 			layer_set_visible(MainMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
+			layer_set_visible(InGameLayer, false);
 			break;
 			
 		case MainMenuLayer:
+		layer_set_visible(InGameLayer, false);
 			layer_set_visible(PlayMenuLayer, false);
 			layer_set_visible(PauseMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
 			break;
 			
 		case EndScreenLayer:
+			layer_set_visible(InGameLayer, false);
+			break;
+			
+		case InGameLayer:
+			layer_set_visible(PauseMenuLayer, false);
+			layer_set_visible(MainMenuLayer, false);
+			layer_set_visible(PlayMenuLayer, false);
+			layer_set_visible(EndScreenLayer, false);
 			break;
 			
 		case "":
 			layer_set_visible(MainMenuLayer, false);
 			layer_set_visible(PlayMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
+			layer_set_visible(InGameLayer, false);
 			break;
 		
 		default:

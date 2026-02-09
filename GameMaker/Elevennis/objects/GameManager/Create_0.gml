@@ -65,7 +65,7 @@ function start_game()
 {
 	game_state = GameState.MainGame;
 	
-	LoadMenu("");
+	LoadMenu(InGameLayer);
 	
 	instance_create_depth(x, y, depth, PauseManager);
 	
@@ -98,18 +98,6 @@ function start_game()
 		point_count: 4,
 		body_static: true
 	});
-
-	//instance_create_depth(room_width / 2, (room_height - net_height) / 2, depth - 1, SideSeparator, 
-	//{
-	//	half_width: net_thickness, 
-	//	half_height: (room_height - net_height) / 2
-	//});
-
-	//instance_create_depth(room_width *3/4, room_height / 2, depth - 1, Rebounder, 
-	//{
-	//	half_width: net_thickness, 
-	//	half_height: room_height / 2
-	//});
 
 	player = instance_create_depth(0, 0, depth - 1, Player, 
 	{
@@ -190,6 +178,15 @@ function start_game()
 	}
 
 	audio_play_sound(snd_main_game, 0, true);
+	
+	var now = get_timer();
+	start_second = now;
+	
+	var ui_root = layer_get_flexpanel_node(InGameLayer);
+	var score_panel = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "ScorePanel"));
+	var elementId = score_panel.layerElements[0].elementId;
+	layer_text_text(elementId, $"{player.total_score} : {opponent.total_score}");
+	
 	reset_game();
 }
 
