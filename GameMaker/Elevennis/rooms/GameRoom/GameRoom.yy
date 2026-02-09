@@ -43,6 +43,7 @@
     {"name":"inst_1B8D9FDC","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_1BA28D5A","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_5EFDE2D5","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_43A12F0E","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,
   "layers":[

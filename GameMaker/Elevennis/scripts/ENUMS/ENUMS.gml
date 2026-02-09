@@ -18,7 +18,7 @@ enum ButtonID
 	None, Resume, Settings, Quit,
 	StartGame, PlaySettings,
 	PrevPage, NextPage,
-	Rematch
+	Rematch, Pause
 }
 
 enum ValueID

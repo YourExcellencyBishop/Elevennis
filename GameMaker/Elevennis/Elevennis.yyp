@@ -106,6 +106,7 @@
     {"id":{"name":"ChangeValueArrow","path":"sprites/ChangeValueArrow/ChangeValueArrow.yy",},},
     {"id":{"name":"GameLogo","path":"sprites/GameLogo/GameLogo.yy",},},
     {"id":{"name":"PageSwitchButton","path":"sprites/PageSwitchButton/PageSwitchButton.yy",},},
+    {"id":{"name":"PauseButton","path":"sprites/PauseButton/PauseButton.yy",},},
     {"id":{"name":"QuitButtonIcon","path":"sprites/QuitButtonIcon/QuitButtonIcon.yy",},},
     {"id":{"name":"ResumeButtonIcon","path":"sprites/ResumeButtonIcon/ResumeButtonIcon.yy",},},
     {"id":{"name":"SettingsButtonIcon","path":"sprites/SettingsButtonIcon/SettingsButtonIcon.yy",},},

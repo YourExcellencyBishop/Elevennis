@@ -32,6 +32,14 @@ switch (button_id)
 		GameManager.start_game();
 		break;
 		
+	case ButtonID.Pause:
+		with (PauseManager)
+		{
+			paused = !paused;
+			update_pause();
+		}
+		break;
+		
 	case ButtonID.None:
 	default:
 		break;

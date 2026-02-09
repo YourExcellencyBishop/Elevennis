@@ -119,7 +119,7 @@ switch (value_id)
 			var win_score_setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
 			var win_score_elementId = win_score_setting.nodes[2].layerElements[0].elementId;
 			
-			GameManager.game_length = 3;
+			GameManager.game_length = 1/30;
 			var game_length_setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Time"));
 			var game_length_elementId = game_length_setting.nodes[2].layerElements[0].elementId;
 			
