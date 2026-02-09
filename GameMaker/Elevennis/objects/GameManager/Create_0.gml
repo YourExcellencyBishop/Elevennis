@@ -65,8 +65,7 @@ function start_game()
 {
 	game_state = GameState.MainGame;
 	
-	layer_set_visible(MainMenuLayer, false);
-	layer_set_visible(PlayMenuLayer, false);
+	LoadMenu("");
 	
 	instance_create_depth(x, y, depth, PauseManager);
 	

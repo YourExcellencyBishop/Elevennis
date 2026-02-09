@@ -83,6 +83,16 @@ switch (value_id)
 		}
 		break;
 		
+	case ValueID.WinScore:
+		if (GameManager.page == 2)
+		{
+			GameManager.win_score = clamp(GameManager.win_score + (increments ? 1 : -1), 0, 100);
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, $"{GameManager.win_score == 0 ? "inf" : GameManager.win_score}");
+		}
+		break;
+		
 	case ValueID.None:
 	default:
 		show_debug_message("No Functionality Assigned!");

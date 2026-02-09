@@ -86,6 +86,12 @@ out_zone.character = character;
 out_zone.func = function()
 {
 	character.enemy.total_score++;
+	if (character.enemy.total_score == GameManager.win_score)
+	{
+		GameManager.end_game("EndScreen");
+		return;
+	}
+	
 	with (GameManager)
 	{
 		reset_game();

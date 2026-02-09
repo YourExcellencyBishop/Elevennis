@@ -17,11 +17,12 @@ enum ButtonID
 {
 	None, Resume, Settings, Quit,
 	StartGame, PlaySettings,
-	PrevPage, NextPage
+	PrevPage, NextPage,
+	Rematch
 }
 
 enum ValueID
 {
 	None, EnemyDifficulty, BallEdges, Gravity, BallRadius,
-	WallBounce, HitPower, MaxPaddles, BrushSize
+	WallBounce, HitPower, MaxPaddles, BrushSize, WinScore
 }

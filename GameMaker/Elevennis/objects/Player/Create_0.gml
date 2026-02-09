@@ -9,6 +9,12 @@ out_of_play_1.func = function()
 	with(other.collision)
 	{
 		if (last_touch != INVALID) { last_touch.enemy.total_score++; }
+		
+		if (last_touch.enemy.total_score == GameManager.win_score)
+		{
+			GameManager.end_game("EndScreen");
+			return;
+		}
 	}
 	
 	with (GameManager)

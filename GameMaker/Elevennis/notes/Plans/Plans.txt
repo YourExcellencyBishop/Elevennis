@@ -58,3 +58,6 @@ matas music
 cellular automatas for destroying rackets
 
 spin smears
+
+powers:
+freeze ball

@@ -28,6 +28,10 @@ switch (button_id)
 		GameManager.set_game_setting_page(GameManager.page - 1);
 		break;
 	
+	case ButtonID.Rematch:
+		GameManager.start_game();
+		break;
+		
 	case ButtonID.None:
 	default:
 		break;
