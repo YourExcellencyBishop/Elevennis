@@ -60,6 +60,9 @@ with (platform_spawner)
 		}
 		else if (start_drawing && in_draw_area)
 		{
+			prev_brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
+			prev_brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
+			
 			start_drawing = false;
 			drawing = true;
 		}

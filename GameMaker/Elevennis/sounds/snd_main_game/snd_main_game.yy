@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_main_game.wav",
-  "volume":0.8,
+  "volume":0.1,
 }
