@@ -88,7 +88,7 @@ out_zone.func = function()
 	character.enemy.total_score++;
 	if (!GameManager.endless && character.enemy.total_score == GameManager.win_score)
 	{
-		GameManager.end_game("EndScreen");
+		GameManager.end_game(EndScreenLayer);
 		return;
 	}
 	

@@ -1,7 +1,8 @@
 #macro PauseMenuLayer "PauseMenuLayer"
 #macro MainMenuLayer "MainMenuLayer"
 #macro PlayMenuLayer "PlayMenuLayer"
-#macro EndScreenLayer "EndScreen"
+#macro EndScreenLayer "EndScreenLayer"
+#macro InGameLayer "InGameLayer"
 
 function LoadMenu(_target)
 {

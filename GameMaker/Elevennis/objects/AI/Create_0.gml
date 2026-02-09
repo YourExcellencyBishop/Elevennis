@@ -11,7 +11,7 @@ out_of_play_1.func = function()
 		
 		if (!GameManager.endless && last_touch.enemy.total_score == GameManager.win_score)
 		{
-			GameManager.end_game("EndScreen");
+			GameManager.end_game(EndScreenLayer);
 			return;
 		}
 	}
