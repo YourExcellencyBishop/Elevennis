@@ -10,7 +10,7 @@ out_of_play_1.func = function()
 	{
 		if (last_touch != INVALID) { last_touch.enemy.total_score++; }
 		
-		if (last_touch.enemy.total_score == GameManager.win_score)
+		if (!GameManager.endless && last_touch.enemy.total_score == GameManager.win_score)
 		{
 			GameManager.end_game("EndScreen");
 			return;

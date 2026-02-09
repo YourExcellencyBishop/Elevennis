@@ -47,6 +47,7 @@
     {"$GMObjectProperty":"v2","%Name":"max_paddles","filters":[],"listItems":[],"multiselect":false,"name":"max_paddles","rangeEnabled":true,"rangeMax":4.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"brush_size","filters":[],"listItems":[],"multiselect":false,"name":"brush_size","rangeEnabled":true,"rangeMax":4.0,"rangeMin":1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"2","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"win_score","filters":[],"listItems":[],"multiselect":false,"name":"win_score","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"11","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"endless","filters":[],"listItems":[],"multiselect":false,"name":"endless","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

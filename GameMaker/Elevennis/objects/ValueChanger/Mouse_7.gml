@@ -86,10 +86,41 @@ switch (value_id)
 	case ValueID.WinScore:
 		if (GameManager.page == 2)
 		{
-			GameManager.win_score = clamp(GameManager.win_score + (increments ? 1 : -1), 0, 100);
+			GameManager.win_score = clamp(GameManager.win_score + (increments ? 1 : -1), 1, 100);
+			if (GameManager.endless) GameManager.win_score = 11;
+			
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
 			elementId = setting.nodes[2].layerElements[0].elementId;
 			layer_text_text(elementId, $"{GameManager.win_score == 0 ? "inf" : GameManager.win_score}");
+			
+			GameManager.endless = false;
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Endless"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			layer_text_text(elementId, "OFF");
+		}
+		break;
+		
+	case ValueID.Endless:
+		if (GameManager.page == 2)
+		{
+			GameManager.endless = !GameManager.endless;
+			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Endless"));
+			elementId = setting.nodes[2].layerElements[0].elementId;
+			
+			GameManager.win_score = 11;
+			var win_score_setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WinScore"));
+			var win_score_elementId = win_score_setting.nodes[2].layerElements[0].elementId;
+			
+			if (GameManager.endless)
+			{
+				layer_text_text(elementId, "ON");
+				layer_text_text(win_score_elementId, "inf");
+			}
+			else
+			{
+				layer_text_text(elementId, "OFF");
+				layer_text_text(win_score_elementId, $"{GameManager.win_score}");
+			}
 		}
 		break;
 		
