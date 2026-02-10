@@ -4,7 +4,7 @@ var setting, elementId;
 switch (value_id)
 {
 	case ValueID.EnemyDifficulty:
-		if (GameManager.page == 0)
+		if (GameManager.game_settings_page == 0)
 		{
 			GameManager.enemy_difficulty = clamp(GameManager.enemy_difficulty + (increments ? 1 : -1), 1, 11);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "EnemyDifficulty"));
@@ -14,7 +14,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.BallEdges:
-		if (GameManager.page == 0)
+		if (GameManager.game_settings_page == 0)
 		{
 			GameManager.ball_edges = clamp(GameManager.ball_edges + (increments ? 1 : -1), 3, 9);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BallEdges"));
@@ -24,7 +24,7 @@ switch (value_id)
 		break;
 	
 	case ValueID.Gravity:
-		if (GameManager.page == 0)
+		if (GameManager.game_settings_page == 0)
 		{
 			GameManager.gravity_scale = clamp(GameManager.gravity_scale + (increments ? 0.1 : -0.1), 0.5, 1.5);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Gravity"));
@@ -34,7 +34,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.BallRadius:
-		if (GameManager.page == 0)
+		if (GameManager.game_settings_page == 0)
 		{
 			GameManager.ball_radius = clamp(GameManager.ball_radius + (increments ? 1 : -1), 5, 20);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BallRadius"));
@@ -44,7 +44,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.WallBounce:
-		if (GameManager.page == 1)
+		if (GameManager.game_settings_page == 1)
 		{
 			GameManager.wall_bounce = clamp(GameManager.wall_bounce + (increments ? 0.05 : -0.05), 0.25, 1.5);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "WallBounce"));
@@ -54,7 +54,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.HitPower:
-		if (GameManager.page == 1)
+		if (GameManager.game_settings_page == 1)
 		{
 			GameManager.hit_power = clamp(GameManager.hit_power + (increments ? 0.1 : -0.1), 1, 2);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "HitPower"));
@@ -64,7 +64,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.MaxPaddles:
-		if (GameManager.page == 1)
+		if (GameManager.game_settings_page == 1)
 		{
 			GameManager.max_paddles = clamp(GameManager.max_paddles + (increments ? 1 : -1), 1, 4);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "MaxPaddles"));
@@ -74,7 +74,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.BrushSize:
-		if (GameManager.page == 1)
+		if (GameManager.game_settings_page == 1)
 		{
 			GameManager.brush_size = clamp(GameManager.brush_size + (increments ? 1 : -1), 1, 4);
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "BrushSize"));
@@ -84,7 +84,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.WinScore:
-		if (GameManager.page == 2)
+		if (GameManager.game_settings_page == 2)
 		{
 			GameManager.win_score = clamp(GameManager.win_score + (increments ? 1 : -1), 1, 100);
 			if (GameManager.endless)
@@ -109,7 +109,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.Endless:
-		if (GameManager.page == 2)
+		if (GameManager.game_settings_page == 2)
 		{
 			GameManager.endless = !GameManager.endless;
 			setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "Endless"));
@@ -139,7 +139,7 @@ switch (value_id)
 		break;
 		
 	case ValueID.Time:
-		if (GameManager.page == 2)
+		if (GameManager.game_settings_page == 2)
 		{
 			GameManager.game_length = clamp(GameManager.game_length + (increments ? 1 : -1), 1, 100);
 			if (GameManager.endless) 

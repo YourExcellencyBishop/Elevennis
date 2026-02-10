@@ -17,7 +17,8 @@ enum ButtonID
 {
 	None, Resume, Settings, Quit,
 	StartGame, PlaySettings,
-	PrevPage, NextPage,
+	PrevPageGameSettings, NextPageGameSettings,
+	PrevPageChallenge, NextPageChallenge,
 	Rematch, Pause
 }
 

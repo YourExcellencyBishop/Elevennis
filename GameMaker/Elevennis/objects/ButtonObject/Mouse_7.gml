@@ -20,12 +20,20 @@ switch (button_id)
 		LoadMenu(PlayMenuLayer);
 		break;
 		
-	case ButtonID.NextPage:
-		GameManager.set_game_setting_page(GameManager.page + 1);
+	case ButtonID.NextPageGameSettings:
+		GameManager.set_game_setting_page(GameManager.game_settings_page + 1);
 		break;
 		
-	case ButtonID.PrevPage:
-		GameManager.set_game_setting_page(GameManager.page - 1);
+	case ButtonID.PrevPageGameSettings:
+		GameManager.set_game_setting_page(GameManager.game_settings_page - 1);
+		break;
+		
+	case ButtonID.NextPageChallenge:
+		GameManager.set_challenge_page(GameManager.challenge_page + 1);
+		break;
+		
+	case ButtonID.PrevPageChallenge:
+		GameManager.set_challenge_page(GameManager.challenge_page - 1);
 		break;
 	
 	case ButtonID.Rematch:

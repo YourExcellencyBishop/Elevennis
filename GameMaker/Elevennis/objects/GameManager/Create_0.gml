@@ -35,25 +35,12 @@ room_height = surf_height;
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
-//physics_fixture_delete(fix);
-
-game_state = GameState.MainMenu;
-
 enum GameState
 {
 	MainMenu, MainGame
 }
 
 LoadMenu(MainMenuLayer);
-
-var _main_menu_layer = layer_get_flexpanel_node(MainMenuLayer);
-var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
-
-//layer_text_text(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId, "Bruh");
-//show_message(flexpanel_node_get_struct(_play_flex)[$ "nodes"][0].layerElements[0].elementId)
-//show_message(flexpanel_node_get_data(_play_flex))
-
-//show_message(flexpanel_node_get_struct(flexpanel_node_get_child(layer_get_flexpanel_node(PlayMenuLayer), "EnemyDifficulty")));
 
 #macro player_bound_x1 40
 #macro player_bound_y1 70
@@ -63,8 +50,6 @@ var _play_flex = flexpanel_node_get_child(_main_menu_layer, "PlayButton");
 
 function start_game()
 {
-	game_state = GameState.MainGame;
-	
 	LoadMenu(InGameLayer);
 	
 	instance_create_depth(x, y, depth, PauseManager);
@@ -225,8 +210,6 @@ function reset_game()
 
 function end_game(_target_menu = MainMenuLayer)
 {
-	game_state = GameState.MainMenu;
-	
 	//fx_set_parameter(PauseManager.game_blur, "g_intensity", 0);
 	physics_remove_fixture(id, fix);
 	physics_pause_enable(true);
@@ -258,17 +241,37 @@ function end_game(_target_menu = MainMenuLayer)
 function set_game_setting_page(_page)
 {
 	var ui_root = layer_get_flexpanel_node(PlayMenuLayer);
-	var pages = flexpanel_node_get_child(ui_root, "Pages");
+	var pages = flexpanel_node_get_child(ui_root, "GameSettingsPages");
 	var max_pages = flexpanel_node_get_num_children(pages);
 	var max_page_index = max_pages - 1;
 	
-	GameManager.page = clamp(_page, 0, max_page_index);
+	GameManager.game_settings_page = clamp(_page, 0, max_page_index);
 	
 	var settings_title = flexpanel_node_get_child(ui_root, "GameSettingsPanel");
 	layer_text_text(flexpanel_node_get_struct(settings_title).layerElements[0].elementId, 
-		$"Game Settings  ({GameManager.page + 1}/{max_pages})")
+		$"Game Settings  ({GameManager.game_settings_page + 1}/{max_pages})")
 	
-	var pages_left_pos = max_page_index * 200 - GameManager.page * 400;
+	var pages_left_pos = max_page_index * 200 - GameManager.game_settings_page * 400;
+	
+	flexpanel_node_style_set_position(pages, flexpanel_edge.left, pages_left_pos, flexpanel_unit.point);
+}
+
+function set_challenge_page(_page)
+{
+	var ui_root = layer_get_flexpanel_node(PlayMenuLayer);
+	var pages = flexpanel_node_get_child(ui_root, "ChallengePages");
+	var max_pages = flexpanel_node_get_num_children(pages);
+	var max_page_index = max_pages - 1;
+	
+	GameManager.challenge_page = clamp(_page, 0, max_page_index);
+	
+	var levels = ["Easy", "Medium", "Hard"];
+	
+	var challenge_title = flexpanel_node_get_child(ui_root, "ChallengeLevelTitlePanel");
+	layer_text_text(flexpanel_node_get_struct(challenge_title).layerElements[0].elementId, 
+		$"Level: {levels[GameManager.challenge_page]}")
+	
+	var pages_left_pos = max_page_index * 200 - GameManager.challenge_page * 400;
 	
 	flexpanel_node_style_set_position(pages, flexpanel_edge.left, pages_left_pos, flexpanel_unit.point);
 }
