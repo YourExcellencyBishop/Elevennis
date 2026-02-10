@@ -6,7 +6,7 @@ global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 global.gravity_x = 0;
 global.gravity_y = base_gravity;
 
-random_set_seed(date_get_day_of_year(date_current_datetime()) + 2);
+random_set_seed(date_get_day_of_year(date_current_datetime()));
 
 #macro BallEdgesMod 0
 #macro GravityMod 1
@@ -21,6 +21,21 @@ mod_list = ["Ball Edges", "Gravity", "Ball Size", "Wall Bounce", "Hit Power", "M
 daily_mod_1 = set_daily_mod(daily_mod_2, daily_mod_3);
 daily_mod_2 = set_daily_mod(daily_mod_1, daily_mod_3);
 daily_mod_3 = set_daily_mod(daily_mod_2, daily_mod_1);
+
+function reset_to_default()
+{
+	enemy_difficulty = 6;
+	ball_edges = 4;
+	gravity_scale = 1;
+	ball_radius = 15;
+	wall_bounce = 0.75;
+	hit_power = 1;
+	max_paddles = 4;
+	brush_size = 2;
+	win_score = 11;
+	endless = false;
+	game_length = 3;
+}
 
 function set_daily_mod(other_mod_1, other_mod_2)
 {
@@ -143,6 +158,44 @@ function set_mod_values(mod_num)
 	}
 	
 	return values;
+}
+
+function set_game_setting(_mod, _vals, _diff)
+{
+	switch (_mod)
+	{
+		case BallEdgesMod:
+			ball_edges = _vals[_diff];
+			break;
+			
+		case GravityMod:
+			gravity_scale = _vals[_diff];
+			break;
+		
+		case BallSizeMod:
+			ball_radius = _vals[_diff];
+			break;
+			
+		case WallBounceMod:
+			wall_bounce = _vals[_diff];
+			break;
+			
+		case HitPowerMod:
+			hit_power = _vals[_diff];
+			break;
+			
+		case MaxPaddlesMod:
+			max_paddles = _vals[_diff];
+			break;
+			
+		case BrushSizeMod:
+			brush_size = _vals[_diff];
+			break;
+
+		default:
+			show_message("no functionality on set mod vals");
+			break;
+	}
 }
 
 if (useDebug)

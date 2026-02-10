@@ -48,7 +48,19 @@ switch (button_id)
 		}
 		break;
 		
+	case ButtonID.Challenge:
+		with (GameManager)
+		{
+			enemy_difficulty = [3, 7, 11][challenge_page];
+			set_game_setting(daily_mod_1, daily_mod_vals_1, challenge_page);
+			set_game_setting(daily_mod_2, daily_mod_vals_2, challenge_page);
+			set_game_setting(daily_mod_3, daily_mod_vals_3, challenge_page);
+			start_game()
+		}
+		break;
+		
 	case ButtonID.None:
 	default:
 		break;
 }
+

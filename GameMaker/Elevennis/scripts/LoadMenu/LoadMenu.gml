@@ -15,6 +15,8 @@ function LoadMenu(_target)
 			break;
 			
 		case PlayMenuLayer:
+			GameManager.reset_to_default();
+		
 			GameManager.set_game_setting_page(0);
 			GameManager.set_challenge_page(0);
 			
