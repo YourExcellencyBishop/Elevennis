@@ -6,7 +6,144 @@ global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 global.gravity_x = 0;
 global.gravity_y = base_gravity;
 
-randomise()
+random_set_seed(date_get_day_of_year(date_current_datetime()) + 2);
+
+#macro BallEdgesMod 0
+#macro GravityMod 1
+#macro BallSizeMod 2
+#macro WallBounceMod 3
+#macro HitPowerMod 4
+#macro MaxPaddlesMod 5
+#macro BrushSizeMod 6
+
+mod_list = ["Ball Edges", "Gravity", "Ball Size", "Wall Bounce", "Hit Power", "Max Paddles", "Brush Size"];
+
+daily_mod_1 = set_daily_mod(daily_mod_2, daily_mod_3);
+daily_mod_2 = set_daily_mod(daily_mod_1, daily_mod_3);
+daily_mod_3 = set_daily_mod(daily_mod_2, daily_mod_1);
+
+function set_daily_mod(other_mod_1, other_mod_2)
+{
+	var mod_to_set = -1;
+	do 
+	{
+	    mod_to_set = irandom_range(0, 6);
+	} until (mod_to_set != other_mod_1 && mod_to_set != other_mod_2);
+	
+	return mod_to_set;
+}
+
+var mod_vals_1 = set_mod_values(daily_mod_1);
+var mod_vals_2 = set_mod_values(daily_mod_2);
+var mod_vals_3 = set_mod_values(daily_mod_3);
+
+array_copy(daily_mod_vals_1, 0, mod_vals_1, 0, 3);
+array_copy(daily_mod_vals_2, 0, mod_vals_2, 0, 3);
+array_copy(daily_mod_vals_3, 0, mod_vals_3, 0, 3);
+
+array_copy(daily_mod__string_vals_1, 0, mod_vals_1, 3, 3);
+array_copy(daily_mod__string_vals_2, 0, mod_vals_2, 3, 3);
+array_copy(daily_mod__string_vals_3, 0, mod_vals_3, 3, 3);
+
+function set_mod_values(mod_num)
+{
+	var values = array_create(6, INVALID);
+	
+	switch (mod_num)
+	{
+		case BallEdgesMod:
+			values[0] = irandom_range(6,9);
+			values[3] = values[0] == 9 ? "inf": values[0];
+			
+			values[1] = irandom_range(4,7);
+			values[4] = values[1];
+			
+			values[2] = irandom_range(3,6);
+			values[5] = values[2];
+			break;
+			
+		case GravityMod:
+			values[0] = random_range(0.9, 1.1);
+			values[0] -= values[0] % 0.1;
+			values[3] = $"{string_format(values[0], 1, 1)}x";
+			
+			values[1] = random_range(0.7, 1.3);
+			values[1] -= values[1] % 0.1;
+			values[4] = $"{string_format(values[1], 1, 1)}x";
+			
+			values[2] = random_range(0.5, 1.5);
+			values[2] -= values[2] % 0.1;
+			values[5] = $"{string_format(values[2], 1, 1)}x";
+			break;
+		
+		case BallSizeMod:
+			values[0] = irandom_range(14, 16);
+			values[3] = values[0];
+			
+			values[1] = irandom_range(12, 17);
+			values[4] = values[1];
+			
+			values[2] = irandom_range(10, 15);
+			values[5] = values[2];
+			break;
+			
+		case WallBounceMod:
+			values[0] = random_range(0.7, 0.8);
+			values[0] -= values[0] % 0.05;
+			values[3] = values[0];
+			
+			values[1] = random_range(0.4, 1.2);
+			values[1] -= values[1] % 0.05;
+			values[4] = values[1];
+			
+			values[2] = random_range(0.25, 1.5);
+			values[2] -= values[2] % 0.05;
+			values[5] = values[2];
+			break;
+			
+		case HitPowerMod:
+			values[0] = random_range(1, 1.3);
+			values[0] -= values[0] % 0.1;
+			values[3] = values[0];
+			
+			values[1] = random_range(1, 1.6);
+			values[1] -= values[1] % 0.1;
+			values[4] = values[1];
+			
+			values[2] = random_range(1, 2);
+			values[2] -= values[2] % 0.1;
+			values[5] = values[2];
+			break;
+			
+		case MaxPaddlesMod:
+			values[0] = irandom_range(3, 4);
+			values[3] = values[0] == 4 ? "inf" : values[0];
+			
+			values[1] = irandom_range(1, 4);
+			values[4] = values[1] == 4 ? "inf" : values[1];
+			
+			values[2] = irandom_range(1, 2);
+			values[5] = values[2];
+			break;
+			
+		case BrushSizeMod:
+			values[0] = irandom_range(2, 3);
+			values[3] = values[0];
+			
+			values[1] = irandom_range(1, 4);
+			values[4] = values[1];
+			
+			values[2] = irandom_range(1, 4);
+			values[5] = values[2];
+			break;
+
+		default:
+			show_message("no functionality on set mod vals");
+			break;
+	}
+	
+	return values;
+}
 
 if (useDebug)
 {
