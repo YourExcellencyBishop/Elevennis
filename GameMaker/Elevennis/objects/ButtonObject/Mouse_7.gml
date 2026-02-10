@@ -59,6 +59,9 @@ switch (button_id)
 		}
 		break;
 		
+	case ButtonID.Tutorial:
+		break;
+		
 	case ButtonID.None:
 	default:
 		break;

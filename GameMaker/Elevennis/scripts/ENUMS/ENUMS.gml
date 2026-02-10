@@ -19,7 +19,7 @@ enum ButtonID
 	StartGame, PlaySettings,
 	PrevPageGameSettings, NextPageGameSettings,
 	PrevPageChallenge, NextPageChallenge,
-	Rematch, Pause, Challenge
+	Rematch, Pause, Challenge, Tutorial
 }
 
 enum ValueID

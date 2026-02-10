@@ -58,6 +58,7 @@
     {"$GMObjectProperty":"v2","%Name":"daily_mod__string_vals_1","filters":[],"listItems":[],"multiselect":false,"name":"daily_mod__string_vals_1","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"array_create(3, INVALID)","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"daily_mod__string_vals_2","filters":[],"listItems":[],"multiselect":false,"name":"daily_mod__string_vals_2","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"array_create(3, INVALID)","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"daily_mod__string_vals_3","filters":[],"listItems":[],"multiselect":false,"name":"daily_mod__string_vals_3","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"array_create(3, INVALID)","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"tutorial","filters":[],"listItems":[],"multiselect":false,"name":"tutorial","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
