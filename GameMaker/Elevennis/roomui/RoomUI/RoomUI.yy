@@ -66,7 +66,7 @@
               ],"flexDirection":0,"height":{"unit":3,"value":5.0,},"justifyContent":0,"layoutDirection":1,"name":"EndScreenButtons","nodeColour":4282948338,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":2,"value":100.0,},},
             {"$GMRSpriteGraphic":"v1","%Name":"graphic_1030D4C0","animationSpeed":1.0,"colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps","stretchHeight":true,"stretchWidth":true,},"frozen":true,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_1030D4C0","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"UI_BOX","path":"sprites/UI_BOX/UI_BOX.yy",},"x":0.0,"y":0.0,},
           ],"flexDirection":0,"height":{"unit":1,"value":500.0,},"justifyContent":2,"name":"EndScreenPanel","nodeColour":4291555912,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":1,"value":500.0,},},
-      ],"flexDirection":0,"gridX":32,"gridY":32,"justifyContent":1,"locked":true,"name":"EndScreenLayer","nodeColour":4293347570,"resourceType":"GMRUILayer","resourceVersion":"2.0","visible":false,},
+      ],"flexDirection":0,"gridX":32,"gridY":32,"justifyContent":1,"locked":true,"name":"EndScreenLayer","nodeColour":4293347570,"resourceType":"GMRUILayer","resourceVersion":"2.0",},
     {"$GMRUILayer":"v1","%Name":"PlayMenuLayer","alignItems":2,"children":[
         {"$GMRFlexPanel":"","%Name":"NormalPlayPanel","alignItems":2,"children":[
             {"$GMRFlexPanel":"","%Name":"Text","alignItems":2,"children":[
@@ -332,7 +332,7 @@
               ],"flexDirection":0,"height":{"unit":1,"value":100.0,},"justifyContent":1,"marginBottom":{"unit":1,"value":20.0,},"marginTop":{"unit":1,"value":20.0,},"name":"StartChallengeButtonPanel","nodeColour":4294087496,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":1,"value":400.0,},},
             {"$GMRSpriteGraphic":"v1","%Name":"graphic_179FFE4C","animationSpeed":1.0,"colour":4294967295,"flexProperties":{"$InstanceFlexProps":"v1","anchor":0,"resourceType":"InstanceFlexProps","stretchHeight":true,"stretchWidth":true,},"frozen":true,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_179FFE4C","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"UI_BOX","path":"sprites/UI_BOX/UI_BOX.yy",},"x":0.0,"y":0.0,},
           ],"flexDirection":0,"height":{"unit":1,"value":600.0,},"justifyContent":0,"marginLeft":{"unit":1,"value":50.0,},"marginRight":{"unit":1,"value":50.0,},"name":"DailyMechanicPanel","nodeColour":4284150344,"resourceType":"GMRFlexPanel","resourceVersion":"2.0","width":{"unit":1,"value":500.0,},},
-      ],"flexDirection":2,"gridX":32,"gridY":32,"justifyContent":1,"locked":true,"name":"PlayMenuLayer","nodeColour":4294068363,"resourceType":"GMRUILayer","resourceVersion":"2.0",},
+      ],"flexDirection":2,"gridX":32,"gridY":32,"justifyContent":1,"locked":true,"name":"PlayMenuLayer","nodeColour":4294068363,"resourceType":"GMRUILayer","resourceVersion":"2.0","visible":false,},
     {"$GMRUILayer":"v1","%Name":"MainMenuLayer","alignItems":2,"children":[
         {"$GMRFlexPanel":"","%Name":"MenuOptionsPanel","alignItems":2,"children":[
             {"$GMRFlexPanel":"","%Name":"TutorialButton","alignItems":2,"children":[

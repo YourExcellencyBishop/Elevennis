@@ -232,6 +232,19 @@ function end_game(_target_menu = MainMenuLayer)
 	physics_pause_enable(true);
 	instance_activate_all();
 	
+	if (_target_menu == EndScreenLayer)
+	{
+		var ui_root = layer_get_flexpanel_node(EndScreenLayer);
+		var setting, elementId;
+		setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "ScoreText"));
+		elementId = setting.layerElements[0].elementId;
+		layer_text_text(elementId, $"{player.total_score} : {opponent.total_score}");
+		
+		setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "TimeText"));
+		elementId = setting.layerElements[0].elementId;
+		layer_text_text(elementId, $"{opponent.total_score > player.total_score ? "Lost" : (player.total_score > opponent.total_score ? "Won" : "Drew")} in {PadWithZeroes(floor(PauseManager.total_time) div 60, 2)}m : {PadWithZeroes(floor(PauseManager.total_time) mod 60, 2)}s");
+	}
+	
 	with (all)
 	{
 		if (!persistent) instance_destroy();
