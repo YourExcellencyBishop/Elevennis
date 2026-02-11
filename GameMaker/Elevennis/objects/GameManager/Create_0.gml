@@ -218,6 +218,7 @@ surface_depth_disable(true);
 surf = INVALID;
 surf_width = 320;
 surf_height = 180;
+grid = INVALID;
 
 room_width = surf_width;
 room_height = surf_height;
@@ -285,7 +286,7 @@ function start_game()
 		out_zone_color: c_blue
 	});
 
-	instance_create_depth(player_bound_x1, room_height, depth, PhysicsBody,
+	instance_create_depth(player_bound_x1, room_height, depth-10, PhysicsBody,
 	{
 		point_count: 4, 
 		points_x: [[-4, 4, 4, -4]], 
@@ -295,7 +296,7 @@ function start_game()
 		e: zone_separator_e
 	});
 
-	instance_create_depth(player_bound_x2, room_height, depth, PhysicsBody,
+	instance_create_depth(player_bound_x2, room_height, depth-10, PhysicsBody,
 	{
 		point_count: 4, 
 		points_x: [[-4, 4, 4, -4]], 
@@ -318,7 +319,7 @@ function start_game()
 		difficulty: tutorial ? 1 : enemy_difficulty / 11
 	});
 
-	instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
+	instance_create_depth(room_width - player_bound_x2, room_height, depth-10, PhysicsBody,
 	{
 		point_count: 4, 
 		points_x: [[-4, 4, 4, -4]], 
@@ -328,7 +329,7 @@ function start_game()
 		e: zone_separator_e
 	});
 
-	instance_create_depth(room_width - player_bound_x1, room_height, depth, PhysicsBody,
+	instance_create_depth(room_width - player_bound_x1, room_height, depth-10, PhysicsBody,
 	{
 		point_count: 4, 
 		points_x: [[-4, 4, 4, -4]], 

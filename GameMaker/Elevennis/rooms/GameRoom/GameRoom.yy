@@ -54,7 +54,7 @@
         {"name":"g_numDownsamples","type":0,"value":"2",},
         {"name":"g_numPasses","type":0,"value":"2",},
         {"name":"g_intensity","type":0,"value":"1",},
-      ],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":false,},
+      ],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMREffectLayer":"","%Name":"GameGlow","depth":100,"effectEnabled":true,"effectType":"_effect_glow","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"GameGlow","properties":[
         {"name":"g_GlowRadius","type":0,"value":"25",},
         {"name":"g_GlowQuality","type":0,"value":"7",},
