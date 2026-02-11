@@ -1,0 +1,1 @@
+shake_intensity = lerp(shake_intensity, 0, 0.1)

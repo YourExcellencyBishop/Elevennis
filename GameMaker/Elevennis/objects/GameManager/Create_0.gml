@@ -226,6 +226,8 @@ room_height = surf_height;
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
+shake_intensity = 5;
+
 enum GameState
 {
 	MainMenu, MainGame

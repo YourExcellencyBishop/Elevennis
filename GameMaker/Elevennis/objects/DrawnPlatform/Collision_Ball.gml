@@ -16,7 +16,7 @@ with (character.enemy.platform_spawner)
 
 with (other)
 {
-	var spd = phy_speed;
+	var spd = max(phy_speed, 0.1);
 	phy_speed_x = (phy_speed_x / spd) * other.swing;
 	phy_speed_y = (phy_speed_y / spd) * other.swing;
 	
