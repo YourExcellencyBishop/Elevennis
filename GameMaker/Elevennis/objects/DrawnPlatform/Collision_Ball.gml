@@ -23,11 +23,21 @@ with (other)
 	last_touch = other.character;
 }
 
-with (DrawnPlatform)
+if (GameManager.tutorial && TutorialManager.tutorial_state == TutorialState.BeginTutorialGame)
 {
-	if (character == other.character)
+	physics_pause_enable(true);
+	character.platform_spawner.paddles = 0;
+	TutorialManager.destroy_instance = self;
+	TutorialManager.tutorial_state = TutorialState.ExplainPaddle1;
+}
+else
+{
+	with (DrawnPlatform)
 	{
-		character.platform_spawner.paddles = 0;
-		instance_destroy();
+		if (character == other.character)
+		{
+			character.platform_spawner.paddles = 0; //check
+			instance_destroy();
+		}
 	}
 }

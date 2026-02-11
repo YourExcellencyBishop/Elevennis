@@ -315,7 +315,7 @@ function start_game()
 		bounds_color: c_blue,
 		out_zone_color: c_red,
 		enemy: player,
-		difficulty: enemy_difficulty / 11
+		difficulty: tutorial ? 1 : enemy_difficulty / 11
 	});
 
 	instance_create_depth(room_width - player_bound_x2, room_height, depth, PhysicsBody,
@@ -362,6 +362,16 @@ function start_game()
 	var elementId = score_panel.layerElements[0].elementId;
 	layer_text_text(elementId, $"{player.total_score} : {opponent.total_score}");
 	
+	if (tutorial) 
+	{
+		LoadMenu(TutorialLayer);
+		random_set_seed(1); 
+	}
+	else
+	{
+		randomise();
+	}
+	
 	reset_game();
 }
 
@@ -379,8 +389,16 @@ function reset_game()
 		phy_linear_velocity_y = 0;
 		phy_angular_velocity = 0;
 		
-		physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(15, 20) : random_range(15, 20)  , -random_range(15, 40));
-		physics_apply_angular_impulse(random_range(-60, 60))
+		if (GameManager.tutorial)
+		{
+			physics_apply_impulse(phy_com_x, phy_com_y, 20, -25);
+			physics_apply_angular_impulse(20);
+		}
+		else
+		{
+			physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(15, 20) : random_range(15, 20)  , -random_range(15, 40));
+			physics_apply_angular_impulse(random_range(-60, 60));
+		}
 	}
 	
 	with (DrawnPlatformSpawner)

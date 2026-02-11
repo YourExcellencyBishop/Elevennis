@@ -3,6 +3,7 @@
 #macro PlayMenuLayer "PlayMenuLayer"
 #macro EndScreenLayer "EndScreenLayer"
 #macro InGameLayer "InGameLayer"
+#macro TutorialLayer "TutorialLayer"
 
 function LoadMenu(_target)
 {
@@ -59,6 +60,7 @@ function LoadMenu(_target)
 			layer_set_visible(PlayMenuLayer, false);
 			layer_set_visible(PauseMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
+			layer_set_visible(TutorialLayer, false);
 			break;
 			
 		case EndScreenLayer:
@@ -72,11 +74,17 @@ function LoadMenu(_target)
 			layer_set_visible(EndScreenLayer, false);
 			break;
 			
+		case TutorialLayer:
+			instance_create_depth(0, 0, depth, TutorialManager);
+			break;
+			
 		case "":
+			layer_set_visible(PauseMenuLayer, false);
 			layer_set_visible(MainMenuLayer, false);
 			layer_set_visible(PlayMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
 			layer_set_visible(InGameLayer, false);
+			layer_set_visible(TutorialLayer, false);
 			break;
 		
 		default:

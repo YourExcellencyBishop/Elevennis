@@ -6,6 +6,8 @@ with (platform_spawner)
 	prev_brush_position_y = brush_position_y;
 	brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
 	brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
+	
+	show_debug_message($"({brush_position_x}, {brush_position_y})")
 
 	var mouse_dist = infinity;
 

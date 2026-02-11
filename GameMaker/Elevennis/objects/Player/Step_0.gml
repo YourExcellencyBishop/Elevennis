@@ -4,7 +4,7 @@ with (platform_spawner)
 {
 	if (mouse_check_button(mb_left))
 	{	
-		if (mouse_check_button_pressed(mb_left)) 
+		if (mouse_check_button_pressed(mb_left) && !GameManager.tutorial) 
 		{
 			if (spawner_mode == SpawnerMode.ChangeSize && 
 				point_in_circle(brush_position_x, brush_position_y, size_arrow_x, size_arrow_y, 5))
@@ -85,7 +85,9 @@ with (platform_spawner)
 		}
 	}
 	
-	if (!PauseManager.ready_to_play)
+	if !PauseManager.ready_to_play
+		&& (!GameManager.tutorial
+	    || TutorialManager.tutorial_state >= TutorialState.AIIsReady)
 	{
 		draw_set_font(InGameFont);
 		draw_set_halign(fa_center);

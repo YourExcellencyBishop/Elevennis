@@ -1,3 +1,5 @@
+if (!active) exit;
+
 switch (button_id)
 {
 	case ButtonID.Resume:
@@ -13,6 +15,7 @@ switch (button_id)
 		break;
 		
 	case ButtonID.StartGame:
+		GameManager.tutorial = false;
 		GameManager.start_game();
 		break;
 		
@@ -51,6 +54,7 @@ switch (button_id)
 	case ButtonID.Challenge:
 		with (GameManager)
 		{
+			tutorial = false;
 			enemy_difficulty = [3, 7, 11][challenge_page];
 			set_game_setting(daily_mod_1, daily_mod_vals_1, challenge_page);
 			set_game_setting(daily_mod_2, daily_mod_vals_2, challenge_page);
@@ -60,6 +64,12 @@ switch (button_id)
 		break;
 		
 	case ButtonID.Tutorial:
+		with (GameManager)
+		{
+			tutorial = true;
+			endless = true;
+			start_game();
+		}
 		break;
 		
 	case ButtonID.None:

@@ -96,7 +96,7 @@ if (!platform_spawner.drawing)
 	{	
 		if (!found_place)
 		{
-			var future_time = lerp(start_t, end_t, random_range(time_range_low, time_range_high));
+			var future_time = lerp(start_t, end_t, GameManager.tutorial ? 0.8 : random_range(time_range_low, time_range_high));
 
 			var ball_vx = Ball.phy_linear_velocity_x * future_time;
 			var ball_vy = Ball.phy_linear_velocity_y * future_time + 0.5 * grv * future_time * future_time;
