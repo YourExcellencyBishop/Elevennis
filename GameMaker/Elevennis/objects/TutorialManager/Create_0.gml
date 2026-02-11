@@ -12,7 +12,14 @@ enum TutorialState
 	ExplainPaddle2,
 	BallReturnsMessage,
 	BallReturns,
-	PlayerDrawLine
+	DrawPaddleMessage,
+	PlayerDrawnLine,
+	PlayerFirstAttack,
+	FirstPoint,
+	DrawAreaMessage,
+	YellowZone,
+	EndTutorial,
+	Finished
 }
 
 ui_root = layer_get_flexpanel_node(TutorialLayer);
@@ -36,6 +43,13 @@ layer_text_alpha(start_tutorial_text_Id, 0);
 
 tutorial_state = TutorialState.WelcomeMessage;
 layer_text_text(tutorial_text_Id, "Welcome To Elevenis");
+
+first_paddle_x1 = 88;
+first_paddle_y1 = 75;
+first_paddle_x2 = 110;
+first_paddle_y2 = 110;
+
+drawn_first_paddle = false;
 
 /*
 

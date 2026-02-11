@@ -1,4 +1,4 @@
-if (!GameManager.tutorial)
+if (!GameManager.tutorial || TutorialManager.tutorial_state >=  TutorialState.YellowZone)
 {
 	draw_rectangle(platform_spawner.draw_area_x1, platform_spawner.draw_area_y1, platform_spawner.draw_area_x2, platform_spawner.draw_area_y2, true);
 

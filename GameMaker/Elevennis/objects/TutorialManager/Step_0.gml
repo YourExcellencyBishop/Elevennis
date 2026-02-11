@@ -25,13 +25,6 @@ if (mouse_check_button_pressed(mb_left))
 			GameManager.opponent.alarm[1] = game_get_speed(gamespeed_fps) * 2;
 			break;
 			
-		case TutorialState.GameStart:
-		case TutorialState.AIIsReady:
-		case TutorialState.PlayerIsReady:
-		case TutorialState.BeginTutorialGame:
-		case TutorialState.ExplainPaddle1:
-			break;
-			
 		case TutorialState.ExplainPaddle2:
 			show_debug_message("In this game, the longer the paddle draw, the weaker the hit. A smaller paddle will hit move the ball further.")
 			tutorial_state = TutorialState.BallReturnsMessage;
@@ -46,11 +39,44 @@ if (mouse_check_button_pressed(mb_left))
 			physics_pause_enable(false);
 			instance_destroy(destroy_instance);
 			break;
+			
+		case TutorialState.DrawPaddleMessage:
+			show_debug_message("Follow the line and draw a paddle");
+			break;
+			
+		case TutorialState.DrawAreaMessage:
+			show_debug_message("Here is your draw area, you can move it about to change where you want to draw");
+			with (GameManager.player.platform_spawner)
+			{
+				draw_area_side = 50;
+				
+				draw_area_size = draw_area_side*draw_area_side;
+
+				draw_area_x1 = bounds_centre_x - draw_area_side * 0.5;
+				draw_area_x2 = bounds_centre_x + draw_area_side * 0.5;
+				draw_area_y1 = bounds_centre_y - draw_area_side * 0.5;
+				draw_area_y2 = bounds_centre_y + draw_area_side * 0.5;
+				
+				min_draw_area_width = draw_area_size / bounds_height;
+				min_draw_area_height = draw_area_size / bounds_width;
+			}
+			tutorial_state = TutorialState.YellowZone;
+			break;
+			
+		case TutorialState.YellowZone:
+			show_debug_message("The yellow area is an illegal zone. Whoever hit it last will forfeit the point");
+			tutorial_state = TutorialState.EndTutorial;
+			break;
+			
+		case TutorialState.EndTutorial:
+			show_debug_message("The tutorial will end when you or your opponent get to 11 to the time runs out. Good Luck!");
+			GameManager.endless = false
+			GameManager.win_score = 3;
+			GameManager.opponent.draw_delay = 0;
+			tutorial_state = TutorialState.Finished;
+			break;
 		
-		case TutorialState.None:
 		default:
-			tutorial_state = TutorialState.WelcomeMessage;
-			layer_text_text(tutorial_text_Id, "Welcome To Elevenis");
 			break;
 	}
 }
@@ -91,8 +117,23 @@ switch (tutorial_state)
 		{
 			physics_pause_enable(true);
 			show_debug_message("Now you must draw a paddle to defend your court");
-			
-			// (105, 75) => (88, 105) for return paddle
+			tutorial_state = TutorialState.DrawPaddleMessage
 		}
+		break;
+		
+	case TutorialState.PlayerDrawnLine:
+		show_debug_message("Release");
+		
+		if (!mouse_check_button(mb_left))
+		{
+			physics_pause_enable(false);
+			GameManager.opponent.draw_delay = infinity;
+			tutorial_state = TutorialState.PlayerFirstAttack;
+		}
+		break;
+		
+	case TutorialState.FirstPoint:
+		show_debug_message("You won a point");
+		tutorial_state = TutorialState.DrawAreaMessage;
 		break;
 }

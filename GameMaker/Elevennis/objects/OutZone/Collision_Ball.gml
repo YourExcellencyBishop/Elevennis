@@ -7,6 +7,11 @@ with (PauseManager)
 	total_time += seconds;
 }
 
+if (GameManager.tutorial && TutorialManager.tutorial_state == TutorialState.PlayerFirstAttack)
+{
+	TutorialManager.tutorial_state = TutorialState.FirstPoint;
+}
+
 if (func != INVALID) func();
 
 with (GameManager)

@@ -4,7 +4,7 @@ with (platform_spawner)
 {
 	if (mouse_check_button(mb_left))
 	{	
-		if (mouse_check_button_pressed(mb_left) && !GameManager.tutorial) 
+		if (mouse_check_button_pressed(mb_left) && (!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.DrawPaddleMessage))
 		{
 			if (spawner_mode == SpawnerMode.ChangeSize && 
 				point_in_circle(brush_position_x, brush_position_y, size_arrow_x, size_arrow_y, 5))
@@ -65,6 +65,23 @@ with (platform_spawner)
 			
 			start_drawing = false;
 			drawing = true;
+			
+			if (GameManager.tutorial && TutorialManager.tutorial_state < TutorialState.FirstPoint)
+			{
+				if (!point_in_circle(brush_position_x, brush_position_y, TutorialManager.first_paddle_x1, TutorialManager.first_paddle_y1, brush_size))
+				{
+					start_drawing = true;
+					drawing = false;
+				}
+				else
+				{
+					prev_brush_position_x = TutorialManager.first_paddle_x1;
+					prev_brush_position_y = TutorialManager.first_paddle_y1;
+					
+					brush_position_x = TutorialManager.first_paddle_x1;
+					brush_position_y = TutorialManager.first_paddle_y1;
+				}
+			}
 		}
 		else if (drew && !in_draw_area) { create_physics_body = true; }
 	
@@ -80,9 +97,22 @@ with (platform_spawner)
 	
 		if (drawing)
 		{
-			drawing = false;
-			create_physics_body = drew;
+			if (!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.PlayerDrawnLine)
+			{
+				drawing = false;
+				create_physics_body = drew;
+			}
+			else
+			{
+				drawing = false;
+				create_physics_body = TutorialManager.drawn_first_paddle;
+				if (create_physics_body)
+				{
+					TutorialManager.tutorial_state = TutorialState.PlayerDrawnLine;
+				}
+			}
 		}
+		
 	}
 	
 	if !PauseManager.ready_to_play

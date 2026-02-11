@@ -4,10 +4,31 @@ with (platform_spawner)
 {
 	prev_brush_position_x = brush_position_x;
 	prev_brush_position_y = brush_position_y;
-	brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
-	brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
 	
-	show_debug_message($"({brush_position_x}, {brush_position_y})")
+	if (!GameManager.tutorial || ((TutorialManager.tutorial_state <= TutorialState.DrawPaddleMessage && !drawing)  || TutorialManager.tutorial_state >= TutorialState.PlayerDrawnLine))
+	{
+		brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
+		brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
+	}
+	else
+	{
+		var pos_x = floor(mouse_x * GameManager.scale_surf_width);
+		var lerp_x = (pos_x - TutorialManager.first_paddle_x1) / (TutorialManager.first_paddle_x2 - TutorialManager.first_paddle_x1);
+		
+		var pos_y = floor(mouse_y * GameManager.scale_surf_height);
+		var lerp_y = (pos_y - TutorialManager.first_paddle_y1) / (TutorialManager.first_paddle_y2 - TutorialManager.first_paddle_y1);
+		
+		var _lerp =  min(clamp(lerp_x, 0, 1), clamp(lerp_y, 0, 1));
+		brush_position_x = lerp(TutorialManager.first_paddle_x1, TutorialManager.first_paddle_x2, _lerp);
+		brush_position_y = lerp(TutorialManager.first_paddle_y1, TutorialManager.first_paddle_y2, _lerp);
+		
+		if (point_in_circle(brush_position_x, brush_position_y, TutorialManager.first_paddle_x2, TutorialManager.first_paddle_y2, brush_size))
+		{
+			TutorialManager.drawn_first_paddle = true;
+		}
+	}
+	
+	//show_debug_message($"({brush_position_x}, {brush_position_y})")
 
 	var mouse_dist = infinity;
 

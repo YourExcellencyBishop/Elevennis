@@ -280,7 +280,7 @@ function start_game()
 		bounds_y1: player_bound_y1,
 		bounds_x2: player_bound_x2,
 		bounds_y2: player_bound_y2,
-		draw_area_side: 50,
+		draw_area_side: tutorial ? sqrt((player_bound_x2 - player_bound_x1) * (player_bound_y2 - player_bound_y1) - 1) : 50,
 		bounds_color: c_red,
 		out_zone_color: c_blue
 	});
