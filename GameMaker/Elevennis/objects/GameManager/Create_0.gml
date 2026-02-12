@@ -3,11 +3,10 @@ global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
 //ParticleSystem1
-//ParticleSystem1
 _ps = part_system_create();
 part_system_draw_order(_ps, true);
 
-//Emitter
+//ParticleType
 _ptype1 = part_type_create();
 part_type_shape(_ptype1, pt_shape_pixel);
 part_type_size(_ptype1, 2, 2, 0, 0);
@@ -21,16 +20,10 @@ part_type_alpha3(_ptype1, 1, 1, 1);
 part_type_blend(_ptype1, false);
 part_type_life(_ptype1, 10, 30);
 
-
-//_pemit1 = part_emitter_create(_ps);
-//part_emitter_region(_ps, _pemit1, -32, 32, -32, 32, ps_shape_rectangle, ps_distr_linear);
-//part_emitter_stream(_ps, _pemit1, _ptype1, 1);
-
 part_system_automatic_draw(_ps, false);
 part_system_position(_ps, 0, 0);
 
 icon_rot = 0;
-
 
 #macro base_gravity 100
 global.gravity_x = 0;

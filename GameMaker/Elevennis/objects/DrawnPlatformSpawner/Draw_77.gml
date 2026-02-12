@@ -15,7 +15,11 @@ else
 		draw_surface(draw_area, 1, 1);
 		surface_reset_target();
 	
-		creation_data = CreateEdgeSurface(temp_surf, global.SupportR8UnormSurface);
+		try
+		{
+			creation_data = CreateEdgeSurface(temp_surf, global.SupportR8UnormSurface);
+		}
+		catch (lol) { /*Oopsie*/ }
 		
 		drew = false;
 		
