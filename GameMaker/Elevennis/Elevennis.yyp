@@ -112,6 +112,7 @@
     {"id":{"name":"snd_main_menu","path":"sounds/snd_main_menu/snd_main_menu.yy",},},
     {"id":{"name":"AIFace","path":"sprites/AIFace/AIFace.yy",},},
     {"id":{"name":"AreaLock","path":"sprites/AreaLock/AreaLock.yy",},},
+    {"id":{"name":"BackToMainMenu","path":"sprites/BackToMainMenu/BackToMainMenu.yy",},},
     {"id":{"name":"ChangeValueArrow","path":"sprites/ChangeValueArrow/ChangeValueArrow.yy",},},
     {"id":{"name":"GameLogo","path":"sprites/GameLogo/GameLogo.yy",},},
     {"id":{"name":"PageSwitchButton","path":"sprites/PageSwitchButton/PageSwitchButton.yy",},},

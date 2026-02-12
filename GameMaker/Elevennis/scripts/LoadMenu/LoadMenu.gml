@@ -68,7 +68,7 @@ function LoadMenu(_target)
 			layer_set_visible(InGameTutorialLayer, false);
 			layer_set_visible(LoadScreenLayer, false);
 			
-			audio_play_sound(snd_main_menu, 1, true);
+			if (!audio_is_playing(snd_main_menu)) audio_play_sound(snd_main_menu, 1, true);
 			
 			break;
 			

@@ -12,8 +12,8 @@ points ✓
 menus ✓
 daily mechanics ✓
 tutorial ✓
-loading screens
-music
+loading screens ✓
+music ✓
 remove settings
 end screen
 mute

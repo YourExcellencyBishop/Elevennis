@@ -28,6 +28,10 @@ switch (button_id)
 		LoadMenu(PlayMenuLayer);
 		break;
 		
+	case ButtonID.MainMenuFromPlaySettings:
+		LoadMenu(MainMenuLayer);
+		break;
+		
 	case ButtonID.NextPageGameSettings:
 		GameManager.set_game_setting_page(GameManager.game_settings_page + 1);
 		break;
