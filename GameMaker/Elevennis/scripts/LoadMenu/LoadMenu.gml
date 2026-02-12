@@ -6,6 +6,7 @@
 #macro TutorialLayer "TutorialLayer"
 #macro InGameTutorialLayer "InGameTutorialLayer"
 #macro LoadScreenLayer "LoadingScreenLayer"
+#macro CreditsLayer "CreditsLayer"
 
 function LoadMenu(_target)
 {
@@ -99,6 +100,28 @@ function LoadMenu(_target)
 			layer_set_visible(InGameLayer, false);
 			layer_set_visible(TutorialLayer, false);
 			layer_set_visible(InGameTutorialLayer, false);
+			layer_set_visible(CreditsLayer, false);
+			break;
+			
+		case CreditsLayer:
+			layer_set_visible(LoadScreenLayer, false);
+			if (!audio_is_playing(snd_credits_intro)) GameManager.credits_intro_sound = audio_play_sound(snd_credits_intro, 1, false);
+			
+			with (GameManager)
+			{
+				credits_items = ["Turn up the volume", "Credits With MEMES!", asset_get_index($"DanceMeme{irandom_range(1,26)}")];
+				credits_item = 0;
+				credits_y = [0, 0, 0];
+				credits_index = [0, 0, 0];
+				credits_fps = [0, 0, 0];
+				add_dance_meme = false;
+				credits_clicks = 3;
+			}
+			
+			draw_set_font(InGameFont);
+			GameManager.credits_y[0] = display_get_gui_height() / 3 * 2;
+			GameManager.credits_y[1] = GameManager.credits_y[0] + string_height(GameManager.credits_items[0]) * 10 + display_get_gui_height() / 3;
+			GameManager.credits_y[2] = GameManager.credits_y[1] + string_height(GameManager.credits_items[1]) * 10 + display_get_gui_height() / 3;
 			break;
 			
 		case "":

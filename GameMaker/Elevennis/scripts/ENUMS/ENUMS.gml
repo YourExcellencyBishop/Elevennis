@@ -15,7 +15,7 @@ enum PhysicsBodyType
 
 enum ButtonID
 {
-	None, Resume, Settings, Quit,
+	None, Resume, Credits, Quit,
 	StartGame, PlaySettings,
 	PrevPageGameSettings, NextPageGameSettings,
 	PrevPageChallenge, NextPageChallenge,

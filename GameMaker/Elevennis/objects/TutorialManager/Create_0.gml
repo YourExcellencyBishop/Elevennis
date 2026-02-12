@@ -58,7 +58,7 @@ ingame_tutorial_text_id = ingame_tutorial_text.layerElements[0].elementId;
 
 
 tutorial_state = TutorialState.WelcomeMessage;
-layer_text_text(tutorial_text_Id, "Welcome To Elevenis");
+layer_text_text(tutorial_text_Id, "Welcome To Elevennis");
 
 first_paddle_x1 = 88;
 first_paddle_y1 = 75;
@@ -66,17 +66,3 @@ first_paddle_x2 = 110;
 first_paddle_y2 = 110;
 
 drawn_first_paddle = false;
-
-/*
-
-Welcome: 
-Welcome To Elevenis
-
----
-
-Goal:
-In this game you must defend
-your area by drawing paddles to
-block the ball
-
-*/

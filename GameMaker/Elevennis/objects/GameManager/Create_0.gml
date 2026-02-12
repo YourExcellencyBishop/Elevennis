@@ -25,6 +25,17 @@ part_system_position(_ps, 0, 0);
 
 icon_rot = 0;
 
+credits_intro_sound = INVALID;
+
+all_credits_items = ["Elevennis by Fintane", "A Game Made For\nThe Reddit\nDaily Games Hackathon", 
+	"Game Director\nMe", "Creative Director\nAlso Me", "Executive Producer\nStill Me", "Produces\nMe Again", "Assistant Producer\nMe\n(wearing a different hat)",
+	"Lead Game Designer\nMe", "Junior Game Designer\nMe (earlier that morning)", "Systems Designer\nMe (after coffee)",
+	"UX Designer\nMe (guessing)", "UI Designer\nMe (hoping for the best)", "Physics Programmer\nMe (breaking everything)",
+	"Bug Creator\nMe", "Bug Fixer\nMe (later, angrily)", "Visual Effects Artist\nMe (particles everywhere)", "Composer\nMy Friend (NoNote)", 
+	"Playtester\nMe", "Release Manager\nMe (panicking)", "Version Control Manager\nMe (forgot to commit)", "Special Thanks\nYou!!!!\nFor Playing",
+	"Extra Special Thanks\nMe obviously"];
+	
+
 #macro base_gravity 100
 global.gravity_x = 0;
 global.gravity_y = base_gravity;

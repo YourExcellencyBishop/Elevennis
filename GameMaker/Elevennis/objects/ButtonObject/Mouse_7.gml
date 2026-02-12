@@ -7,7 +7,9 @@ switch (button_id)
 		PauseManager.update_pause();
 		break;
 		
-	case ButtonID.Settings:
+	case ButtonID.Credits:
+		LoadMenu(LoadScreenLayer);
+		GameManager.alarm[1] = game_get_speed(gamespeed_fps) * 1;
 		break;
 		
 	case ButtonID.Quit:
@@ -21,7 +23,7 @@ switch (button_id)
 		
 	case ButtonID.PlaySettings:
 		LoadMenu(LoadScreenLayer);
-		GameManager.alarm[4] = game_get_speed(gamespeed_fps) * 3;
+		GameManager.alarm[4] = game_get_speed(gamespeed_fps) * 1;
 		break;
 		
 	case ButtonID.PlaySettingsFromMainMenu:
