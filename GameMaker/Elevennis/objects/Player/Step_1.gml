@@ -5,7 +5,7 @@ with (platform_spawner)
 	prev_brush_position_x = brush_position_x;
 	prev_brush_position_y = brush_position_y;
 	
-	if (!GameManager.tutorial || ((TutorialManager.tutorial_state <= TutorialState.DrawPaddleMessage && !drawing)  || TutorialManager.tutorial_state >= TutorialState.PlayerDrawnLine))
+	if (!GameManager.tutorial || ((TutorialManager.tutorial_state <= TutorialState.DrawPaddleMessage && !drawing)  || TutorialManager.tutorial_state >= TutorialState.FirstPoint))
 	{
 		brush_position_x = floor(mouse_x * GameManager.scale_surf_width);
 		brush_position_y = floor(mouse_y * GameManager.scale_surf_height);
@@ -25,6 +25,7 @@ with (platform_spawner)
 		if (point_in_circle(brush_position_x, brush_position_y, TutorialManager.first_paddle_x2, TutorialManager.first_paddle_y2, brush_size))
 		{
 			TutorialManager.drawn_first_paddle = true;
+			TutorialManager.tutorial_state = TutorialState.PlayerDrawnLine;
 		}
 	}
 	

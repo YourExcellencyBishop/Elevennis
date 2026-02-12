@@ -4,14 +4,13 @@ with (platform_spawner)
 {
 	if (mouse_check_button(mb_left))
 	{	
-		if (mouse_check_button_pressed(mb_left) && (!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.DrawPaddleMessage))
+		if (mouse_check_button_pressed(mb_left))
 		{
 			if (spawner_mode == SpawnerMode.ChangeSize && 
-				point_in_circle(brush_position_x, brush_position_y, size_arrow_x, size_arrow_y, 5))
-			{
-				changing_draw_area_size = true;
-			}
-			else if (spawner_mode == SpawnerMode.Draw) { start_drawing = true; }
+				point_in_circle(brush_position_x, brush_position_y, size_arrow_x, size_arrow_y, 5) &&
+				(!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.Finished)) { changing_draw_area_size = true; }
+			else if (spawner_mode == SpawnerMode.Draw && 
+			(!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.DrawPaddleMessage)) { start_drawing = true; }
 		}
 	
 		if (changing_draw_area_size)

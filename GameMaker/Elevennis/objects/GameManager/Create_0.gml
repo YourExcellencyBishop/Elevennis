@@ -392,7 +392,7 @@ function reset_game()
 		phy_linear_velocity_y = 0;
 		phy_angular_velocity = 0;
 		
-		if (GameManager.tutorial)
+		if (GameManager.tutorial && TutorialManager.tutorial_state < TutorialState.PlayerDrawnLine)
 		{
 			physics_apply_impulse(phy_com_x, phy_com_y, 20, -25);
 			physics_apply_angular_impulse(20);

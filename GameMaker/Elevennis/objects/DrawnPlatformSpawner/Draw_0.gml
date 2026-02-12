@@ -38,19 +38,12 @@ draw_set_colour(c_white);
 
 if !PauseManager.ready_to_play
 && (!GameManager.tutorial
-    || TutorialManager.tutorial_state >= TutorialState.GameStart)
+    || ((character.object_index == AI && TutorialManager.tutorial_state >= TutorialState.GameStart) 
+	||  (character.object_index == Player && TutorialManager.tutorial_state >= TutorialState.AIIsReady)))
 {
 	draw_set_font(InGameFont);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
-	
-	//draw_set_colour(c_green)
-	//draw_rectangle( 
-	//	bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - 5 - string_height("Ready? [  X  ]"), 
-	//	bounds_centre_x + string_width("Ready? [  X  ]") / 2, bounds_y1 - 5, false)
-	
-	//draw_circle(brush_position_x, brush_position_y, 4, false);
-	//draw_set_colour(c_white)
 	
 	var hovering = point_in_rectangle(brush_position_x, brush_position_y, 
 		bounds_centre_x - string_width("Ready? [  X  ]") / 2, bounds_y1 - ready_to_play_space - string_height("Ready? [  X  ]"), 

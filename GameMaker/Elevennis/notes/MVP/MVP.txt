@@ -12,6 +12,11 @@ points ✓
 menus
 daily mechanics
 tutorial
+end screen
+loading screens
+music
+mute
+ball death
 ----
 calibrate to reddit
 ----

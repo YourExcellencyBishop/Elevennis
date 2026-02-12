@@ -4,12 +4,12 @@ if (mouse_check_button_pressed(mb_left))
 	{
 		case TutorialState.WelcomeMessage:
 			tutorial_state = TutorialState.GoalOfTheGameMessage;
-			layer_text_text(tutorial_text_Id, "In this game you must defend\nyour area by drawing paddles to\nblock the ball");
+			layer_text_text(tutorial_text_Id, "Defend your side\nby drawing paddles to block the ball.");
 			break;
 			
 		case TutorialState.GoalOfTheGameMessage:
 			tutorial_state = TutorialState.AIGoesFirstMessage;
-			layer_text_text(tutorial_text_Id, "For the sake of this tutorial,\nthe opponent will start");
+			layer_text_text(tutorial_text_Id, "For this tutorial,\nyour opponent will go first.");
 			
 			layer_text_alpha(start_tutorial_text_Id, 1);
 			with (start_tutorial_button_Id)
@@ -26,12 +26,11 @@ if (mouse_check_button_pressed(mb_left))
 			break;
 			
 		case TutorialState.ExplainPaddle2:
-			show_debug_message("In this game, the longer the paddle draw, the weaker the hit. A smaller paddle will hit move the ball further.")
-			tutorial_state = TutorialState.BallReturnsMessage;
+			//tutorial_state = TutorialState.BallReturnsMessage;
 			break;
 			
 		case TutorialState.BallReturnsMessage:
-			show_debug_message("Get ready for the ball to return")
+			layer_text_text(ingame_tutorial_text_id, "Get ready - the ball is coming back.");
 			tutorial_state = TutorialState.BallReturns;
 			break;
 			
@@ -41,11 +40,11 @@ if (mouse_check_button_pressed(mb_left))
 			break;
 			
 		case TutorialState.DrawPaddleMessage:
-			show_debug_message("Follow the line and draw a paddle");
+			layer_text_text(ingame_tutorial_text_id, "Follow the guide line and draw a paddle with your mouse.");
 			break;
 			
 		case TutorialState.DrawAreaMessage:
-			show_debug_message("Here is your draw area, you can move it about to change where you want to draw");
+			layer_text_text(ingame_tutorial_text_id, "This is your draw area.\nYou can move it later to change where you draw.\n(AFTER THESE MESSAGES)");
 			with (GameManager.player.platform_spawner)
 			{
 				draw_area_side = 50;
@@ -64,15 +63,40 @@ if (mouse_check_button_pressed(mb_left))
 			break;
 			
 		case TutorialState.YellowZone:
-			show_debug_message("The yellow area is an illegal zone. Whoever hit it last will forfeit the point");
-			tutorial_state = TutorialState.EndTutorial;
+			layer_text_text(ingame_tutorial_text_id, "The yellow zone is illegal. Whoever hits it last loses the point.");
+			tutorial_state = TutorialState.WinRule;
 			break;
 			
+		case TutorialState.WinRule:
+			layer_text_text(ingame_tutorial_text_id, "The tutorial ends when someone reaches 11 points\nor time runs out.");
+			PauseManager.start_time = 0;
+			PauseManager.total_time = 0;
+			GameManager.endless = false;
+			GameManager.win_score = 11;
+			tutorial_state = TutorialState.LeaveTutorial;
+			break;
+			
+		case TutorialState.LeaveTutorial:
+			layer_text_text(ingame_tutorial_text_id, "Press Esc or click the pause icon to leave the tutorial.");
+			
+			with (pause_button_Id)
+			{
+				active = true;
+				image_alpha = 1;
+			}
+
+			tutorial_state = TutorialState.EndTutorial;
+			break
+		
 		case TutorialState.EndTutorial:
-			show_debug_message("The tutorial will end when you or your opponent get to 11 to the time runs out. Good Luck!");
-			GameManager.endless = false
-			GameManager.win_score = 3;
+			layer_text_text(ingame_tutorial_text_id, "Good Luck!");
+			tutorial_state = TutorialState.Finished;
+			break;
+		
+		case TutorialState.Finished:
+			layer_set_visible(InGameTutorialLayer, false);
 			GameManager.opponent.draw_delay = 0;
+			GameManager.opponent.difficulty = 3/11;
 			tutorial_state = TutorialState.Finished;
 			break;
 		
@@ -91,7 +115,8 @@ switch (tutorial_state)
 		break;
 			
 	case TutorialState.AIIsReady:
-		show_debug_message("The opponent Is Ready. Click ready to begin");
+		layer_text_text(ingame_tutorial_text_id, "The opponent Is ready.\nClick \"Ready?\" to begin")
+		layer_set_visible(InGameTutorialLayer, true);
 			
 		if (GameManager.player.ready_to_play)
 		{
@@ -108,32 +133,38 @@ switch (tutorial_state)
 		break;
 		
 	case TutorialState.ExplainPaddle1:
-		show_debug_message("The opponent has drawn a paddle")
-		if (mouse_check_button_pressed(mb_left)) { tutorial_state = TutorialState.ExplainPaddle2; }
+		layer_text_text(ingame_tutorial_text_id, "The opponent has drawn a paddle.");
+		if (mouse_check_button_pressed(mb_left)) 
+		{ 
+			tutorial_state = TutorialState.BallReturnsMessage; 
+			layer_text_text(ingame_tutorial_text_id, "Longer paddles = weaker hits.\nShorter paddles = stronger hits.");
+		}
 		break;
 		
 	case TutorialState.BallReturns:
 		if (GameManager.ball.phy_position_x < room_width / 2)
 		{
 			physics_pause_enable(true);
-			show_debug_message("Now you must draw a paddle to defend your court");
+			layer_text_text(ingame_tutorial_text_id, "Now you must draw a paddle to defend your court");
 			tutorial_state = TutorialState.DrawPaddleMessage
 		}
 		break;
 		
 	case TutorialState.PlayerDrawnLine:
-		show_debug_message("Release");
+		layer_text_text(ingame_tutorial_text_id, "RELEASE!");
 		
 		if (!mouse_check_button(mb_left))
 		{
 			physics_pause_enable(false);
 			GameManager.opponent.draw_delay = infinity;
 			tutorial_state = TutorialState.PlayerFirstAttack;
+			layer_set_visible(InGameTutorialLayer, false);
 		}
 		break;
 		
 	case TutorialState.FirstPoint:
-		show_debug_message("You won a point");
+		layer_text_text(ingame_tutorial_text_id, "You won a point");
+		layer_set_visible(InGameTutorialLayer, true);
 		tutorial_state = TutorialState.DrawAreaMessage;
 		break;
 }
