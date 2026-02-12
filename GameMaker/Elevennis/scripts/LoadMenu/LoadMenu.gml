@@ -5,6 +5,7 @@
 #macro InGameLayer "InGameLayer"
 #macro TutorialLayer "TutorialLayer"
 #macro InGameTutorialLayer "InGameTutorialLayer"
+#macro LoadScreenLayer "LoadingScreenLayer"
 
 function LoadMenu(_target)
 {
@@ -14,6 +15,7 @@ function LoadMenu(_target)
 	{
 		case PauseMenuLayer:
 			layer_set_visible(InGameLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 			
 		case PlayMenuLayer:
@@ -54,6 +56,7 @@ function LoadMenu(_target)
 			layer_set_visible(MainMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
 			layer_set_visible(InGameLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 			
 		case MainMenuLayer:
@@ -63,10 +66,12 @@ function LoadMenu(_target)
 			layer_set_visible(EndScreenLayer, false);
 			layer_set_visible(TutorialLayer, false);
 			layer_set_visible(InGameTutorialLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 			
 		case EndScreenLayer:
 			layer_set_visible(InGameLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 			
 		case InGameLayer:
@@ -74,11 +79,22 @@ function LoadMenu(_target)
 			layer_set_visible(MainMenuLayer, false);
 			layer_set_visible(PlayMenuLayer, false);
 			layer_set_visible(EndScreenLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 			
 		case TutorialLayer:
 			layer_set_visible(InGameTutorialLayer, false);
 			instance_create_depth(0, 0, depth, TutorialManager);
+			layer_set_visible(LoadScreenLayer, false);
+			break;
+			
+		case LoadScreenLayer:
+			layer_set_visible(PauseMenuLayer, false);
+			layer_set_visible(MainMenuLayer, false);
+			layer_set_visible(PlayMenuLayer, false);
+			layer_set_visible(EndScreenLayer, false);
+			layer_set_visible(InGameLayer, false);
+			layer_set_visible(TutorialLayer, false);
 			break;
 			
 		case "":
@@ -88,6 +104,7 @@ function LoadMenu(_target)
 			layer_set_visible(EndScreenLayer, false);
 			layer_set_visible(InGameLayer, false);
 			layer_set_visible(TutorialLayer, false);
+			layer_set_visible(LoadScreenLayer, false);
 			break;
 		
 		default:

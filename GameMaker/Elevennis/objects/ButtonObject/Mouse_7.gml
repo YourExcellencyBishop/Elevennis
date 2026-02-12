@@ -16,10 +16,15 @@ switch (button_id)
 		
 	case ButtonID.StartGame:
 		GameManager.tutorial = false;
-		GameManager.start_game();
+		GameManager.load_game();
 		break;
 		
 	case ButtonID.PlaySettings:
+		LoadMenu(LoadScreenLayer);
+		GameManager.alarm[4] = game_get_speed(gamespeed_fps) * 3;
+		break;
+		
+	case ButtonID.PlaySettingsFromMainMenu:
 		LoadMenu(PlayMenuLayer);
 		break;
 		
@@ -40,7 +45,7 @@ switch (button_id)
 		break;
 	
 	case ButtonID.Rematch:
-		GameManager.start_game();
+		GameManager.load_game();
 		break;
 		
 	case ButtonID.Pause:
@@ -59,7 +64,7 @@ switch (button_id)
 			set_game_setting(daily_mod_1, daily_mod_vals_1, challenge_page);
 			set_game_setting(daily_mod_2, daily_mod_vals_2, challenge_page);
 			set_game_setting(daily_mod_3, daily_mod_vals_3, challenge_page);
-			start_game()
+			load_game()
 		}
 		break;
 		
@@ -68,7 +73,7 @@ switch (button_id)
 		{
 			tutorial = true;
 			endless = true;
-			start_game();
+			load_game();
 		}
 		break;
 		

@@ -12,11 +12,14 @@ points ✓
 menus ✓
 daily mechanics ✓
 tutorial ✓
-end screen
 loading screens
 music
+remove settings
+end screen
 mute
 ball death
+mobile rotate
+tutorial button
 ----
 calibrate to reddit
 ----

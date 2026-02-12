@@ -269,6 +269,12 @@ LoadMenu(MainMenuLayer);
 #macro player_bound_y2 160
 #macro zone_separator_e 0.75
 
+function load_game()
+{
+	LoadMenu(LoadScreenLayer);
+	alarm[2] = game_get_speed(gamespeed_fps) * 3;
+}
+
 function start_game()
 {
 	LoadMenu(InGameLayer);
@@ -486,8 +492,15 @@ function end_game(_target_menu = MainMenuLayer)
 		setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "AIIcon"));
 		elementId = setting.layerElements[0].elementId;
 		layer_sprite_index(elementId, opponent.total_score > player.total_score ? 0 : 1);
+		
+		LoadMenu(EndScreenLayer);
 	}
-	else { GameManager.default_settings(); }
+	else 
+	{
+		GameManager.default_settings(); 
+		LoadMenu(LoadScreenLayer);
+		alarm[_target_menu == MainMenuLayer ? 3 : 4] =  game_get_speed(gamespeed_fps) * 3;;
+	}
 	
 	with (all)
 	{
@@ -495,8 +508,6 @@ function end_game(_target_menu = MainMenuLayer)
 	}
 	
 	audio_stop_sound(snd_main_game);
-	
-	LoadMenu(_target_menu);
 }
 
 function set_game_setting_page(_page)
