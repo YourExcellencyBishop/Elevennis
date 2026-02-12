@@ -1,27 +1,27 @@
 {
   "$GMSprite":"v2",
-  "%Name":"GameLogo",
+  "%Name":"GameName",
   "bboxMode":0,
-  "bbox_bottom":329,
-  "bbox_left":20,
-  "bbox_right":319,
-  "bbox_top":30,
+  "bbox_bottom":53,
+  "bbox_left":2,
+  "bbox_right":318,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"f779c9e6-5715-4650-bee9-9a3ef6aaf91f","name":"f779c9e6-5715-4650-bee9-9a3ef6aaf91f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ca9ed286-e287-4c2d-b395-9a9c94d83fbf","name":"ca9ed286-e287-4c2d-b395-9a9c94d83fbf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":340,
+  "height":58,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"92624e5f-0d92-4392-98a1-3cce888e873d","blendMode":0,"displayName":"default","isLocked":false,"name":"92624e5f-0d92-4392-98a1-3cce888e873d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"7b5e5f4d-ec3b-49a0-8ac7-a2dcc3cdbf57","blendMode":0,"displayName":"default","isLocked":false,"name":"7b5e5f4d-ec3b-49a0-8ac7-a2dcc3cdbf57","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"GameLogo",
+  "name":"GameName",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"GameLogo",
+    "%Name":"GameName",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"GameLogo",
+    "name":"GameName",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f779c9e6-5715-4650-bee9-9a3ef6aaf91f","path":"sprites/GameLogo/GameLogo.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5d9d4099-929b-4bdc-8677-4cf74e61904d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ca9ed286-e287-4c2d-b395-9a9c94d83fbf","path":"sprites/GameName/GameName.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1cca23cd-8e69-4655-b466-7db0dad4b601","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":340,
+  "width":319,
 }

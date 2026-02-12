@@ -8,7 +8,7 @@
     },
   },
   "name":"Opera GX",
-  "option_operagx_display_cursor":true,
+  "option_operagx_display_cursor":false,
   "option_operagx_editUrl":"https://dev.gx.games/games/377b528f-44f8-426b-bb37-9335d709d797/details",
   "option_operagx_game_name":"ElevennisPlayTest",
   "option_operagx_guid":"377b528f-44f8-426b-bb37-9335d709d797",

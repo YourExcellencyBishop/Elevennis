@@ -1,0 +1,1 @@
+if (!layer_get_visible(InGameLayer) || layer_get_visible(TutorialLayer)) { draw_sprite_ext(PencilIcon, 0, mouse_x, mouse_y, 1/scale_surf_width, 1/scale_surf_height, icon_rot, c_white, 1); }

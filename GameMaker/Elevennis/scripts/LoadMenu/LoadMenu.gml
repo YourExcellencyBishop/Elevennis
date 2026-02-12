@@ -98,6 +98,7 @@ function LoadMenu(_target)
 			layer_set_visible(EndScreenLayer, false);
 			layer_set_visible(InGameLayer, false);
 			layer_set_visible(TutorialLayer, false);
+			layer_set_visible(InGameTutorialLayer, false);
 			break;
 			
 		case "":

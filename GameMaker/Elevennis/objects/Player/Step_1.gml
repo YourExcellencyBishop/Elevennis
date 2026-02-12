@@ -78,3 +78,5 @@ with (platform_spawner)
 	        break;
 	}
 }
+
+GameManager.icon_rot = mouse_check_button(mb_left) ? lerp(GameManager.icon_rot, 20, 0.5) : lerp(GameManager.icon_rot, 0, 0.25);

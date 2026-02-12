@@ -14,7 +14,7 @@ daily mechanics ✓
 tutorial ✓
 loading screens ✓
 music ✓
-remove settings
+remove settings ✓
 end screen
 mute
 ball death

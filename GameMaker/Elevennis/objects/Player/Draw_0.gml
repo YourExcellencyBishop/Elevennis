@@ -30,3 +30,6 @@ if (!GameManager.tutorial || TutorialManager.tutorial_state >= TutorialState.Fin
 		}
 	}
 }
+
+
+draw_sprite_ext(PencilIcon, 0, (mouse_x * GameManager.scale_surf_width), (mouse_y * GameManager.scale_surf_height), 1, 1, GameManager.icon_rot, c_white, 1);

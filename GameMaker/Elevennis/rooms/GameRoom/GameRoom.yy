@@ -7,12 +7,9 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_67592B59","path":"roomui/RoomUI/RoomUI.yy",},
-    {"name":"inst_513F4A10","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_43296DDE","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"Manager","path":"rooms/GameRoom/GameRoom.yy",},
-    {"name":"inst_6ED04DD7","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_73DF8063","path":"roomui/RoomUI/RoomUI.yy",},
-    {"name":"inst_40BD5258","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_5F734B65","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_42CDBA60","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_2A4BED90","path":"roomui/RoomUI/RoomUI.yy",},
@@ -48,6 +45,7 @@
     {"name":"inst_1DC43F5","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_4DF6CD2C","path":"roomui/RoomUI/RoomUI.yy",},
     {"name":"inst_4E50DEB4","path":"roomui/RoomUI/RoomUI.yy",},
+    {"name":"inst_40BD5258","path":"roomui/RoomUI/RoomUI.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -55,7 +53,7 @@
         {"name":"g_numDownsamples","type":0,"value":"2",},
         {"name":"g_numPasses","type":0,"value":"2",},
         {"name":"g_intensity","type":0,"value":"1",},
-      ],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
+      ],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":false,},
     {"$GMREffectLayer":"","%Name":"GameGlow","depth":100,"effectEnabled":true,"effectType":"_effect_glow","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"GameGlow","properties":[
         {"name":"g_GlowRadius","type":0,"value":"25",},
         {"name":"g_GlowQuality","type":0,"value":"7",},

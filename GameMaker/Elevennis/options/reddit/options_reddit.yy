@@ -5,7 +5,7 @@
   "name":"Reddit",
   "option_reddit_devvit_project_id":"elevennis",
   "option_reddit_devvit_project_path":"C:\\Users\\bisho\\Documents\\Projects\\elevennis",
-  "option_reddit_display_cursor":true,
+  "option_reddit_display_cursor":false,
   "option_reddit_game_name":"elevennis",
   "option_reddit_interpolate_pixels":false,
   "option_reddit_scale":0,

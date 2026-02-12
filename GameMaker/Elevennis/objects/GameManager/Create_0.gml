@@ -29,6 +29,8 @@ part_type_life(_ptype1, 10, 30);
 part_system_automatic_draw(_ps, false);
 part_system_position(_ps, 0, 0);
 
+icon_rot = 0;
+
 
 #macro base_gravity 100
 global.gravity_x = 0;
