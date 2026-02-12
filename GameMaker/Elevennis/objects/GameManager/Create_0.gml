@@ -437,6 +437,10 @@ function end_game(_target_menu = MainMenuLayer)
 		setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "TimeText"));
 		elementId = setting.layerElements[0].elementId;
 		layer_text_text(elementId, $"{opponent.total_score > player.total_score ? "Lost" : (player.total_score > opponent.total_score ? "Won" : "Drew")} in {PadWithZeroes(floor(PauseManager.total_time) div 60, 2)}m : {PadWithZeroes(floor(PauseManager.total_time) mod 60, 2)}s");
+		
+		setting = flexpanel_node_get_struct(flexpanel_node_get_child(ui_root, "AIIcon"));
+		elementId = setting.layerElements[0].elementId;
+		layer_sprite_index(elementId, opponent.total_score > player.total_score ? 0 : 1);
 	}
 	
 	with (all)

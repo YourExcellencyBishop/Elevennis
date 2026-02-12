@@ -9,9 +9,9 @@ Game Juice
 ai difficulty ✓
 ai drawing platforms ✓
 points ✓
-menus
-daily mechanics
-tutorial
+menus ✓
+daily mechanics ✓
+tutorial ✓
 end screen
 loading screens
 music

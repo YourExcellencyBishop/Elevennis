@@ -59,7 +59,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.4.986",
+    "IDEVersion":"2024.1400.4.991",
   },
   "name":"Elevennis",
   "resources":[
@@ -104,6 +104,7 @@
     {"id":{"name":"snd_collision_right","path":"sounds/snd_collision_right/snd_collision_right.yy",},},
     {"id":{"name":"snd_collision","path":"sounds/snd_collision/snd_collision.yy",},},
     {"id":{"name":"snd_main_game","path":"sounds/snd_main_game/snd_main_game.yy",},},
+    {"id":{"name":"AIFace","path":"sprites/AIFace/AIFace.yy",},},
     {"id":{"name":"AreaLock","path":"sprites/AreaLock/AreaLock.yy",},},
     {"id":{"name":"ChangeValueArrow","path":"sprites/ChangeValueArrow/ChangeValueArrow.yy",},},
     {"id":{"name":"GameLogo","path":"sprites/GameLogo/GameLogo.yy",},},
