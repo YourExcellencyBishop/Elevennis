@@ -109,12 +109,9 @@ function LoadMenu(_target)
 			
 			with (GameManager)
 			{
-				credits_items = ["Turn up the volume", "Credits With MEMES!", asset_get_index($"DanceMeme{irandom_range(1,26)}")];
-				credits_item = 0;
+				credits_items = ["Turn up the volume", "Game Credits !!!", all_credits_items[0]];
+				credits_item = 1;
 				credits_y = [0, 0, 0];
-				credits_index = [0, 0, 0];
-				credits_fps = [0, 0, 0];
-				add_dance_meme = false;
 				credits_clicks = 3;
 			}
 			

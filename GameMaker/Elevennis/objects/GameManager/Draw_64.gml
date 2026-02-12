@@ -23,25 +23,7 @@ if (layer_get_visible(CreditsLayer))
 		var item = credits_items[i];
 		var _y    = credits_y[i];
 
-		if (is_string(item))
-		{
-			draw_text_ext_transformed(xx, _y, item, -1, -1, 10, 10, 0);
-		}
-		else
-		{
-			var spr_h = sprite_get_height(item);
-			var scale = 400 / spr_h;
-
-			draw_sprite_ext(item, credits_index[i], xx, _y, scale, scale, 0, c_white, 1);
-
-			var spd = sprite_get_speed(item);
-			credits_fps[i] += dt;
-			if (credits_fps[i] >= 1 / spd)
-			{
-				credits_fps[i] -= 1 / spd;
-				credits_index[i] = (credits_index[i] + 1) % sprite_get_number(item);
-			}
-		}
+		draw_text_ext_transformed(xx, _y, item, -1, -1, 10, 10, 0);
 	}
 
 	draw_set_alpha(1);
@@ -60,26 +42,19 @@ if (layer_get_visible(CreditsLayer))
 	for (var i = 0; i < 3; i++)
 	{
 		var item   = credits_items[i];
-		var height = is_string(item) ? string_height(item) * 10 : 400;
+		var height = string_height(item) * 10;
 
 		if (credits_y[i] + height < 0)
 		{
-			if (add_dance_meme)
-			{
-				credits_items[i] = asset_get_index($"DanceMeme{irandom_range(1,26)}");
-			}
-			else
-			{
-				credits_items[i] = all_credits_items[credits_item++];
-				credits_item %= array_length(all_credits_items);
-			}
+
+			credits_items[i] = all_credits_items[credits_item++];
+			credits_item %= array_length(all_credits_items);
 
 			var prev = (i + 2) % 3; // same dependency as original code
 			var prev_item   = credits_items[prev];
-			var prev_height = is_string(prev_item) ? string_height(prev_item) * 10 : 400;
+			var prev_height = string_height(prev_item) * 10;
 
 			credits_y[i] = GameManager.credits_y[prev] + prev_height + gui_h / 3;
-			add_dance_meme = !add_dance_meme;
 		}
 	}
 	
