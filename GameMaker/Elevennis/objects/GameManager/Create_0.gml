@@ -272,7 +272,7 @@ LoadMenu(MainMenuLayer);
 function load_game()
 {
 	LoadMenu(LoadScreenLayer);
-	alarm[2] = game_get_speed(gamespeed_fps) * 3;
+	alarm[2] = game_get_speed(gamespeed_fps) * 1;
 }
 
 function start_game()
@@ -499,15 +499,13 @@ function end_game(_target_menu = MainMenuLayer)
 	{
 		GameManager.default_settings(); 
 		LoadMenu(LoadScreenLayer);
-		alarm[_target_menu == MainMenuLayer ? 3 : 4] =  game_get_speed(gamespeed_fps) * 3;;
+		alarm[_target_menu == MainMenuLayer ? 3 : 4] =  game_get_speed(gamespeed_fps) * 1;;
 	}
 	
 	with (all)
 	{
 		if (!persistent) { instance_destroy(); }
 	}
-	
-	audio_stop_sound(snd_main_game);
 }
 
 function set_game_setting_page(_page)
