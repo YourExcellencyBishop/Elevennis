@@ -20,4 +20,7 @@ else
 	body_type = PhysicsBodyType.Circle;
 }
 
+target_color = c_gray;
+image_blend = c_gray;
+
 event_inherited();

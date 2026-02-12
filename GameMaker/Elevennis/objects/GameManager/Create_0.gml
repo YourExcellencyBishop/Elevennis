@@ -2,6 +2,34 @@ global.SupportR8UnormSurface = surface_format_is_supported(surface_r8unorm);
 global.trace_dirs_x = [ 1, 1, 0, -1, -1, -1,  0, 1 ];
 global.trace_dirs_y = [ 0, 1, 1,  1,  0, -1, -1,-1 ];
 
+//ParticleSystem1
+//ParticleSystem1
+_ps = part_system_create();
+part_system_draw_order(_ps, true);
+
+//Emitter
+_ptype1 = part_type_create();
+part_type_shape(_ptype1, pt_shape_pixel);
+part_type_size(_ptype1, 2, 2, 0, 0);
+part_type_scale(_ptype1, 1, 1);
+part_type_speed(_ptype1, 10, 20, -4, 0);
+part_type_direction(_ptype1, 80, 100, 0, 20);
+part_type_gravity(_ptype1, 0, 270);
+part_type_orientation(_ptype1, 0, 0, 0, 0, false);
+part_type_colour3(_ptype1, $0000FF, $0CBAFF, $000000);
+part_type_alpha3(_ptype1, 1, 1, 1);
+part_type_blend(_ptype1, false);
+part_type_life(_ptype1, 10, 30);
+
+
+//_pemit1 = part_emitter_create(_ps);
+//part_emitter_region(_ps, _pemit1, -32, 32, -32, 32, ps_shape_rectangle, ps_distr_linear);
+//part_emitter_stream(_ps, _pemit1, _ptype1, 1);
+
+part_system_automatic_draw(_ps, false);
+part_system_position(_ps, 0, 0);
+
+
 #macro base_gravity 100
 global.gravity_x = 0;
 global.gravity_y = base_gravity;
@@ -378,6 +406,21 @@ function start_game()
 	reset_game();
 }
 
+function default_settings()
+{
+	enemy_difficulty = 6;
+	ball_edges = 4;
+	gravity_scale = 1;
+	ball_radius = 15;
+	wall_bounce = 0.75;
+	hit_power = 1;
+	max_paddles = 4;
+	brush_size = 2;
+	win_score = 11;
+	endless = false;
+	game_length = 3;
+}
+
 function reset_game()
 {
 	physics_pause_enable(true);
@@ -394,13 +437,15 @@ function reset_game()
 		
 		if (GameManager.tutorial && TutorialManager.tutorial_state < TutorialState.PlayerDrawnLine)
 		{
-			physics_apply_impulse(phy_com_x, phy_com_y, 20, -25);
-			physics_apply_angular_impulse(20);
+			phy_linear_velocity_x = 42.44;
+			phy_linear_velocity_y = -80.56;
+			phy_angular_velocity = 339.53
 		}
 		else
 		{
-			physics_apply_impulse(phy_com_x, phy_com_y, irandom(10) % 2 == 0 ? -random_range(15, 20) : random_range(15, 20)  , -random_range(15, 40));
-			physics_apply_angular_impulse(random_range(-60, 60));
+			phy_linear_velocity_x = irandom(10) % 2 == 0 ? -random_range(45, 60) : random_range(45, 60); // 45, 60
+			phy_linear_velocity_y = random_range(-80, -35); // -35, -80
+			phy_angular_velocity = irandom_range(-1500, 1500);
 		}
 	}
 	
@@ -442,10 +487,11 @@ function end_game(_target_menu = MainMenuLayer)
 		elementId = setting.layerElements[0].elementId;
 		layer_sprite_index(elementId, opponent.total_score > player.total_score ? 0 : 1);
 	}
+	else { GameManager.default_settings(); }
 	
 	with (all)
 	{
-		if (!persistent) instance_destroy();
+		if (!persistent) { instance_destroy(); }
 	}
 	
 	audio_stop_sound(snd_main_game);

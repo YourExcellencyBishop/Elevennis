@@ -13,17 +13,15 @@ with (character.enemy.platform_spawner)
 	resize_draw_area = true;
 }
 
-
 with (other)
 {
-	var spd = max(phy_speed, 0.1);
-	phy_speed_x = (phy_speed_x / spd) * other.swing;
-	phy_speed_y = (phy_speed_y / spd) * other.swing;
+	phy_speed_x = -phy_col_normal_x * other.swing;
+	phy_speed_y = -phy_col_normal_y * other.swing;
 	
 	last_touch = other.character;
 }
 
-if (GameManager.tutorial && TutorialManager.tutorial_state == TutorialState.BeginTutorialGame)
+if (GameManager.tutorial && TutorialManager.tutorial_state <= TutorialState.BallReturns)
 {
 	physics_pause_enable(true);
 	character.platform_spawner.paddles = 0;

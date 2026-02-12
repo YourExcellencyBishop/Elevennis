@@ -51,9 +51,11 @@ if !PauseManager.ready_to_play
 	
 	var not_ready_text = hovering ? "Ready? [  _  ]" :  "Ready? [     ]";
 	
+	draw_set_alpha(PauseManager.alarm[1] == -1 ? 1 : clamp(sqr(PauseManager.alarm[1] / game_get_speed(gamespeed_fps)), 0, 1));
 	draw_set_colour(character.ready_to_play ? c_lime : (hovering ? c_yellow : c_maroon));
 	draw_text(bounds_centre_x, bounds_y1 - ready_to_play_space, character.ready_to_play ? "Ready? [  X  ]" : not_ready_text);
 	draw_set_colour(c_white);
+	draw_set_alpha(1);
 }
 
 if (spawner_mode == SpawnerMode.Draw)

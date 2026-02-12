@@ -1,4 +1,4 @@
-draw_set_colour(c_gray);
+draw_set_colour(image_blend);
 event_inherited();
 draw_set_colour(c_white);
 
