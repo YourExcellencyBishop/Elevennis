@@ -260,8 +260,8 @@ room_height = surf_height;
 scale_surf_width = surf_width / view_get_wport(view_current);
 scale_surf_height = surf_height / view_get_hport(view_current);
 
-scale_surf_width = min(scale_surf_height, scale_surf_width);
-scale_surf_height = scale_surf_width;
+//scale_surf_width = min(scale_surf_height, scale_surf_width);
+//scale_surf_height = scale_surf_width;
 
 shake_intensity = 5;
 

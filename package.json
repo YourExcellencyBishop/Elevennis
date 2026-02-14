@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@devvit/web": "0.12.8",
-    "devvit": "0.12.8",
+    "devvit": "^0.12.12",
     "express": "5.1.0"
   },
   "devDependencies": {
